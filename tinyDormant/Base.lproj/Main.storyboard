@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="p27-Jm-897">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Jedi-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="YDJediVC" customModule="tinyDormant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jedi VC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqN-5Y-BGd">
+                                <rect key="frame" x="177.5" y="418" width="59" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WqN-5Y-BGd" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="FaN-qY-8xr"/>
+                            <constraint firstItem="WqN-5Y-BGd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Wiw-IO-OH8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Jedi" image="collaboration" selectedImage="collaboration" id="nYX-l9-HT1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1426" y="258"/>
+        </scene>
+        <!--MandalorianVC-->
+        <scene sceneID="l4A-LI-Lhx">
+            <objects>
+                <viewController id="oz6-fM-eDX" customClass="YDMandalorianVC" customModule="tinyDormant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xbb-qI-0EL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mandalorian VC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v17-kq-BS6">
+                                <rect key="frame" x="146.5" y="440" width="121" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="v17-kq-BS6" firstAttribute="centerX" secondItem="8Zc-a8-Bfi" secondAttribute="centerX" id="0tB-eh-v0J"/>
+                            <constraint firstItem="v17-kq-BS6" firstAttribute="centerY" secondItem="8Zc-a8-Bfi" secondAttribute="centerY" id="XHN-h9-53W"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8Zc-a8-Bfi"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oTF-EU-hx0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="scu-Xp-pFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3942.0289855072465" y="257.8125"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="BP5-YJ-cW7">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="p27-Jm-897" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UVY-lG-lfq">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="a9E-Af-QYV"/>
+                        <segue destination="1VZ-KG-uEa" kind="relationship" relationship="viewControllers" id="5X1-3l-Rcy"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RbP-SN-Mtd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2214" y="-74"/>
+        </scene>
+        <!--Mandalorian-->
+        <scene sceneID="VQk-v0-m5s">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1VZ-KG-uEa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Mandalorian" image="genius" selectedImage="genius" id="pMD-hD-YZi"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Snj-yM-Dwq">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oz6-fM-eDX" kind="relationship" relationship="rootViewController" id="B8N-sX-FjY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6rx-ZP-ajh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3031.884057971015" y="257.8125"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="collaboration" width="30" height="30"/>
+        <image name="genius" width="30" height="30"/>
+    </resources>
+</document>

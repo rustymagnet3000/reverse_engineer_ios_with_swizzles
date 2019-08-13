@@ -2,6 +2,7 @@
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 
+
 @implementation UIViewController (YDFakeUIBarButton)
 
 + (void)load
@@ -9,9 +10,10 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
 
+
         Class MandalorianClass = objc_getClass("tinyDormant.YDMandalorianVC");
         Class SithClass = objc_getClass("tinyDormant.YDSithVC");
-
+        
         SEL originalSelector = @selector(viewDidAppear:);
         SEL swizzledSelector = @selector(YDviewDidAppear:);
         NSLog(@"[+] 🎢 Started...");
@@ -20,6 +22,7 @@
         
         if (MandalorianClass != nil && SithClass != nil) {
             Class mySuperClass = class_getSuperclass(MandalorianClass);
+            NSLog(@"[+] 🌠 Inside object: %@ ", [self class]);
             NSLog(@"[+] 🌠 Class: %@ && Superclass: %@", NSStringFromClass(MandalorianClass), NSStringFromClass(mySuperClass));
             
             Method original = class_getInstanceMethod(MandalorianClass, originalSelector);
@@ -30,11 +33,10 @@
                 return;
             }
 
-            BOOL didAddMethod =
-            class_addMethod(MandalorianClass,
-                            originalSelector,
-                            method_getImplementation(replacement),
-                            method_getTypeEncoding(replacement));
+            BOOL didAddMethod = class_addMethod(MandalorianClass,
+                                                originalSelector,
+                                                method_getImplementation(replacement),
+                                                method_getTypeEncoding(replacement));
             
             if (didAddMethod) {
                 NSLog(@"[+] 🌠 didAddMethod: %@ && Class: %@", NSStringFromSelector(originalSelector), NSStringFromClass(MandalorianClass));
@@ -53,24 +55,31 @@
 
 #pragma mark - add Fake UIBarButton
 - (void)YDviewDidAppear:(BOOL)animated {
+
+    [self YDviewDidAppear:animated];
+
     // this log shows if you have a problem with the Inheritance tree.
     NSLog(@"[+] 🌠🌠🌠 Swizzled code running.  YDviewDidAppear called from: %@ || Superclass %@", self, [self superclass]);
 
-    [self YDviewDidAppear:animated];  // call original viewDidAppear
     UIBarButtonItem *sithUibb = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(sithHijack:)];
-
     self.navigationItem.rightBarButtonItem = sithUibb;
-
+    self.navigationController.navigationBar.barTintColor = [UIColor greenColor];
 }
 
 #pragma mark - create Sith VC and then present it
 -(IBAction)sithHijack:(id)sender {
     NSLog(@"[+] 🧪🧪🧪 sithHijack");
+
     Class SithClass = objc_getClass("tinyDormant.YDSithVC");
-    NSLog(@"[+] 🌠 Trying to create instance of: %@", NSStringFromClass(SithClass));
+    NSLog(@"[+] 🐸 Trying to create instance of: %@", NSStringFromClass(SithClass));
     id sithvc = class_createInstance(SithClass, 0);
-    NSLog(@"[*]🌠 Created instance of: %@ at: %p", [sithvc class], sithvc);
-    [self presentViewController:sithvc animated:YES completion:nil];
+    NSLog(@"[+] 🐸 Created instance of: %@ at: %p", [sithvc class], sithvc);
+    NSLog(@"[+] 🐸 In class: %@ with Superclass: %@", [self class], [self superclass]);
+    NSLog(@"[+] 🐸 Self navigationController: %@", [self navigationController]);
+    NSLog(@"[+] 🐸 Self tabBarController: %@", [self tabBarController]);
+
+    [[self navigationController] pushViewController:sithvc animated:YES];
+
 }
 
 @end

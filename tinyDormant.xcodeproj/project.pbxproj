@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F006B6522B7591400E46A7C /* addFakeUIBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F006B6122B751DC00E46A7C /* addFakeUIBarButton.m */; };
-		0F006D3322B7992200E46A7C /* addFakeUIBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F006B6122B751DC00E46A7C /* addFakeUIBarButton.m */; };
+		0F0873232301C39A00FC0D6D /* PorgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0873212301C39A00FC0D6D /* PorgViewController.swift */; };
+		0F0873242301C39A00FC0D6D /* PorgViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0873222301C39A00FC0D6D /* PorgViewController.xib */; };
+		0F0873262301C3DA00FC0D6D /* porg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0F0873252301C3DA00FC0D6D /* porg.jpg */; };
+		0F0873282301C46E00FC0D6D /* deadporg.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F0873272301C46E00FC0D6D /* deadporg.gif */; };
 		0F102A8922A6C9EA00529F12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A8822A6C9EA00529F12 /* AppDelegate.swift */; };
 		0F102A8B22A6C9EA00529F12 /* jediVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A8A22A6C9EA00529F12 /* jediVC.swift */; };
 		0F102A8E22A6C9EA00529F12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F102A8C22A6C9EA00529F12 /* Main.storyboard */; };
@@ -16,6 +18,7 @@
 		0F102A9322A6C9EB00529F12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F102A9122A6C9EB00529F12 /* LaunchScreen.storyboard */; };
 		0F102A9B22A6CA7800529F12 /* sithVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9A22A6CA7800529F12 /* sithVC.swift */; };
 		0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */; };
+		0F962DCC22B92D34008561BB /* addFakeUIBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F006B6122B751DC00E46A7C /* addFakeUIBarButton.m */; };
 		0FB2D28122B20A0A00C44902 /* tinySwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FB2D27F22B20A0A00C44902 /* tinySwizzle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FB2D28422B20A0A00C44902 /* tinySwizzle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; };
 		0FB2D28522B20A0A00C44902 /* tinySwizzle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -47,6 +50,10 @@
 
 /* Begin PBXFileReference section */
 		0F006B6122B751DC00E46A7C /* addFakeUIBarButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = addFakeUIBarButton.m; sourceTree = "<group>"; };
+		0F0873212301C39A00FC0D6D /* PorgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorgViewController.swift; sourceTree = "<group>"; };
+		0F0873222301C39A00FC0D6D /* PorgViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PorgViewController.xib; sourceTree = "<group>"; };
+		0F0873252301C3DA00FC0D6D /* porg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = porg.jpg; sourceTree = "<group>"; };
+		0F0873272301C46E00FC0D6D /* deadporg.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = deadporg.gif; sourceTree = "<group>"; };
 		0F102A8522A6C9EA00529F12 /* tinyDormant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tinyDormant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F102A8822A6C9EA00529F12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F102A8A22A6C9EA00529F12 /* jediVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jediVC.swift; sourceTree = "<group>"; };
@@ -106,9 +113,13 @@
 		0F102A8722A6C9EA00529F12 /* tinyDormant */ = {
 			isa = PBXGroup;
 			children = (
+				0F0873252301C3DA00FC0D6D /* porg.jpg */,
+				0F0873272301C46E00FC0D6D /* deadporg.gif */,
 				0F102A8822A6C9EA00529F12 /* AppDelegate.swift */,
 				0F102A8A22A6C9EA00529F12 /* jediVC.swift */,
 				0F102A9A22A6CA7800529F12 /* sithVC.swift */,
+				0F0873212301C39A00FC0D6D /* PorgViewController.swift */,
+				0F0873222301C39A00FC0D6D /* PorgViewController.xib */,
 				0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */,
 				0F102A8C22A6C9EA00529F12 /* Main.storyboard */,
 				0F102A9D22A6CC2B00529F12 /* swizzleMethod.m */,
@@ -229,7 +240,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F102A9322A6C9EB00529F12 /* LaunchScreen.storyboard in Resources */,
+				0F0873262301C3DA00FC0D6D /* porg.jpg in Resources */,
+				0F0873282301C46E00FC0D6D /* deadporg.gif in Resources */,
 				0F102A9022A6C9EB00529F12 /* Assets.xcassets in Resources */,
+				0F0873242301C39A00FC0D6D /* PorgViewController.xib in Resources */,
 				0F102A8E22A6C9EA00529F12 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,8 +284,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F102A8B22A6C9EA00529F12 /* jediVC.swift in Sources */,
-				0F006B6522B7591400E46A7C /* addFakeUIBarButton.m in Sources */,
 				0F102A8922A6C9EA00529F12 /* AppDelegate.swift in Sources */,
+				0F0873232301C39A00FC0D6D /* PorgViewController.swift in Sources */,
 				0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */,
 				0F102A9B22A6CA7800529F12 /* sithVC.swift in Sources */,
 			);
@@ -281,7 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F006D3322B7992200E46A7C /* addFakeUIBarButton.m in Sources */,
+				0F962DCC22B92D34008561BB /* addFakeUIBarButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

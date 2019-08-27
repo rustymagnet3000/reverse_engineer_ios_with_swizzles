@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F0873232301C39A00FC0D6D /* PorgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0873212301C39A00FC0D6D /* PorgViewController.swift */; };
+		0F0873232301C39A00FC0D6D /* PorgVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0873212301C39A00FC0D6D /* PorgVC.swift */; };
 		0F0873242301C39A00FC0D6D /* PorgViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0873222301C39A00FC0D6D /* PorgViewController.xib */; };
 		0F0873262301C3DA00FC0D6D /* porg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0F0873252301C3DA00FC0D6D /* porg.jpg */; };
 		0F0873282301C46E00FC0D6D /* deadporg.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F0873272301C46E00FC0D6D /* deadporg.gif */; };
+		0F08732B2302D14A00FC0D6D /* PorgUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F08732A2302D14A00FC0D6D /* PorgUIImageView.swift */; };
 		0F102A8922A6C9EA00529F12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A8822A6C9EA00529F12 /* AppDelegate.swift */; };
 		0F102A8B22A6C9EA00529F12 /* jediVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A8A22A6C9EA00529F12 /* jediVC.swift */; };
 		0F102A8E22A6C9EA00529F12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F102A8C22A6C9EA00529F12 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 		0F102A9322A6C9EB00529F12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F102A9122A6C9EB00529F12 /* LaunchScreen.storyboard */; };
 		0F102A9B22A6CA7800529F12 /* sithVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9A22A6CA7800529F12 /* sithVC.swift */; };
 		0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */; };
+		0F149CFD2315063000F70225 /* dumpClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F102AA122A7D4EF00529F12 /* dumpClasses.m */; };
 		0F962DCC22B92D34008561BB /* addFakeUIBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F006B6122B751DC00E46A7C /* addFakeUIBarButton.m */; };
 		0FB2D28122B20A0A00C44902 /* tinySwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FB2D27F22B20A0A00C44902 /* tinySwizzle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FB2D28422B20A0A00C44902 /* tinySwizzle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; };
@@ -50,10 +52,11 @@
 
 /* Begin PBXFileReference section */
 		0F006B6122B751DC00E46A7C /* addFakeUIBarButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = addFakeUIBarButton.m; sourceTree = "<group>"; };
-		0F0873212301C39A00FC0D6D /* PorgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorgViewController.swift; sourceTree = "<group>"; };
+		0F0873212301C39A00FC0D6D /* PorgVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorgVC.swift; sourceTree = "<group>"; };
 		0F0873222301C39A00FC0D6D /* PorgViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PorgViewController.xib; sourceTree = "<group>"; };
 		0F0873252301C3DA00FC0D6D /* porg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = porg.jpg; sourceTree = "<group>"; };
 		0F0873272301C46E00FC0D6D /* deadporg.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = deadporg.gif; sourceTree = "<group>"; };
+		0F08732A2302D14A00FC0D6D /* PorgUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorgUIImageView.swift; sourceTree = "<group>"; };
 		0F102A8522A6C9EA00529F12 /* tinyDormant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tinyDormant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F102A8822A6C9EA00529F12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F102A8A22A6C9EA00529F12 /* jediVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jediVC.swift; sourceTree = "<group>"; };
@@ -67,6 +70,8 @@
 		0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mandalorianVC.swift; sourceTree = "<group>"; };
 		0F102AA122A7D4EF00529F12 /* dumpClasses.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dumpClasses.m; sourceTree = "<group>"; };
 		0F102AA322A7F07600529F12 /* swizzleIvars.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = swizzleIvars.m; sourceTree = "<group>"; };
+		0F149CF32315006300F70225 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		0F149CFC2315036600F70225 /* staticStrings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = staticStrings.h; sourceTree = "<group>"; };
 		0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = tinySwizzle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FB2D27F22B20A0A00C44902 /* tinySwizzle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tinySwizzle.h; sourceTree = "<group>"; };
 		0FB2D28022B20A0A00C44902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,6 +100,8 @@
 		0F102A7C22A6C9EA00529F12 = {
 			isa = PBXGroup;
 			children = (
+				0F149CF32315006300F70225 /* README.md */,
+				0F149CF7231500E700F70225 /* not_on_repo */,
 				0F102A8722A6C9EA00529F12 /* tinyDormant */,
 				0FB2D27E22B20A0A00C44902 /* tinySwizzle */,
 				0F102A8622A6C9EA00529F12 /* Products */,
@@ -118,8 +125,9 @@
 				0F102A8822A6C9EA00529F12 /* AppDelegate.swift */,
 				0F102A8A22A6C9EA00529F12 /* jediVC.swift */,
 				0F102A9A22A6CA7800529F12 /* sithVC.swift */,
-				0F0873212301C39A00FC0D6D /* PorgViewController.swift */,
+				0F0873212301C39A00FC0D6D /* PorgVC.swift */,
 				0F0873222301C39A00FC0D6D /* PorgViewController.xib */,
+				0F08732A2302D14A00FC0D6D /* PorgUIImageView.swift */,
 				0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */,
 				0F102A8C22A6C9EA00529F12 /* Main.storyboard */,
 				0F102A9D22A6CC2B00529F12 /* swizzleMethod.m */,
@@ -133,6 +141,14 @@
 				0F102A9C22A6CC2A00529F12 /* tinyDormant-Bridging-Header.h */,
 			);
 			path = tinyDormant;
+			sourceTree = "<group>";
+		};
+		0F149CF7231500E700F70225 /* not_on_repo */ = {
+			isa = PBXGroup;
+			children = (
+				0F149CFC2315036600F70225 /* staticStrings.h */,
+			);
+			path = not_on_repo;
 			sourceTree = "<group>";
 		};
 		0FB2D27E22B20A0A00C44902 /* tinySwizzle */ = {
@@ -212,6 +228,7 @@
 					};
 					0FB2D27C22B20A0A00C44902 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1030;
 					};
 				};
 			};
@@ -283,10 +300,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F08732B2302D14A00FC0D6D /* PorgUIImageView.swift in Sources */,
 				0F102A8B22A6C9EA00529F12 /* jediVC.swift in Sources */,
 				0F102A8922A6C9EA00529F12 /* AppDelegate.swift in Sources */,
-				0F0873232301C39A00FC0D6D /* PorgViewController.swift in Sources */,
+				0F0873232301C39A00FC0D6D /* PorgVC.swift in Sources */,
 				0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */,
+				0F149CFD2315063000F70225 /* dumpClasses.m in Sources */,
 				0F102A9B22A6CA7800529F12 /* sithVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,6 +510,7 @@
 		0FB2D28722B20A0A00C44902 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -510,6 +530,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = youdog.com.rusty.tinySwizzle;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -519,6 +541,7 @@
 		0FB2D28822B20A0A00C44902 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -538,6 +561,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = youdog.com.rusty.tinySwizzle;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

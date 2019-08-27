@@ -1,34 +1,38 @@
 
 ## Tiny Swizzle
-This project contains two `Targets`.  A simple iOS app and a simple framework.  
-
-The framework can be repackaged inside of a real iOS app.  It works on real iOS devices and iOS Simulators.
-
 ### Background
-It attempts to find `Dormant` code inside an app, after you have told it what to look for.  
-
-Find your target Classes by performing a `Class Dump`.   In this project, just tick the box to include the  `dumpClasses.m` file inside of the iOS app's `Target`.  Then it will find what you wanted:
-```
-[*] 🌠 Started Class introspection...
-[*]tinyDormant.AppDelegate
-[*]tinyDormant.PorgViewController
-[*]tinyDormant.YDJediVC
-[*]tinyDormant.YDSithVC
-[*]🌠 FOUND SITH -> isKindOfClass!
-[*]🌠 FOUND SITH -> isMemberOfClass!
-```
-
-This works on Objective-C and Swift.  I have only tried with Swift code that inherits from `NSObject`. I have not tried this with the 2019 launched `SwiftUI`.
+The `TinySwizzle.framework` attempted to find `Dormant` code inside an app, after you have told it what to look for.  
 
 ### Method Swizzle
-The crux of the example code swaps `dormant` code with real code that is running inside the target app. It works uses the Objective-C `runtime.h` APIs from Apple.  Namely:
+The crux of the code swapped `dormant` code with real code. It worked using the Objective-C `runtime.h` APIs from Apple.  Namely:
 
-- [x] class_addMethod
+- [x]  class_addMethod
 - [x]  class_replaceMethod
-- [x] method_exchangeImplementations
+- [x]  method_exchangeImplementations
 
-### Run Dormant Code
-The Swizzle code adds a `UIBarButton` to make it clear the code has executed.  Once you select the button it will perform one of these actions:
+
+### What am I looking for?
+Find your "dormant" code by performing a `Class Dump`.   If you want to understand how this works, just tick the `Target Membership` box to include the  `dumpClasses.m` file inside of the iOS app's `Target`.  Then it will run the app and print the found classes.
 ```
-[[self navigationController] pushViewController:sithvc animated:YES];    
+[*] 🌠 Started Class introspection...
+    [*]tinyDormant.AppDelegate
+    [*]tinyDormant.PorgViewController
+    [*]tinyDormant.YDJediVC
+    [*]tinyDormant.YDSithVC
+    [*]tinyDormant.YDMandalorianVC
+    [*]tinyDormant.YDPorgImageView
 ```
+### What next?
+Set the values of original and dormant strings.  I did this with a header file that had two #define statements.
+```
+#define originalClassStr "tinyDormant.YDMandalorianVC"
+#define dormantClassStr "tinyDormant.YDSithVC"
+```
+### Run
+Now get the framework into your app.  The project contained two `Targets`.  An iOS app and a simple framework.  The app just demonstrated what the Swizzle framework could do.  The framework could be repackaged inside of a real iOS app or used with an iOS Simulator.  For details on `repackaging` refer to `Applesign`.
+
+### Goal: unlock Dormant code
+The Swizzle code inside of `addFakeUIBarButton.m` added a `UIBarButton` to make it clear the code had executed.  Once you selected the button it loaded the dormant class.
+
+### What next?
+This worked on Objective-C and Swift code.  I only tried with Swift code that inherits from `NSObject`. I have not tried this `SwiftUI`.

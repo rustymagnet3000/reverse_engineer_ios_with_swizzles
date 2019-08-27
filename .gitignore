@@ -2,6 +2,7 @@
 tinySwizzle.framework
 build/
 DerivedData/
+not_on_repo/
 
 ## Various settings
 *.pbxuser

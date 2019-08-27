@@ -1,5 +1,3 @@
-// https://stackoverflow.com/questions/37962123/creating-uiviewcontroller-dynamically-in-swift
-
 import UIKit
 
 class YDSithVC: UIViewController {
@@ -12,24 +10,8 @@ class YDSithVC: UIViewController {
         print("[+]🧪 the Sith VC ViewDidLoad!")
     }
     
-    @objc func lightsaber() {
-        let secret_of_sith = "[+]🧪 Sith use Red lightsabers!"
-        let ydAlertController = UIAlertController(title: "**  Sith  **", message: secret_of_sith, preferredStyle: .alert)
-        let ydAction = UIAlertAction(title: "Blow up planet", style: .destructive) { (action:UIAlertAction) in
-            print("You've pressed the destructive")
-            let porgvc = PorgViewController(nibName: "PorgViewController", bundle: nil)
-
-            self.navigationController?.pushViewController(porgvc, animated: true)
-
-        }
-        ydAlertController.addAction(ydAction)
-        self.present(ydAlertController, animated: true, completion: nil)
-    }
-    
-
-
     override func loadView() {
-        // super.loadView()   // Purposely do NOT call super
+        // super.loadView()   // NOT call super
         // https://developer.apple.com/documentation/uikit/uiviewcontroller/1621454-loadview
         let strings: [String] = ["Sidious","Bane","Vader","Maul","Dooku"]
         let stackView = UIStackView()
@@ -62,6 +44,19 @@ class YDSithVC: UIViewController {
             stackView.addArrangedSubview(label)
         }
         stackView.addArrangedSubview(button)
+    }
+    
+    @objc func lightsaber() {
+        let secret_of_sith = "[+]🧪 Sith use Red lightsabers!"
+        let ydAlertController = UIAlertController(title: "**  Sith  **", message: secret_of_sith, preferredStyle: .alert)
+        let ydAction = UIAlertAction(title: "Blow up planet", style: .destructive) { (action:UIAlertAction) in
+            
+            let porgvc = YDPorgVC(nibName: "PorgViewController", bundle: nil)
+            self.navigationController?.pushViewController(porgvc, animated: true)
+            
+        }
+        ydAlertController.addAction(ydAction)
+        self.present(ydAlertController, animated: true, completion: nil)
     }
 }
 

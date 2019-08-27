@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
+#include "staticStrings.h"
 
 
 @implementation UIViewController (YDFakeUIBarButton)
@@ -11,8 +12,8 @@
     dispatch_once(&onceToken, ^{
 
 
-        Class MandalorianClass = objc_getClass("tinyDormant.YDMandalorianVC");
-        Class SithClass = objc_getClass("tinyDormant.YDSithVC");
+        Class MandalorianClass = objc_getClass(originalClassStr);
+        Class SithClass = objc_getClass(dormantClassStr);
         
         SEL originalSelector = @selector(viewDidAppear:);
         SEL swizzledSelector = @selector(YDviewDidAppear:);
@@ -70,7 +71,7 @@
 -(IBAction)sithHijack:(id)sender {
     NSLog(@"[+] 🧪🧪🧪 sithHijack");
 
-    Class SithClass = objc_getClass("tinyDormant.YDSithVC");
+    Class SithClass = objc_getClass(dormantClassStr);
     NSLog(@"[+] 🐸 Trying to create instance of: %@", NSStringFromClass(SithClass));
     id sithvc = class_createInstance(SithClass, 0);
     NSLog(@"[+] 🐸 Created instance of: %@ at: %p", [sithvc class], sithvc);

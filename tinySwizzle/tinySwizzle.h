@@ -1,11 +1,3 @@
-//
-//  tinySwizzle.h
-//  tinySwizzle
-//
-//  Created by rustymagnet3000 on 13/06/2019.
-//  Copyright © 2019 rusty_house. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for tinySwizzle.

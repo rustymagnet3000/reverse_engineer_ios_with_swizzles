@@ -3,14 +3,12 @@
 #import <objc/runtime.h>
 #include "staticStrings.h"
 
-
 @implementation UIViewController (YDFakeUIBarButton)
 
 + (void)load
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-
 
         Class MandalorianClass = objc_getClass(originalClassStr);
         Class SithClass = objc_getClass(dormantClassStr);
@@ -59,18 +57,21 @@
 
     [self YDviewDidAppear:animated];
 
-    // this log shows if you have a problem with the Inheritance tree.
-    NSLog(@"[+] 🌠🌠🌠 Swizzled code running.  YDviewDidAppear called from: %@ || Superclass %@", self, [self superclass]);
+    // log identifies if a problem with Inheritance
+    NSLog(@"[+] 🌠🌠🌠 Swizzled. YDviewDidAppear called from: %@ || Superclass %@", self, [self superclass]);
 
-    UIBarButtonItem *sithUibb = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(sithHijack:)];
-    self.navigationItem.rightBarButtonItem = sithUibb;
+    UIBarButtonItem *sithBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(sithHijack:)];
+    
+        UIBarButtonItem *porgBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(porgHijack:)];
+    
+    self.navigationItem.rightBarButtonItem = sithBarButton;
+    self.navigationItem.leftBarButtonItem = porgBarButton;
     self.navigationController.navigationBar.barTintColor = [UIColor greenColor];
 }
 
 #pragma mark - create Sith VC and then present it
 -(IBAction)sithHijack:(id)sender {
     NSLog(@"[+] 🧪🧪🧪 sithHijack");
-
     Class SithClass = objc_getClass(dormantClassStr);
     NSLog(@"[+] 🐸 Trying to create instance of: %@", NSStringFromClass(SithClass));
     id sithvc = class_createInstance(SithClass, 0);
@@ -78,9 +79,17 @@
     NSLog(@"[+] 🐸 In class: %@ with Superclass: %@", [self class], [self superclass]);
     NSLog(@"[+] 🐸 Self navigationController: %@", [self navigationController]);
     NSLog(@"[+] 🐸 Self tabBarController: %@", [self tabBarController]);
-
     [[self navigationController] pushViewController:sithvc animated:YES];
+}
 
+#pragma mark - load Porg XIB file
+-(IBAction)porgHijack:(id)sender {
+
+    Class PorgClass = objc_getClass(dormantPorgClassStr);
+    NSLog(@"[+] 🐸 Trying to create instance of: %@", NSStringFromClass(PorgClass));
+    id porgvc = class_createInstance(PorgClass, 0);
+    [[NSBundle mainBundle] loadNibNamed:@dormantXibStr owner:porgvc options:nil];
+    [[self navigationController] pushViewController:porgvc animated:YES];
 }
 
 @end

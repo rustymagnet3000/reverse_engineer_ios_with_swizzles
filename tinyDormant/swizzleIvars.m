@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
+#include "staticStrings.h"
 
 #ifdef DEBUG
 #define NSLog(FORMAT, ...) fprintf(stderr,"%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
@@ -19,7 +20,7 @@ http://jerrymarino.com/2014/01/31/objective-c-private-instance-variable-access.h
 + (void)load
 {
     NSLog(@"[*] 🌠 Loading iVar inspection...");
-    Class jedivcclass = objc_getClass("tinyDormant.YDJediVC");
+    Class jedivcclass = objc_getClass(ivarClassStr);
     Ivar *ivars = class_copyIvarList(jedivcclass, NULL);
     for(Ivar *ivar = ivars; *ivar != NULL; ivar++)
     {

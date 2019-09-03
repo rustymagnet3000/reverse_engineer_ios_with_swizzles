@@ -22,7 +22,11 @@
 		0FB2D28122B20A0A00C44902 /* tinySwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FB2D27F22B20A0A00C44902 /* tinySwizzle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FB2D28422B20A0A00C44902 /* tinySwizzle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; };
 		0FB2D28522B20A0A00C44902 /* tinySwizzle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0FD9E261231E71C1003ED5B6 /* dumpClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F102AA122A7D4EF00529F12 /* dumpClasses.m */; };
+		0FD9E263231EAF76003ED5B6 /* addFakeUIBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F006B6122B751DC00E46A7C /* addFakeUIBarButton.m */; };
+		0FD9E26B231EB45D003ED5B6 /* ChewyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9E26A231EB45D003ED5B6 /* ChewyViewController.swift */; };
+		0FD9E26D231EBA50003ED5B6 /* chewy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9E26C231EBA50003ED5B6 /* chewy.jpg */; };
+		0FD9E26F231EC588003ED5B6 /* SoloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9E26E231EC588003ED5B6 /* SoloViewController.swift */; };
+		0FD9E271231EC684003ED5B6 /* han.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9E270231EC684003ED5B6 /* han.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +79,10 @@
 		0FB2D27F22B20A0A00C44902 /* tinySwizzle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tinySwizzle.h; sourceTree = "<group>"; };
 		0FB2D28022B20A0A00C44902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FD488FD22AABAF800D194BF /* swizzleTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = swizzleTabBar.m; sourceTree = "<group>"; };
+		0FD9E26A231EB45D003ED5B6 /* ChewyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChewyViewController.swift; sourceTree = "<group>"; };
+		0FD9E26C231EBA50003ED5B6 /* chewy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chewy.jpg; sourceTree = "<group>"; };
+		0FD9E26E231EC588003ED5B6 /* SoloViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoloViewController.swift; sourceTree = "<group>"; };
+		0FD9E270231EC684003ED5B6 /* han.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = han.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +129,8 @@
 			children = (
 				0F0873252301C3DA00FC0D6D /* porg.jpg */,
 				0F0873272301C46E00FC0D6D /* deadporg.gif */,
+				0FD9E26C231EBA50003ED5B6 /* chewy.jpg */,
+				0FD9E270231EC684003ED5B6 /* han.jpg */,
 				0F102A8822A6C9EA00529F12 /* AppDelegate.swift */,
 				0F102A8A22A6C9EA00529F12 /* jediVC.swift */,
 				0F102A9A22A6CA7800529F12 /* sithVC.swift */,
@@ -129,6 +139,8 @@
 				0F08732A2302D14A00FC0D6D /* PorgUIImageView.swift */,
 				0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */,
 				0F102A8C22A6C9EA00529F12 /* Main.storyboard */,
+				0FD9E26A231EB45D003ED5B6 /* ChewyViewController.swift */,
+				0FD9E26E231EC588003ED5B6 /* SoloViewController.swift */,
 				0F102A9D22A6CC2B00529F12 /* swizzleMethod.m */,
 				0FD488FD22AABAF800D194BF /* swizzleTabBar.m */,
 				0F006B6122B751DC00E46A7C /* addFakeUIBarButton.m */,
@@ -256,9 +268,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F102A9322A6C9EB00529F12 /* LaunchScreen.storyboard in Resources */,
+				0FD9E26D231EBA50003ED5B6 /* chewy.jpg in Resources */,
 				0F0873262301C3DA00FC0D6D /* porg.jpg in Resources */,
 				0F0873282301C46E00FC0D6D /* deadporg.gif in Resources */,
 				0F102A9022A6C9EB00529F12 /* Assets.xcassets in Resources */,
+				0FD9E271231EC684003ED5B6 /* han.jpg in Resources */,
 				0F0873242301C39A00FC0D6D /* PorgViewController.xib in Resources */,
 				0F102A8E22A6C9EA00529F12 /* Main.storyboard in Resources */,
 			);
@@ -300,10 +314,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F08732B2302D14A00FC0D6D /* PorgUIImageView.swift in Sources */,
+				0FD9E26B231EB45D003ED5B6 /* ChewyViewController.swift in Sources */,
 				0F102A8B22A6C9EA00529F12 /* jediVC.swift in Sources */,
 				0F102A8922A6C9EA00529F12 /* AppDelegate.swift in Sources */,
 				0F0873232301C39A00FC0D6D /* PorgVC.swift in Sources */,
 				0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */,
+				0FD9E26F231EC588003ED5B6 /* SoloViewController.swift in Sources */,
 				0F102A9B22A6CA7800529F12 /* sithVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,7 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FD9E261231E71C1003ED5B6 /* dumpClasses.m in Sources */,
+				0FD9E263231EAF76003ED5B6 /* addFakeUIBarButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

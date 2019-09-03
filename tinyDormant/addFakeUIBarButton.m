@@ -7,6 +7,7 @@
 
 + (void)load
 {
+    NSLog(@"🍭 [+](void)load");
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
 
@@ -52,24 +53,28 @@
     });
 }
 
-#pragma mark - add Fake UIBarButton
+#pragma mark - add navigationItem UIBarButtons
 - (void)YDviewDidAppear:(BOOL)animated {
 
     [self YDviewDidAppear:animated];
 
     // log identifies if a problem with Inheritance
     NSLog(@"[+] 🌠🌠🌠 Swizzled. YDviewDidAppear called from: %@ || Superclass %@", self, [self superclass]);
-
+    self.navigationController.navigationBar.barTintColor = [UIColor greenColor];
+    
     UIBarButtonItem *sithBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(sithHijack:)];
     
-        UIBarButtonItem *porgBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(porgHijack:)];
+    UIBarButtonItem *porgBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(porgHijack:)];
     
-    self.navigationItem.rightBarButtonItem = sithBarButton;
-    self.navigationItem.leftBarButtonItem = porgBarButton;
-    self.navigationController.navigationBar.barTintColor = [UIColor greenColor];
+    UIBarButtonItem *chewyBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(chewyHijack:)];
+
+    UIBarButtonItem *hanBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(hanHijack:)];
+    
+    self.navigationItem.rightBarButtonItems =@[porgBarButton, sithBarButton];
+    self.navigationItem.leftBarButtonItems = @[chewyBarButton, hanBarButton];
 }
 
-#pragma mark - create Sith VC and then present it
+#pragma mark - the View Controller that is not tied to a XIB or Storyboard
 -(IBAction)sithHijack:(id)sender {
     NSLog(@"[+] 🧪🧪🧪 sithHijack");
     Class SithClass = objc_getClass(dormantClassStr);
@@ -82,7 +87,7 @@
     [[self navigationController] pushViewController:sithvc animated:YES];
 }
 
-#pragma mark - load Porg XIB file
+#pragma mark - the Nib file and View Controller
 -(IBAction)porgHijack:(id)sender {
 
     Class PorgClass = objc_getClass(dormantPorgClassStr);
@@ -92,4 +97,26 @@
     [[self navigationController] pushViewController:porgvc animated:YES];
 }
 
+#pragma mark - the Storyboard file and View Controller
+-(IBAction)chewyHijack:(id)sender {
+    NSLog(@"[+] 🧪🧪🧪 chewyHijack");
+    Class ChewyClass = objc_getClass(chewyClassStr);
+    NSLog(@"[+] 🐸 Trying to create instance of: %@", NSStringFromClass(ChewyClass));
+    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@chewyStoryboardFile bundle:nil];
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@chewyStoryboardID];
+    [[self navigationController] pushViewController:vc animated:YES];
+
+}
+
+-(IBAction)hanHijack:(id)sender {
+    NSLog(@"[+] 🧪🧪🧪 hanHijack");
+    Class SoloClass = objc_getClass(soloClassStr);
+    NSLog(@"[+] 🐸 Trying to create instance of: %@", NSStringFromClass(SoloClass));
+    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@soloStoryboardFile bundle:nil];
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@soloStoryboardID];
+    [[self navigationController] pushViewController:vc animated:YES];
+    
+}
 @end

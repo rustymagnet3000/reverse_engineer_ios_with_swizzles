@@ -66,6 +66,58 @@
             </objects>
             <point key="canvasLocation" x="3942.0289855072465" y="257.8125"/>
         </scene>
+        <!--ChewyVC-->
+        <scene sceneID="mr3-WK-Jin">
+            <objects>
+                <viewController storyboardIdentifier="chewyStoryboardID" id="OyH-hF-ueq" customClass="YDChewyVC" customModule="tinyDormant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jlf-uS-fUl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chewy.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="tSO-Hq-TFo">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tSO-Hq-TFo" firstAttribute="top" secondItem="TYO-OB-JMf" secondAttribute="top" id="LV2-xF-0hV"/>
+                            <constraint firstItem="TYO-OB-JMf" firstAttribute="trailing" secondItem="tSO-Hq-TFo" secondAttribute="trailing" id="SKh-Hg-TpQ"/>
+                            <constraint firstItem="TYO-OB-JMf" firstAttribute="bottom" secondItem="tSO-Hq-TFo" secondAttribute="bottom" id="bwS-aw-GGc"/>
+                            <constraint firstItem="tSO-Hq-TFo" firstAttribute="leading" secondItem="TYO-OB-JMf" secondAttribute="leading" id="zRU-Ug-1fj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TYO-OB-JMf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CPC-BB-a0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4723" y="258"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="sD0-My-bmY">
+            <objects>
+                <viewController storyboardIdentifier="soloStoryboardID" id="X3R-FD-IkE" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xoq-9B-B6Y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="han.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Jyq-N5-b7C">
+                                <rect key="frame" x="0.0" y="44" width="394" height="818"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="Jyq-N5-b7C" secondAttribute="bottom" id="KEb-u5-bnl"/>
+                            <constraint firstItem="Jyq-N5-b7C" firstAttribute="leading" secondItem="sW6-2c-3dC" secondAttribute="leading" id="q0S-cm-jae"/>
+                            <constraint firstItem="Jyq-N5-b7C" firstAttribute="top" secondItem="sW6-2c-3dC" secondAttribute="top" id="rQP-eB-Bxo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jyq-N5-b7C" secondAttribute="trailing" id="w1M-kd-IaY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sW6-2c-3dC"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sdl-SX-jXI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5655" y="149"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="BP5-YJ-cW7">
             <objects>
@@ -106,7 +158,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chewy.jpg" width="960" height="1192"/>
         <image name="collaboration" width="30" height="30"/>
         <image name="genius" width="30" height="30"/>
+        <image name="han.jpg" width="525" height="892"/>
     </resources>
 </document>

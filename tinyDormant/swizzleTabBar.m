@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
+#include "staticStrings.h"
 
 #ifdef DEBUG
 #define NSLog(FORMAT, ...) fprintf(stderr,"%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
@@ -58,7 +59,7 @@
 - (void)YDviewWillAppear:(BOOL)animated {
   
     NSLog(@"[+] 🌠🌠🌠 viewWillAppear called from: %@ || Superclass %@", self, [self superclass]);
-    Class sithVcClass = objc_getClass("tinyDormant.YDSithVC");
+    Class sithVcClass = objc_getClass(dormantClassStr);
     id sithvc = class_createInstance(sithVcClass, 0);
     NSLog(@"[*]🌠 Created instance of: %@ at: %p", [sithvc class], sithvc);
     

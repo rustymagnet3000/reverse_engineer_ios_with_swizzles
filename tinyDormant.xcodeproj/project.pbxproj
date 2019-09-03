@@ -19,11 +19,10 @@
 		0F102A9322A6C9EB00529F12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F102A9122A6C9EB00529F12 /* LaunchScreen.storyboard */; };
 		0F102A9B22A6CA7800529F12 /* sithVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9A22A6CA7800529F12 /* sithVC.swift */; };
 		0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */; };
-		0F149CFD2315063000F70225 /* dumpClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F102AA122A7D4EF00529F12 /* dumpClasses.m */; };
-		0F962DCC22B92D34008561BB /* addFakeUIBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F006B6122B751DC00E46A7C /* addFakeUIBarButton.m */; };
 		0FB2D28122B20A0A00C44902 /* tinySwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FB2D27F22B20A0A00C44902 /* tinySwizzle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FB2D28422B20A0A00C44902 /* tinySwizzle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; };
 		0FB2D28522B20A0A00C44902 /* tinySwizzle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0FD9E261231E71C1003ED5B6 /* dumpClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F102AA122A7D4EF00529F12 /* dumpClasses.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -305,7 +304,6 @@
 				0F102A8922A6C9EA00529F12 /* AppDelegate.swift in Sources */,
 				0F0873232301C39A00FC0D6D /* PorgVC.swift in Sources */,
 				0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */,
-				0F149CFD2315063000F70225 /* dumpClasses.m in Sources */,
 				0F102A9B22A6CA7800529F12 /* sithVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,7 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F962DCC22B92D34008561BB /* addFakeUIBarButton.m in Sources */,
+				0FD9E261231E71C1003ED5B6 /* dumpClasses.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2N3CU4HVH8;
 				INFOPLIST_FILE = tinyDormant/Info.plist;
@@ -479,6 +478,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = youdog.com.rusty.tinyDormant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "tinyDormant/tinyDormant-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -491,6 +491,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2N3CU4HVH8;
 				INFOPLIST_FILE = tinyDormant/Info.plist;
@@ -501,6 +502,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = youdog.com.rusty.tinyDormant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "tinyDormant/tinyDormant-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

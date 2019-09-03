@@ -1,5 +1,4 @@
-
-## Tiny Swizzle
+# Tiny Swizzle
 ### Background
 The `TinySwizzle.framework` attempted to find `Dormant` code inside an app, after you have told it what to look for.  
 
@@ -29,9 +28,25 @@ Set the values of original and dormant strings.  I did this with a header file t
 #define originalClassStr "tinyDormant.YDMandalorianVC"
 #define dormantClassStr "tinyDormant.YDSithVC"
 ```
-### Run
-Now get the framework into your app.  The project contained two `Targets`.  An iOS app and a simple framework.  The app just demonstrated what the Swizzle framework could do.  The framework could be repackaged inside of a real iOS app or used with an iOS Simulator.  For details on `repackaging` refer to `Applesign`.
+### Run (Simulator)
+Now get the framework into your app.  The project contained two `Targets`.  An iOS app and a simple framework.  The app just demonstrated what the Swizzle framework could do.  This app worked with a Simulator or real device. 
 
+### Run (device with real app)
+The framework could be repackaged inside of a real iOS app.  The process was summarised as :
+```
+- Unzipping the IPA
+- Adding the Swizzle framework
+- Adding a load command, so the app knew to load the new framework
+- Zipping the app contents
+- Code signing the modified IPA
+```
+The commands were as follows:
+```
+optool install -c load -p "@executable_path/Frameworks/tinySwizzle.framework/tinySwizzle" -t Payload/MyApp.app/MyApp
+jtool -arch arm64 -l Payload/MyApp.app/MyApp
+7z a unsigned.ipa Payload
+applesign -7 -i < DEV CODE SIGNING ID > -m embedded.mobileprovision unsigned.ipa -o ready.ipa
+```
 ### Goal: unlock Dormant code
 The Swizzle code inside of `addFakeUIBarButton.m` added a `UIBarButton` to make it clear the code had executed.  Once you selected the button it loaded the dormant class.
 

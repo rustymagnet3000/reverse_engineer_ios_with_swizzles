@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F0474182321572E009D3392 /* addFakeUIBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F006B6122B751DC00E46A7C /* addFakeUIBarButton.m */; };
 		0F0873232301C39A00FC0D6D /* PorgVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0873212301C39A00FC0D6D /* PorgVC.swift */; };
 		0F0873242301C39A00FC0D6D /* PorgViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0873222301C39A00FC0D6D /* PorgViewController.xib */; };
 		0F0873262301C3DA00FC0D6D /* porg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0F0873252301C3DA00FC0D6D /* porg.jpg */; };
@@ -19,10 +20,10 @@
 		0F102A9322A6C9EB00529F12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F102A9122A6C9EB00529F12 /* LaunchScreen.storyboard */; };
 		0F102A9B22A6CA7800529F12 /* sithVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9A22A6CA7800529F12 /* sithVC.swift */; };
 		0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */; };
+		0F225227233243CF00C6FA0E /* YDSwizzlePlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F225226233243CF00C6FA0E /* YDSwizzlePlist.plist */; };
 		0FB2D28122B20A0A00C44902 /* tinySwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FB2D27F22B20A0A00C44902 /* tinySwizzle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FB2D28422B20A0A00C44902 /* tinySwizzle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; };
 		0FB2D28522B20A0A00C44902 /* tinySwizzle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0FD9E263231EAF76003ED5B6 /* addFakeUIBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F006B6122B751DC00E46A7C /* addFakeUIBarButton.m */; };
 		0FD9E26B231EB45D003ED5B6 /* ChewyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9E26A231EB45D003ED5B6 /* ChewyViewController.swift */; };
 		0FD9E26D231EBA50003ED5B6 /* chewy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9E26C231EBA50003ED5B6 /* chewy.jpg */; };
 		0FD9E26F231EC588003ED5B6 /* SoloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9E26E231EC588003ED5B6 /* SoloViewController.swift */; };
@@ -75,6 +76,7 @@
 		0F102AA322A7F07600529F12 /* swizzleIvars.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = swizzleIvars.m; sourceTree = "<group>"; };
 		0F149CF32315006300F70225 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0F149CFC2315036600F70225 /* staticStrings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = staticStrings.h; sourceTree = "<group>"; };
+		0F225226233243CF00C6FA0E /* YDSwizzlePlist.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = YDSwizzlePlist.plist; sourceTree = "<group>"; };
 		0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = tinySwizzle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FB2D27F22B20A0A00C44902 /* tinySwizzle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tinySwizzle.h; sourceTree = "<group>"; };
 		0FB2D28022B20A0A00C44902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		0F149CF7231500E700F70225 /* not_on_repo */ = {
 			isa = PBXGroup;
 			children = (
+				0F225226233243CF00C6FA0E /* YDSwizzlePlist.plist */,
 				0F149CFC2315036600F70225 /* staticStrings.h */,
 			);
 			path = not_on_repo;
@@ -282,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F225227233243CF00C6FA0E /* YDSwizzlePlist.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FD9E263231EAF76003ED5B6 /* addFakeUIBarButton.m in Sources */,
+				0F0474182321572E009D3392 /* addFakeUIBarButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,7 +489,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2N3CU4HVH8;
+				DEVELOPMENT_TEAM = U8MSEX235L;
 				INFOPLIST_FILE = tinyDormant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -509,7 +513,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2N3CU4HVH8;
+				DEVELOPMENT_TEAM = U8MSEX235L;
 				INFOPLIST_FILE = tinyDormant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -529,7 +533,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -547,6 +551,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = youdog.com.rusty.tinySwizzle;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -560,7 +565,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -578,6 +583,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = youdog.com.rusty.tinySwizzle;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

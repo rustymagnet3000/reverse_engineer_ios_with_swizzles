@@ -1,18 +1,12 @@
 # Tiny Swizzle
 ### Background
-The `TinySwizzle.framework` attempted to find `Dormant` code inside an app, after you have told it what to look for.  
+The `TinySwizzle.framework` attempted to find `Dormant` code inside an app, after you have told it what to look for.
 
-### Method Swizzle
-The crux of the code swapped `dormant` code with real code. It worked using the Objective-C `runtime.h` APIs from Apple.  Namely:
-
-- [x]  class_addMethod
-- [x]  class_replaceMethod
-- [x]  method_exchangeImplementations
-- [x]  objc_getClass
-
+###  Swizzling
+The crux of the code loaded  `dormant ViewControllers`.  The project fired when it found a dormant `Storyboard`, a `XIB` file or a 100% code ViewController [ that did not rely on a `Storyboard` file or `XIB` file ].
 
 ### What am I looking for?
-Find your "dormant" code by performing a `Class Dump`.   If you want to understand how this works, just tick the `Target Membership` box to include the  `dumpClasses.m` file inside of the iOS app's `Target`.  Then it will run the app and print the found classes.
+If you want to target a specific piece of `dormant` code you first perform a `Class Dump`.   Just tick the `Target Membership` box to include the  `dumpClasses.m` file inside of the iOS app's `Target`.  Then it will run the app and print the found classes.
 ```
 [*] 🌠 Started Class introspection...
     [*]tinyDormant.AppDelegate
@@ -22,12 +16,27 @@ Find your "dormant" code by performing a `Class Dump`.   If you want to understa
     [*]tinyDormant.YDMandalorianVC
     [*]tinyDormant.YDPorgImageView
 ```
-### What next?
-Set the values of original and dormant strings.  I did this with a header file that had two #define statements.
+### Set your Target
+Set the values of the `View Controller` you want to hijack and swizzle.  
 ```
-#define originalClassStr "tinyDormant.YDMandalorianVC"
+// The Target Swift ViewController to Swizzle
+#define targetClassStr "tinyDormant.YDMandalorianVC"
+```
+I used a `Header file` that had `#define` statements to avoid having magic strings inside the code.
+```
+// A ViewController is 100% in code ( no XIB or Storyboard )
 #define dormantClassStr "tinyDormant.YDSithVC"
+
+// Dormant ViewController with a Storyboard file and ID
+#define chewyClassStr "tinyDormant.YDChewyVC"
+#define chewyStoryboardID "chewyStoryboardID"
+#define chewyStoryboardFile "Main"
+
+// Dormant ViewController with an associated XIB file
+#define dormantPorgClassStr "tinyDormant.YDPorgVC"
+#define dormantXibStr "PorgViewController"
 ```
+
 ### Run (Simulator)
 Now get the framework into your app.  The project contained two `Targets`.  An iOS app and a simple framework.  The app just demonstrated what the Swizzle framework could do.  This app worked with a Simulator or real device. 
 
@@ -52,6 +61,14 @@ The Swizzle code inside of `addFakeUIBarButton.m` added a `UIBarButton` to make 
 
 
 ### Explaining the code
+The Swizzle used the Objective-C `runtime.h` APIs from Apple.  Namely:
+
+- [x]  class_addMethod
+- [x]  class_replaceMethod
+- [x]  method_exchangeImplementations
+- [x]  objc_getClass
+
+
 The `Sith` ViewController was 100% code generated.  It did not rely on a reference inside of `Main.Storyboard` or an XIB file. So I used this API to create it:
 ```
 Class SithClass = objc_getClass(dormantClassStr);

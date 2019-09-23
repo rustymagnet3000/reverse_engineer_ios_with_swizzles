@@ -3,21 +3,27 @@
 #import <objc/runtime.h>
 #include "staticStrings.h"
 
-@interface YDFakeUIBarButton : UIViewController {
-    NSString *_sbClass;
-    NSString *_sbID;
-    NSString *_sbFile;
-}
-@property NSString *sbClass, *sbID, *sbFile;
+typedef void (^YDBlockEnumerator)(id, NSUInteger, BOOL *);
+
+@interface YDFakeUIBarButtonItem: UIBarButtonItem
+@property (readwrite) NSString *sbClass, *sbID, *sbFile;
 @end
 
-@implementation YDFakeUIBarButton
+@implementation YDFakeUIBarButtonItem
+@end
 
+
+@interface UIViewController (YDFakeUIVC)
+@end
+
+@implementation UIViewController (YDFakeUIVC)
+static const NSString *value1 = @"storyboardClassName";
+static const NSString *value2 = @"storyboardID";
+static const NSString *value3 = @"storyboardFile";
 
 + (void)load
 {
-
-    NSLog(@"🍭\t[+]load  (YDFakeUIBarButton)");
+    NSLog(@"🍭 loaded YDFakeUIVC Category from: %@", [self class]);
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
 
@@ -26,20 +32,20 @@
         
         SEL originalSelector = @selector(viewDidAppear:);
         SEL swizzledSelector = @selector(YDviewDidAppear:);
-        NSLog(@"[+] 🎢 Started...");
-        NSLog(@"[+] \tOriginal selector: \"%@\"", NSStringFromSelector(originalSelector));
-        NSLog(@"[+] \tReplacement selector: \"%@\"", NSStringFromSelector(swizzledSelector));
+        NSLog(@"🍭 Started...");
+        NSLog(@"🍭 Original selector: \"%@\"", NSStringFromSelector(originalSelector));
+        NSLog(@"🍭 Replacement selector: \"%@\"", NSStringFromSelector(swizzledSelector));
         
         if (MandalorianClass != nil && SithClass != nil) {
             Class mySuperClass = class_getSuperclass(MandalorianClass);
-            NSLog(@"[+] 🌠 Inside object: %@ ", [self class]);
-            NSLog(@"[+] 🌠 Class: %@ && Superclass: %@", NSStringFromClass(MandalorianClass), NSStringFromClass(mySuperClass));
+            NSLog(@"🍭 Inside object: %@ ", [self class]);
+            NSLog(@"🍭 Class: %@ && Superclass: %@", NSStringFromClass(MandalorianClass), NSStringFromClass(mySuperClass));
             
             Method original = class_getInstanceMethod(MandalorianClass, originalSelector);
             Method replacement = class_getInstanceMethod(SithClass, swizzledSelector);
             
             if (original == nil || replacement == nil) {
-                NSLog(@"[+] 🎢 Problem finding Original: %p OR Replacement: %p", original, replacement);
+                NSLog(@"🍭 Problem finding Original: %p OR Replacement: %p", original, replacement);
                 return;
             }
 
@@ -49,14 +55,14 @@
                                                 method_getTypeEncoding(replacement));
             
             if (didAddMethod) {
-                NSLog(@"[+] 🌠 didAddMethod: %@ && Class: %@", NSStringFromSelector(originalSelector), NSStringFromClass(MandalorianClass));
+                NSLog(@"🍭 didAddMethod: %@ && Class: %@", NSStringFromSelector(originalSelector), NSStringFromClass(MandalorianClass));
                 
                 class_replaceMethod(MandalorianClass,
                                     swizzledSelector,
                                     method_getImplementation(original),
                                     method_getTypeEncoding(original));
             } else {
-                NSLog(@"[+] 🌠 Method swap: %@", NSStringFromSelector(originalSelector));
+                NSLog(@"🍭 Method swap: %@", NSStringFromSelector(originalSelector));
                 method_exchangeImplementations(original, replacement);
             }
         }
@@ -65,53 +71,74 @@
 
 #pragma mark - add navigationItem UIBarButtons
 - (void)YDviewDidAppear:(BOOL)animated {
-
     [self YDviewDidAppear:animated];
-
-    // log identifies if a problem with Inheritance
-    NSLog(@"[+] 🌠🌠🌠 Swizzled. YDviewDidAppear called from: %@", self);
+    NSLog(@"🍭 Swizzled. YDviewDidAppear called from: %@", self);
     self.navigationController.navigationBar.barTintColor = [UIColor greenColor];
-    
+    [self hijackStoryboard];
+}
+
+- (void)hijackStoryboard {
     NSString *swizzleplist = @"YDSwizzlePlist";
-    NSLog(@"🍭\tAttmepting to read: %@", swizzleplist);
+    NSMutableArray *buttons = [[NSMutableArray alloc] init];
     
+    YDBlockEnumerator simpleblock = ^ (id dict, NSUInteger i, BOOL *stop){
+        YDFakeUIBarButtonItem *sbBarButton = [[YDFakeUIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(storyboardHijack:)];
+        
+        [buttons addObject:sbBarButton];
+
+        if ([dict objectForKey:value1])
+            sbBarButton.sbClass = dict[value1];
+        
+        if ([dict objectForKey:value2])
+            sbBarButton.sbID = dict[value2];
+        
+        if ([dict objectForKey:value3])
+            sbBarButton.sbFile = dict[value3];
+            
+
+    };
+    
+    NSLog(@"🍭 Attempted read of: %@", swizzleplist);
     NSString *fwPath = [[[NSBundle mainBundle] privateFrameworksPath] stringByAppendingPathComponent:@"tinySwizzle.framework"];
     NSBundle *bundle = [NSBundle bundleWithPath:fwPath];
     NSString *file = [bundle pathForResource:swizzleplist ofType:@"plist"];
     NSArray *heroes = [NSArray arrayWithContentsOfFile:file];
     
     if (heroes == NULL || bundle == NULL || file == NULL) {
-        NSLog(@"🍭\tCan't find framework, swizzle plist file or the data inside the plist");
+        NSLog(@"🍭 Can't find framework, swizzle plist file or the data inside the plist. Not hijacking Storyboards");
         return;
     }
-
-    NSMutableArray *buttons = [[NSMutableArray alloc] init];
-    for (id hero in heroes) {
-        NSLog(@"\t Hero : %@", hero);
-        
-        UIBarButtonItem *sbBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(storyboardHijack:andSecond:)];
-        [buttons addObject:sbBarButton];
-    }
+    [heroes enumerateObjectsUsingBlock:simpleblock];
     self.navigationItem.leftBarButtonItems = buttons;
     
-    UIBarButtonItem *sithBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(sithHijack:)];
+    UIBarButtonItem *sithBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(sithHijack:)];
     
-    UIBarButtonItem *porgBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(porgHijack:)];
+    UIBarButtonItem *porgBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(porgHijack:)];
     
     self.navigationItem.rightBarButtonItems =@[porgBarButton, sithBarButton];
-    
+}
+
+#pragma mark - generic Storyboard hijack
+-(IBAction)storyboardHijack:(id)sender
+{
+    if ([sender isMemberOfClass:[YDFakeUIBarButtonItem class]]){
+        NSLog(@"🍭 YDFakeUIBarButtonItem invoked. Tried to create %@", [[sender self] sbClass]);
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:[[sender self] sbFile] bundle:nil];
+        UIViewController *vc = [sb instantiateViewControllerWithIdentifier:[[sender self] sbID]];
+        [[self navigationController] pushViewController:vc animated:YES];
+    }
 }
 
 #pragma mark - the View Controller that is not tied to a XIB or Storyboard
 -(IBAction)sithHijack:(id)sender {
-    NSLog(@"[+] 🧪🧪🧪 sithHijack");
+    NSLog(@"🍭 sithHijack");
     Class SithClass = objc_getClass(dormantClassStr);
-    NSLog(@"[+] 🐸 Trying to create instance of: %@", NSStringFromClass(SithClass));
+    NSLog(@"🍭 Tried to create instance of: %@", NSStringFromClass(SithClass));
     id sithvc = class_createInstance(SithClass, 0);
-    NSLog(@"[+] 🐸 Created instance of: %@ at: %p", [sithvc class], sithvc);
-    NSLog(@"[+] 🐸 In class: %@ with Superclass: %@", [self class], [self superclass]);
-    NSLog(@"[+] 🐸 Self navigationController: %@", [self navigationController]);
-    NSLog(@"[+] 🐸 Self tabBarController: %@", [self tabBarController]);
+    NSLog(@"🍭 Created instance of: %@ at: %p", [sithvc class], sithvc);
+    NSLog(@"🍭 In class: %@ with Superclass: %@", [self class], [self superclass]);
+    NSLog(@"🍭 Self navigationController: %@", [self navigationController]);
+    NSLog(@"🍭 Self tabBarController: %@", [self tabBarController]);
     [[self navigationController] pushViewController:sithvc animated:YES];
 }
 
@@ -119,50 +146,10 @@
 -(IBAction)porgHijack:(id)sender {
 
     Class PorgClass = objc_getClass(dormantPorgClassStr);
-    NSLog(@"[+] 🐸 Trying to create instance of: %@", NSStringFromClass(PorgClass));
+    NSLog(@"🍭 Tried to create instance of: %@", NSStringFromClass(PorgClass));
     id porgvc = class_createInstance(PorgClass, 0);
     [[NSBundle mainBundle] loadNibNamed:@dormantXibStr owner:porgvc options:nil];
     [[self navigationController] pushViewController:porgvc animated:YES];
 }
 
-#pragma mark - the Storyboard file and View Controller
--(IBAction)chewyHijack:(id)sender {
-    NSLog(@"[+] 🧪🧪🧪 chewyHijack");
-    Class ChewyClass = objc_getClass(chewyClassStr);
-    NSLog(@"[+] 🐸 Trying to create instance of: %@", NSStringFromClass(ChewyClass));
-    
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@chewyStoryboardFile bundle:nil];
-    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@chewyStoryboardID];
-    [[self navigationController] pushViewController:vc animated:YES];
-
-}
-
--(IBAction)hanHijack:(id)sender {
-    NSLog(@"[+] 🧪🧪🧪 hanHijack");
-    Class SoloClass = objc_getClass(soloClassStr);
-    NSLog(@"[+] 🐸 Trying to create instance of: %@", NSStringFromClass(SoloClass));
-    
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@soloStoryboardFile bundle:nil];
-    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@soloStoryboardID];
-    [[self navigationController] pushViewController:vc animated:YES];
-    
-}
-
--(IBAction)bobaHijack:(id)sender {
-    NSLog(@"[+] 🧪🧪🧪 bobaHijack");
-    Class BobaClass = objc_getClass(bobaClassStr);
-    NSLog(@"[+] 🐸 Trying to create instance of: %@", NSStringFromClass(BobaClass));
-    
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@bobaStoryboardFile bundle:nil];
-    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@bobaStoryboardID];
-    [[self navigationController] pushViewController:vc animated:YES];
-    
-}
-
--(IBAction)     storyboardHijack:(id)sender
-                andSecond:(id) stDetails
-{
-    NSLog(@"[+] 🧪🧪🧪 storyboardHijack invoked by: %@", [sender class]);
-    NSLog(@"[+] 🧪🧪🧪 storyboard Details: %@", stDetails);
-}
 @end

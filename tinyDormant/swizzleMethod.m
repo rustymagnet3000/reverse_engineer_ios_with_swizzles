@@ -1,43 +1,51 @@
 #import <Foundation/Foundation.h>
-#import <objc/message.h>
+#import <objc/runtime.h>
+#include "staticStrings.h"
 
-#ifdef DEBUG
-#define NSLog(FORMAT, ...) fprintf(stderr,"%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
-#else
-#define NSLog(...) {}
-#endif
+@implementation NSObject (YDSwizzleMethod)
 
-@interface YDSwizzleMethod: NSObject
-@end
-
-@implementation YDSwizzleMethod
 + (void)load
 {
-    NSLog(@"[+] 🌠 Loading Method swizzle...");
-    Class jediVcClass = objc_getClass("tinyDormant.YDJediVC");
-    Class sithVcClass = objc_getClass("tinyDormant.YDSithVC");
-    SEL targetSel = @selector(viewDidLoad);
-
-    if (jediVcClass != nil && sithVcClass != nil) {
-        NSLog(@"[+] 🌠 Found: %@ and %@", NSStringFromClass(jediVcClass),NSStringFromClass(sithVcClass));
-        Class mySuperClass = class_getSuperclass(jediVcClass);
-        NSLog(@"[+] 🌠 %@ superclass: %@", NSStringFromClass(jediVcClass), NSStringFromClass(mySuperClass));
-
-        Method original = class_getInstanceMethod(jediVcClass, targetSel);
-        Method replacement = class_getInstanceMethod(sithVcClass, targetSel);
-
-        if (original != nil && replacement != nil) {
-            NSLog(@"[+] 🌠 Found target: %@", NSStringFromSelector(targetSel));
-            IMP imp1 = method_getImplementation(original);
-            IMP imp2 = method_getImplementation(replacement);
-            NSLog(@"[+]BEFORE method_exchange:\n\t\t[+]original:%p\n\t\t[+]replacement:%p", imp1, imp2);
-
-            method_exchangeImplementations(original, replacement);
-            imp1 = method_getImplementation(original);
-            imp2 = method_getImplementation(replacement);
-            NSLog(@"[+]AFTER method_exchange:\n\t\t[+]original:%p\n\t\t[+]replacement:%p", imp1, imp2);
+    NSLog(@"🍭Constructor called for Category (YDSwizzleMethod)");
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+                
+        Class class = objc_getClass(targetClassMethodSwizzle);
+        NSLog(@"🍭Started. Found class: %@ at: %p", NSStringFromClass(class), class);
+        if (class == NULL) {
+            NSLog(@"🍭Stopped swizzle. Can't find Class \n");
+            return;
         }
-    }
+        
+        SEL originalSelector = sel_registerName(targetMethodSwizzle);
+        SEL swizzledSelector = @selector(XXXmethod);
+        NSLog(@"🍭Searched for: \"%@\" selector", NSStringFromSelector(originalSelector));
+        
+        Method originalMethod = class_getInstanceMethod(class, originalSelector);
+        Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
+        
+        if (originalMethod == NULL || swizzledMethod == NULL) {
+            NSLog(@"🍭Stopped swizzle. Can't find method instances for %@ instance \n", class);
+            return;
+        } else {
+            NSLog(@"🍭method_exchangeImplementations");
+            method_exchangeImplementations(originalMethod, swizzledMethod);
+        }
+    });
+}
+
+
+- (BOOL)XXXmethod{
+    NSLog(@"🍭In XXXmethod ... 🧪");
+    
+    BOOL realResult = NO;
+    realResult = [self XXXmethod];
+    
+    NSLog(@"🍭True result: %@", realResult ? @"YES" : @"NO");
+    if (realResult)
+        NSLog(@"🍭Turning it from NO to YES");
+
+    return YES;
 }
 
 @end

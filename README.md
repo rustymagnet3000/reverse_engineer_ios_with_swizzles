@@ -1,9 +1,30 @@
 # Tiny Swizzle
 ### Background
-The `TinySwizzle.framework` attempted to find `Dormant` code inside an app, after you have told it what to look for.
+The `TinySwizzle.framework` finds _Dormant_ `Swift` or `ObjC` iOS code.
+### Setup
+Clone the repo.  Create a `YDSwizzlePlist.plist` file.  Check the `Target Membership` tickbox.  This must be ticked so the plist file ships inside the framework. An example plist:
+```
+<plist version="1.0">
+    <array>
+        <dict>
+            <key>storyboardClassName</key>
+            <string>tinyDormant.YDChewyVC</string>
+            <key>storyboardID</key>
+            <string>chewyStoryboardID</string>
+            <key>storyboardFile</key>
+            <string>Main</string>
+        </dict>
+    </array>
+</plist>
+```
 
 ###  Swizzling
-The crux of the code loaded  `dormant ViewControllers`.  The project fired when it found a dormant `Storyboard`, a `XIB` file or a 100% code ViewController [ that did not rely on a `Storyboard` file or `XIB` file ].
+The code focused `dormant ViewControllers` from three places:
+1. Storyboard files (or a single Main.storyboard)
+2. A `XIB` file
+3. A 100% code-only ViewController
+
+Most of the code used a subclass of `UIBarButtonItem` to load a fake button that would access the dormant View Controller.
 
 ### What am I looking for?
 If you want to target a specific piece of `dormant` code you first perform a `Class Dump`.   Just tick the `Target Membership` box to include the  `dumpClasses.m` file inside of the iOS app's `Target`.  Then it will run the app and print the found classes.
@@ -16,29 +37,9 @@ If you want to target a specific piece of `dormant` code you first perform a `Cl
     [*]tinyDormant.YDMandalorianVC
     [*]tinyDormant.YDPorgImageView
 ```
-### Set your Target
-Set the values of the `View Controller` you want to hijack and swizzle.  
-```
-// The Target Swift ViewController to Swizzle
-#define targetClassStr "tinyDormant.YDMandalorianVC"
-```
-I used a `Header file` that had `#define` statements to avoid having magic strings inside the code.
-```
-// A ViewController is 100% in code ( no XIB or Storyboard )
-#define dormantClassStr "tinyDormant.YDSithVC"
-
-// Dormant ViewController with a Storyboard file and ID
-#define chewyClassStr "tinyDormant.YDChewyVC"
-#define chewyStoryboardID "chewyStoryboardID"
-#define chewyStoryboardFile "Main"
-
-// Dormant ViewController with an associated XIB file
-#define dormantPorgClassStr "tinyDormant.YDPorgVC"
-#define dormantXibStr "PorgViewController"
-```
 
 ### Run (Simulator)
-Now get the framework into your app.  The project contained two `Targets`.  An iOS app and a simple framework.  The app just demonstrated what the Swizzle framework could do.  This app worked with a Simulator or real device. 
+Now get the framework into your app.  The project contained two `Targets`.  An iOS app and a simple framework.  The app just demonstrated what the Swizzle framework could do.  This app worked with a Simulator or real device.
 
 ### Run (device with real app)
 The framework could be repackaged inside of a real iOS app.  The process was summarised as :
@@ -56,10 +57,6 @@ jtool -arch arm64 -l Payload/MyApp.app/MyApp
 7z a unsigned.ipa Payload
 applesign -7 -i < DEV CODE SIGNING ID > -m embedded.mobileprovision unsigned.ipa -o ready.ipa
 ```
-### Goal: unlock Dormant code
-The Swizzle code inside of `addFakeUIBarButton.m` added a `UIBarButton` to make it clear the code had executed.  Once you selected the button it loaded the dormant class.
-
-
 ### Explaining the code
 The Swizzle used the Objective-C `runtime.h` APIs from Apple.  Namely:
 
@@ -68,13 +65,13 @@ The Swizzle used the Objective-C `runtime.h` APIs from Apple.  Namely:
 - [x]  method_exchangeImplementations
 - [x]  objc_getClass
 
-
-The `Sith` ViewController was 100% code generated.  It did not rely on a reference inside of `Main.Storyboard` or an XIB file. So I used this API to create it:
+### Results
+The `Sith` ViewController was 100% code generated. The beauty of Objective-C is you can create these classes at `runtime`:
 ```
 Class SithClass = objc_getClass(dormantClassStr);
 id sithvc = class_createInstance(SithClass, 0);
 ```
-After you select the `UIBarButton` it loads the `ViewController`.
+After you select the `FakeUIBarButtonItem` it loaded the `ViewController`.
 
 ![sith](tinyDormant/readme_images/sith.png)
 

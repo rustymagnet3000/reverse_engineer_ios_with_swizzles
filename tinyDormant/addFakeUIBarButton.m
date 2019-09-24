@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
+#import "YDplistReader.h"
 #include "staticStrings.h"
 
 typedef void (^YDBlockEnumerator)(id, NSUInteger, BOOL *);
@@ -78,7 +79,13 @@ static const NSString *value3 = @"storyboardFile";
 }
 
 - (void)hijackStoryboard {
-    NSString *swizzleplist = @"YDSwizzlePlist";
+    NSString *plistName = @"YDSwizzlePlist"; // @"YDDormantStoryboards";
+    YDplistReader *myplist = [[YDplistReader alloc] initWithPlistName:plistName];
+
+     if (myplist == NULL)
+         return;
+    
+    NSLog(@"🍭Found %lu items in plist", (unsigned long)[myplist.arrayOfDictsFromPlist count]);
     NSMutableArray *buttons = [[NSMutableArray alloc] init];
     
     YDBlockEnumerator simpleblock = ^ (id dict, NSUInteger i, BOOL *stop){
@@ -94,27 +101,17 @@ static const NSString *value3 = @"storyboardFile";
         
         if ([dict objectForKey:value3])
             sbBarButton.sbFile = dict[value3];
-            
-
     };
     
-    NSLog(@"🍭 Attempted read of: %@", swizzleplist);
-    NSString *fwPath = [[[NSBundle mainBundle] privateFrameworksPath] stringByAppendingPathComponent:@"tinySwizzle.framework"];
-    NSBundle *bundle = [NSBundle bundleWithPath:fwPath];
-    NSString *file = [bundle pathForResource:swizzleplist ofType:@"plist"];
-    NSArray *heroes = [NSArray arrayWithContentsOfFile:file];
-    
-    if (heroes == NULL || bundle == NULL || file == NULL) {
-        NSLog(@"🍭 Can't find framework, swizzle plist file or the data inside the plist. Not hijacking Storyboards");
-        return;
-    }
-    [heroes enumerateObjectsUsingBlock:simpleblock];
+
+    NSLog(@"🍭 Creating %lu fake UIBarButtonItem(s) ", (unsigned long)[myplist.arrayOfDictsFromPlist count]);
+    [myplist.arrayOfDictsFromPlist enumerateObjectsUsingBlock:simpleblock];
     self.navigationItem.leftBarButtonItems = buttons;
     
     UIBarButtonItem *sithBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(sithHijack:)];
-    
+
     UIBarButtonItem *porgBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(porgHijack:)];
-    
+
     self.navigationItem.rightBarButtonItems =@[porgBarButton, sithBarButton];
 }
 

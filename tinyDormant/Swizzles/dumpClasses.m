@@ -2,12 +2,6 @@
 #import <objc/runtime.h>
 #include "staticStrings.h"
 
-#ifdef DEBUG
-#define NSLog(FORMAT, ...) fprintf(stderr,"%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
-#else
-#define NSLog(...) {}
-#endif
-
 #pragma mark - check YDClassDumper is not part of multiple Target Memberships
 
 @implementation NSObject (YDClassDumper)

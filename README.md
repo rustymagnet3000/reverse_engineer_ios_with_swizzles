@@ -65,6 +65,8 @@ The Swizzle used the Objective-C `runtime.h` APIs from Apple.  Namely:
 - [x]  method_exchangeImplementations
 - [x]  objc_getClass
 
+Due to `Subclassing`, if you followed the StackOverflow recommendations, and solely used `method_exchangeImplementations`, you could create unexpected behaviour.  Take the `addFakeUIBarButton` example.  You can place the fake bar buttons with the `method_exchangeImplementations` without using `class_addMethod` and `class_replaceMethod`.  But the fake `viewDidLoad` gets called on lots of other classes apart from only the target class `UIViewController`.  You would see it called on `UINavigationController, UIInputWindowController` and `UITabBarController`.
+ 
 ### Results
 The `Sith` ViewController was 100% code generated. The beauty of Objective-C is you can create these classes at `runtime`:
 ```

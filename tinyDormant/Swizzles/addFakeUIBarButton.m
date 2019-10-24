@@ -1,8 +1,6 @@
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import <objc/runtime.h>
+#include "swizzleHelper.h"
 #import "YDplistReader.h"
-#include "staticStrings.h"
+
 
 typedef void (^YDBlockEnumerator)(id, NSUInteger, BOOL *);
 
@@ -13,9 +11,6 @@ typedef void (^YDBlockEnumerator)(id, NSUInteger, BOOL *);
 @implementation YDFakeUIBarButtonItem
 @end
 
-
-@interface UIViewController (YDFakeUIVC)
-@end
 
 @implementation UIViewController (YDFakeUIVC)
 static const NSString *value1 = @"storyboardClassName";
@@ -28,44 +23,13 @@ static const NSString *value3 = @"storyboardFile";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
 
-        Class MandalorianClass = objc_getClass(targetClassStr);
-        Class SithClass = objc_getClass(dormantClassStr);
-        
-        SEL originalSelector = @selector(viewDidAppear:);
-        SEL swizzledSelector = @selector(YDviewDidAppear:);
-        NSLog(@"🍭 Started...");
-        NSLog(@"🍭 Original selector: \"%@\"", NSStringFromSelector(originalSelector));
-        NSLog(@"🍭 Replacement selector: \"%@\"", NSStringFromSelector(swizzledSelector));
-        
-        if (MandalorianClass != nil && SithClass != nil) {
-            Class mySuperClass = class_getSuperclass(MandalorianClass);
-            NSLog(@"🍭 Inside object: %@ ", [self class]);
-            NSLog(@"🍭 Class: %@ && Superclass: %@", NSStringFromClass(MandalorianClass), NSStringFromClass(mySuperClass));
-            
-            Method original = class_getInstanceMethod(MandalorianClass, originalSelector);
-            Method replacement = class_getInstanceMethod(SithClass, swizzledSelector);
-            
-            if (original == nil || replacement == nil) {
-                NSLog(@"🍭 Problem finding Original: %p OR Replacement: %p", original, replacement);
-                return;
-            }
+        SEL orig = @selector(viewDidAppear:);
+        SEL swiz = @selector(YDviewDidAppear:);
 
-            BOOL didAddMethod = class_addMethod(MandalorianClass,
-                                                originalSelector,
-                                                method_getImplementation(replacement),
-                                                method_getTypeEncoding(replacement));
-            
-            if (didAddMethod) {
-                NSLog(@"🍭 didAddMethod: %@ && Class: %@", NSStringFromSelector(originalSelector), NSStringFromClass(MandalorianClass));
-                
-                class_replaceMethod(MandalorianClass,
-                                    swizzledSelector,
-                                    method_getImplementation(original),
-                                    method_getTypeEncoding(original));
-            } else {
-                NSLog(@"🍭 Method swap: %@", NSStringFromSelector(originalSelector));
-                method_exchangeImplementations(original, replacement);
-            }
+        SwizzleHelper *swizzle = [[SwizzleHelper alloc] initWithTargets:targetClassStr Original:orig Swizzle:swiz];
+
+        if (swizzle != NULL){
+            NSLog(@"%@", [swizzle getDescription]);
         }
     });
 }

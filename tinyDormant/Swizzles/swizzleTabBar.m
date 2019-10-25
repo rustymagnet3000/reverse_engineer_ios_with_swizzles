@@ -1,5 +1,4 @@
 #include "swizzleHelper.h"
-#include "staticStrings.h"
 
 // if you swizzle on UIViewController, viewDidAppear() is invoked twice
 @implementation UITabBarController (SwizzleTB)

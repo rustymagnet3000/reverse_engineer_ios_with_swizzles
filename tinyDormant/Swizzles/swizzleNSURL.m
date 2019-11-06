@@ -10,9 +10,6 @@
         SEL swiz = @selector(YDHappyURLInspector:);
         SwizzleHelper *swizzle = [[SwizzleHelper alloc] initWithTargets:targetNSURLToSwizzle Original:orig Swizzle:swiz];
 
-        if (swizzle != NULL){
-            NSLog(@"%@", [swizzle getDescription]);
-        }
     });
 }
 

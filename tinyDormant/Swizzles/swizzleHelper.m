@@ -30,15 +30,16 @@
 - (id) initWithTargets: (const char *)target
               Original:(SEL)orig
                Swizzle:(SEL)swiz {
-    NSLog(@"🍭Swizzle setup started...");
+    
     self = [super init];
     if (self) {
         targetClass = objc_getClass(target);
-        
+        NSLog(@"🍭Swizzle started for: %@", NSStringFromClass(targetClass));
         if (targetClass == NULL) {
             NSLog(@"\t🍭Stopped swizzle. Could not find %s class", target);
             return NULL;
         }
+        [self getDescription];
         targetSuperClass = class_getSuperclass(targetClass);
         originalSelector = orig;
         replacementSelector = swiz;
@@ -46,7 +47,7 @@
         swizzledMethod = class_getInstanceMethod(targetClass, replacementSelector);
         
         if (originalMethod == NULL || swizzledMethod == NULL) {
-                NSLog(@"🍭\tStopped swizzle. originalMethod:  %p swizzledMethod: %p \n", originalMethod, swizzledMethod);
+                NSLog(@"🍭\tStopped swizzle. Class: %@, originalMethod:  %p swizzledMethod: %p \n", NSStringFromClass(targetClass), originalMethod, swizzledMethod);
                 return NULL;
         }
         

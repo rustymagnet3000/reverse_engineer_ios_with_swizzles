@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="p27-Jm-897">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1VZ-KG-uEa">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jedi VC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqN-5Y-BGd">
-                                <rect key="frame" x="177.5" y="418" width="59" height="21"/>
+                                <rect key="frame" x="177.5" y="440" width="59" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -36,9 +34,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1426" y="258"/>
+            <point key="canvasLocation" x="2230" y="729"/>
         </scene>
-        <!--MandalorianVC-->
+        <!--Mandalorian-->
         <scene sceneID="l4A-LI-Lhx">
             <objects>
                 <viewController id="oz6-fM-eDX" customClass="YDMandalorianVC" customModule="tinyDormant" customModuleProvider="target" sceneMemberID="viewController">
@@ -60,6 +58,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Zc-a8-Bfi"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Mandalorian" image="person" catalog="system" selectedImage="person.fill" id="EIi-Qf-UiB"/>
                     <navigationItem key="navigationItem" id="oTF-EU-hx0"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="scu-Xp-pFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -123,6 +122,7 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="p27-Jm-897" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="uso-MU-G6Q"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UVY-lG-lfq">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -130,12 +130,31 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="a9E-Af-QYV"/>
-                        <segue destination="1VZ-KG-uEa" kind="relationship" relationship="viewControllers" id="5X1-3l-Rcy"/>
+                        <segue destination="oz6-fM-eDX" kind="relationship" relationship="viewControllers" id="Wdv-Kn-0ch"/>
+                        <segue destination="Kra-Od-vWn" kind="relationship" relationship="viewControllers" id="2d8-PL-mZR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RbP-SN-Mtd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2214" y="-74"/>
+        </scene>
+        <!--Star Web-->
+        <scene sceneID="rHF-E6-Vap">
+            <objects>
+                <viewController id="Kra-Od-vWn" customClass="YDWKViewController" customModule="tinyDormant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lgO-pV-KtG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="1t5-3L-nft"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Star Web" image="pencil.circle.fill" catalog="system" selectedImage="pencil.circle" id="06K-Vj-V24"/>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="45a-tV-frW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3253" y="-411"/>
         </scene>
         <!--Mandalorian-->
         <scene sceneID="VQk-v0-m5s">
@@ -149,12 +168,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="oz6-fM-eDX" kind="relationship" relationship="rootViewController" id="B8N-sX-FjY"/>
+                        <segue destination="p27-Jm-897" kind="relationship" relationship="rootViewController" id="gox-wD-e3G"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6rx-ZP-ajh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3031.884057971015" y="257.8125"/>
+            <point key="canvasLocation" x="1370" y="-74"/>
         </scene>
     </scenes>
     <resources>
@@ -162,5 +181,9 @@
         <image name="collaboration" width="30" height="30"/>
         <image name="genius" width="30" height="30"/>
         <image name="han.jpg" width="525" height="892"/>
+        <image name="pencil.circle" catalog="system" width="64" height="60"/>
+        <image name="pencil.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="person" catalog="system" width="64" height="58"/>
+        <image name="person.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>

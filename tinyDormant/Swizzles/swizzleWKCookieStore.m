@@ -1,21 +1,21 @@
 #include "swizzleHelper.h"
 #import <WebKit/WebKit.h>
 
-@implementation WKHTTPCookieStore (YDSwizzleWKCookieStore)
+@implementation NSHTTPCookie (YDSwizzleWKCookieStore)
  
 + (void)load
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        SEL orig = @selector(setCookie:completionHandler:);
-        SEL swiz = @selector(YDsetCookie:completionHandler:);
-        __unused SwizzleHelper *swizzle = [[SwizzleHelper alloc] initWithTargets:"WKHTTPCookieStore" Original:orig Swizzle:swiz];
+        SEL orig = @selector(initWithProperties:);
+        SEL swiz = @selector(YDinitWithProperties:);
+        __unused SwizzleHelper *swizzle = [[SwizzleHelper alloc] initWithTargets:"NSHTTPCookie" Original:orig Swizzle:swiz];
     });
 }
 
-- (void)YDsetCookie:(NSHTTPCookie *)cookie completionHandler:(void (^)(void))completionHandler;{
-    NSLog(@"🍭\tCookie: %@ | Domain: %@ | Path: %@", cookie.name, cookie.domain, cookie.path);
-    [self YDsetCookie: cookie completionHandler:(void (^)(void))completionHandler];
+- (instancetype)YDinitWithProperties:(NSDictionary<NSHTTPCookiePropertyKey, id> *)properties;{
+    NSLog(@"🍭\tCookie initWithProperties: %@", properties);
+    return [self YDinitWithProperties:(NSDictionary<NSHTTPCookiePropertyKey, id> *)properties];
 }
 
 @end

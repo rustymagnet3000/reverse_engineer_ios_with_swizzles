@@ -4,10 +4,12 @@ import WebKit
 class YDWKViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
 
     var webView: WKWebView!
-        
+    var endpoint: URL?
+    
     override func loadView() {
         let configuration = WKWebViewConfiguration()
-
+        let dataStore = WKWebsiteDataStore.default()
+        configuration.websiteDataStore = dataStore
         if #available(iOS 10.0, *) {
             configuration.dataDetectorTypes = [.all]
         }
@@ -22,7 +24,6 @@ class YDWKViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
         view = webView
         webView.uiDelegate = self
         webView.navigationDelegate = self
-        
     }
 
     //MARK: WKnavigationDelegate
@@ -74,14 +75,18 @@ class YDWKViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
         refreshControl.addTarget(self, action: #selector(refreshWebView(_:)), for: UIControl.Event.valueChanged)
         webView.scrollView.addSubview(refreshControl)
         webView.scrollView.bounces = true
-        if let myURL = URL(string: "https://httpbin.org/cookies/set?HAPPY=DayOfTheJackel") {
-            let myRequest = URLRequest(url: myURL)
-            self.webView.load(myRequest)
-        }
+        
+        let hexChars = "ABCDEF0123456789"
+        let randomStr = String((0..<5).map{ _ in hexChars.randomElement()! })
+        // if API changes the Expiry of the Cookie, this will be auto picked up by WK
+        endpoint = URL(string: "https://httpbin.org/cookies/set?HAPPY=\(randomStr)")
+        let myRequest = URLRequest(url: endpoint!)
+        self.webView.load(myRequest)
+        
     }
     
     @objc func refreshWebView(_ sender: UIRefreshControl){
-        webView.reload()
+        webView.reloadFromOrigin()
         sender.endRefreshing()
     }
     
@@ -98,6 +103,8 @@ class YDWKViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
 }
 
 extension YDWKViewController: WKHTTPCookieStoreObserver {
+    
+    
     @available(iOS 11.0, *)
     func cookiesDidChange(in cookieStore: WKHTTPCookieStore) {
         cookieStore.getAllCookies{ cookies in

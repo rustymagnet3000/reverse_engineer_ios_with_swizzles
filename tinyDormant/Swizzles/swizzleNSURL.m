@@ -7,15 +7,15 @@
     dispatch_once(&onceToken, ^{
         
         SEL orig = @selector(initWithString:);
-        SEL swiz = @selector(YDHappyURLInspector:);
-        SwizzleHelper *swizzle = [[SwizzleHelper alloc] initWithTargets:targetNSURLToSwizzle Original:orig Swizzle:swiz];
+        SEL swiz = @selector(YDHappyinitWithString:);
+        __unused SwizzleHelper *swizzle = [[SwizzleHelper alloc] initWithTargets:targetNSURLToSwizzle Original:orig Swizzle:swiz];
 
     });
 }
 
-- (instancetype)YDHappyURLInspector:(NSString *)string{
+- (instancetype)YDHappyinitWithString:(NSString *)string{
     NSLog(@"🍭NSURL request: %@", string);
-    return [self YDHappyURLInspector: string];
+    return [self YDHappyinitWithString: string];
 }
 
 @end

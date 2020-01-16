@@ -58,7 +58,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Zc-a8-Bfi"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Mandalorian" image="person" catalog="system" selectedImage="person.fill" id="EIi-Qf-UiB"/>
+                    <tabBarItem key="tabBarItem" title="Mandalorian" image="approval" selectedImage="approval" id="EIi-Qf-UiB"/>
                     <navigationItem key="navigationItem" id="oTF-EU-hx0"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="scu-Xp-pFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -148,7 +148,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="1t5-3L-nft"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Star Web" image="pencil.circle.fill" catalog="system" selectedImage="pencil.circle" id="06K-Vj-V24"/>
+                    <tabBarItem key="tabBarItem" title="Star Web" image="genius" selectedImage="genius" id="06K-Vj-V24"/>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
@@ -177,13 +177,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="approval" width="30" height="30"/>
         <image name="chewy.jpg" width="960" height="1192"/>
         <image name="collaboration" width="30" height="30"/>
         <image name="genius" width="30" height="30"/>
         <image name="han.jpg" width="525" height="892"/>
-        <image name="pencil.circle" catalog="system" width="64" height="60"/>
-        <image name="pencil.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="person" catalog="system" width="64" height="58"/>
-        <image name="person.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>

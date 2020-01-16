@@ -4,7 +4,6 @@ import WebKit
 class YDWKViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
 
     var webView: WKWebView!
-    var endpoint: URL?
     
     override func loadView() {
         let configuration = WKWebViewConfiguration()
@@ -27,8 +26,36 @@ class YDWKViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
     }
 
     //MARK: WKnavigationDelegate
+    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        
+        NSLog("🕵🏼‍♂️ challanged by: \(challenge.protectionSpace.host)")
+
+        guard let trust: SecTrust = challenge.protectionSpace.serverTrust else {
+            return
+        }
+        
+        var secResult = SecTrustResultType.deny
+        let _ = SecTrustEvaluate(trust, &secResult)
+        
+        switch secResult {
+            case .proceed:
+                NSLog("🕵🏼‍♂️ SecTrustEvaluate ✅")
+                completionHandler(.performDefaultHandling, nil)
+            
+            // .unspecified Apple recommend “Use System Policy”
+//            case .unspecified:
+//                NSLog("🕵🏼‍♂️ Apple recommend “Use System Policy” and pass this code ✅")
+//                completionHandler(.performDefaultHandling, nil)
+            default:
+                NSLog("🕵🏼‍♂️ SecTrustEvaluate ❌ default error \(secResult.rawValue)")
+                completionHandler(.cancelAuthenticationChallenge, nil)
+        }
+    }
+    
+    
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         ydHandleError(error: error)
+
     }
 
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
@@ -48,11 +75,10 @@ class YDWKViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
             }
         }
 
-        //print("🕵🏼‍♂️ WKNavigationResponse \(navigationResponse.response as? HTTPURLResponse)") // WKNavigationResponse always nil
-        
         decisionHandler(.allow)
         return
     }
+
     
     //MARK: WKUIDelegate
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
@@ -76,11 +102,8 @@ class YDWKViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
         webView.scrollView.addSubview(refreshControl)
         webView.scrollView.bounces = true
         
-        let hexChars = "ABCDEF0123456789"
-        let randomStr = String((0..<5).map{ _ in hexChars.randomElement()! })
-        // if API changes the Expiry of the Cookie, this will be auto picked up by WK
-        endpoint = URL(string: "https://httpbin.org/cookies/set?HAPPY=\(randomStr)")
-        let myRequest = URLRequest(url: endpoint!)
+        let url = URL(string: endpoint)!
+        let myRequest = URLRequest(url: url)
         self.webView.load(myRequest)
         
     }
@@ -107,10 +130,10 @@ extension YDWKViewController: WKHTTPCookieStoreObserver {
     
     @available(iOS 11.0, *)
     func cookiesDidChange(in cookieStore: WKHTTPCookieStore) {
-        cookieStore.getAllCookies{ cookies in
-            for cookie in cookies {
-                print("🕵🏼‍♂️ Cookie: \(cookie.name)  | Value: \(cookie.value)")
-            }
-        }
+//        cookieStore.getAllCookies{ cookies in
+//            for cookie in cookies {
+//                print("🕵🏼‍♂️ Cookie: \(cookie.name)  | Value: \(cookie.value)")
+//            }
+//        }
     }
 }

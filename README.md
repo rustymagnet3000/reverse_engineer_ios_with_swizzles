@@ -24,7 +24,7 @@ The swizzle could invoke `dormant ViewControllers` from three places:
 2. A `XIB` file
 3. A 100% code-only ViewController
 
-### Find your Target Class
+### Find your Class
 If you want to target a specific piece of `dormant` code you first perform a `Class Dump`.   Just tick the `Target Membership` box to include the  `dumpClasses.m` file inside of the iOS app's `Target`.  Then it will run the app and print the found classes.
 ```
 [*] 🌠 Started Class introspection...
@@ -38,6 +38,15 @@ If you want to target a specific piece of `dormant` code you first perform a `Cl
 The above print was for a Swift app. Notice you need the Module name, when writing a Swift class, unlike Objective-C.
 
 Credit to: https://nshipster.com/method-swizzling/ for an excellent article.
+
+### Find your Method
+To swizzle successfully, you need the correct `Selector` name.  Remember the colons are important, with `ObjC` and these may or may not include mention of the associated class.  Get these Method signatures from `Xcode Developer Documentation`.
+
+```
+@selector(webView:didReceiveAuthenticationChallenge:completionHandler:);        // WKWebView Auth Challenge
+@selector(URLSession:didReceiveChallenge:completionHandler:);                   // NSURLSession Auth Challenge
+@selector(initWithProperties:);                                                 // NSHTTPCookie
+```
 
 ### Run (Simulator)
 Now get the framework into your app.  The project contained two `Targets`.  An iOS app and a simple framework.  The app just demonstrated what the Swizzle framework could do.  This app worked with a Simulator or real device.
@@ -66,7 +75,7 @@ The Swizzle used the Objective-C `runtime.h` APIs from Apple.  Namely:
 - [x]  method_exchangeImplementations
 - [x]  objc_getClass
 
-Due to `Subclassing`, if you followed the StackOverflow recommendations [ and solely used `method_exchangeImplementations` ] you would create unexpected behaviour.  Take the `addFakeUIBarButton` example.  You could place the fake UIBarButtons with the `method_exchangeImplementations` without using `class_addMethod` and `class_replaceMethod`.  But the fake `viewDidLoad` got called on lots of other classes apart from only the target class `UIViewController`.
+Due to `Subclassing`, if you followed the StackOverflow recommendations [ and solely used `method_exchangeImplementations` ] you would create unexpected behaviour.  Take the `addFakeUIBarButton` example.  You could place the fake UIBarButtons with the `method_exchangeImplementations` without using `class_addMethod` and `class_replaceMethod`.  But the fake `viewDidLoad` got called on lots of other classes when you only targeted the  `UIViewController` class.
 
 ### Results
 The `Sith` ViewController was 100% code generated. The dynamic nature of Objective-C lets you create  classes at `runtime`:

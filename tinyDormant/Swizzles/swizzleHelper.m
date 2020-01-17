@@ -7,6 +7,14 @@
     return verbose;
 }
 
+- (BOOL) verifySwap {
+    
+    if ([targetClass respondsToSelector:replacementSelector] == true){
+        NSLog(@"🍭Swizzled.\n\t%@\n\t🏁selector responded", NSStringFromSelector(replacementSelector));
+    }
+    return false;
+}
+
 - (void) swapMethods {
     
     BOOL didAddMethod = class_addMethod(targetClass,
@@ -15,14 +23,14 @@
                                         method_getTypeEncoding(swizzledMethod));
     
     if (didAddMethod) {
-        NSLog(@"🍭 didAddMethod: %@ && Class: %@", NSStringFromSelector(originalSelector), NSStringFromClass(targetClass));
+        NSLog(@"🍭didAddMethod: %@ && Class: %@", NSStringFromSelector(originalSelector), NSStringFromClass(targetClass));
         
         class_replaceMethod(targetClass,
                             replacementSelector,
                             method_getImplementation(originalMethod),
                             method_getTypeEncoding(originalMethod));
     } else {
-        NSLog(@"🍭 Method swap: %@", NSStringFromSelector(originalSelector));
+        NSLog(@"🍭method_exchangeImplementations called on: %@", NSStringFromSelector(originalSelector));
         method_exchangeImplementations(originalMethod, swizzledMethod);
     }
 }
@@ -35,6 +43,7 @@
     if (self) {
         targetClass = objc_getClass(target);
         NSLog(@"🍭Swizzle started for: %@", NSStringFromClass(targetClass));
+        
         if (targetClass == NULL) {
             NSLog(@"\t🍭Stopped swizzle. Could not find %s class", target);
             return NULL;
@@ -47,11 +56,11 @@
         swizzledMethod = class_getInstanceMethod(targetClass, replacementSelector);
         
         if (originalMethod == NULL || swizzledMethod == NULL) {
-                NSLog(@"🍭\tStopped swizzle. Class: %@, originalMethod:  %p swizzledMethod: %p \n", NSStringFromClass(targetClass), originalMethod, swizzledMethod);
-                return NULL;
+            NSLog(@"🍭Stopped swizzle. Class: %@, originalMethod:  %p swizzledMethod: %p \n", NSStringFromClass(targetClass), originalMethod, swizzledMethod);
+            return NULL;
         }
-        
         [self swapMethods];
+        [self verifySwap];
     }
     return self;
 }

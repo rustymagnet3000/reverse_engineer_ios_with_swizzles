@@ -49,10 +49,11 @@ To swizzle successfully, you need the correct `Selector` name.  Remember the col
 ```
 
 ### Find Property
-You can  use `Method Swizzle` on  `Properties`.  Although normally internal calls / removed from `Developer Documents`, you can trace or use a debugger to find the `getter` and `setter`. 
+You can  `Method Swizzle` on  `Objective-C Properties`.  
 
-For example, I found the `WKWebView Class` set the `Navigation Delegate` [ the bit of code that let's the develop to re-use boiler plate code from Apple ] with these commands:
+Internal calls and properties are not shared in `Developer Documents` but you can `trace` or use a `debugger` to find the `getter` and `setter`.  For example, I found the `WKWebView Class` had a `set Navigation Delegate` method.  Why is this interesting?  Developers use `Delegates` to customise commonly used code.  For example the delegates makes the Developers life easier by offerings lots of pre-canned methods.  Think about`startLoad`, `finishLoad`, `didFinishWithError`, etc with `WKWebView`.
 
+We can swizzle `@selector(setNavigationDelegate:)` and point it to our own delegate?  Or maybe just detach the `Delegate` code?
 ```
  (lldb) lookup setNavigationDe
  ****************************************************
@@ -81,10 +82,10 @@ Then I have the signature for the Swizzle and a gut fell for what is passed in e
 SEL orig = @selector(setNavigationDelegate:);
 ```
 ### Run (Simulator)
-Now get the framework into your app.  The project contained two `Targets`.  An iOS app and a simple framework.  The app just demonstrated what the Swizzle framework could do.  This app worked with a Simulator or real device.
+ The project contained two `Targets`.  An iOS app and a simple framework.  The app just demonstrated what the Swizzle framework could do.  This app worked with a Simulator or real device.
 
 ### Run (device with real app)
-The framework could be repackaged inside of a real iOS app.  The process was summarised as :
+The framework could be repackaged inside of a real iOS app.  ** PLEASE USE IT FOR GOOD **.  The process was summarised as :
 ```
 - Unzipping the IPA
 - Adding the Swizzle framework

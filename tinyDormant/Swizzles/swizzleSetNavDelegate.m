@@ -7,6 +7,51 @@
 #define NSLog(...) {}
 #endif
 
+@interface YDSwizzledNavDel : NSObject  <WKNavigationDelegate>
+@property (nonatomic) WKWebView *webView;
+@end
+
+@implementation YDSwizzledNavDel
+
+#pragma mark - Private Methods
+
+- (void)setupFakeWebView {
+    
+    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+    WKWebsiteDataStore *dataStore = [WKWebsiteDataStore defaultDataStore];
+    config.websiteDataStore = dataStore;
+    
+    self.webView = [[WKWebView alloc] initWithFrame: CGRectZero
+                                      configuration: config];
+}
+
+- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler{
+    
+    NSLog(@"🍭challenge from: %@", [[challenge protectionSpace] host]);
+    completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, NULL);
+}
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
+    
+    NSLog(@"🍭decidePolicyForNavigationAction URL：%@", navigationAction.request.URL.absoluteString);
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    NSLog(@"🍭didStartProvisionalNavigation");
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    NSLog(@"🍭didFinishNavigation");
+}
+
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error{
+    NSLog(@"🍭didFailNavigation");
+}
+
+@end
+
+
 @implementation NSObject (YDswizzleSetNavDelegate)
  
 + (void)load {
@@ -25,12 +70,16 @@
         NSLog(@"🍭setNavigationDelegate\n\tself is: %@\n\tptr class of: %@", NSStringFromClass([WKWebView class]), [vcWithWK class]);
     }
     else {
-        NSLog(@"🍭Unexpected classes inside of setNavigationDelegate:");
-        return;
+        NSLog(@"🍭SetNavDel unexpected class: %@", [vcWithWK class]);
+        NSLog(@"🍭SetNavDel unexpected self: %@", self)
     }
     
-    #pragma mark - turns OFF Nav Delegate code
+    YDSwizzledNavDel *fake_wk_nav_del = [[YDSwizzledNavDel alloc] init];
+    [fake_wk_nav_del setupFakeWebView];
+    NSLog(@"🍭fake_wk_vc class: %@", [fake_wk_nav_del self]);
     [self YDsetNavigationDelegate:NULL];
+    NSLog(@"🍭Ptr to Nav Delegate: %@", [[fake_wk_nav_del webView] navigationDelegate]);
+    
 }
 
 @end

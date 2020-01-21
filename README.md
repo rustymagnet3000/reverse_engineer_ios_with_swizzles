@@ -39,7 +39,7 @@ The above print was for a Swift app. Notice you need the Module name, when writi
 
 Credit to: https://nshipster.com/method-swizzling/ for an excellent article.
 
-### Find your Method
+### Find Method
 To swizzle successfully, you need the correct `Selector` name.  Remember the colons are important, with `ObjC` and these may or may not include mention of the associated class.  Get these Method signatures from `Xcode Developer Documentation`.
 
 ```
@@ -48,6 +48,38 @@ To swizzle successfully, you need the correct `Selector` name.  Remember the col
 @selector(initWithProperties:);                                                 // NSHTTPCookie
 ```
 
+### Find Property
+You can  use `Method Swizzle` on  `Properties`.  Although normally internal calls / removed from `Developer Documents`, you can trace or use a debugger to find the `getter` and `setter`. 
+
+For example, I found the `WKWebView Class` set the `Navigation Delegate` [ the bit of code that let's the develop to re-use boiler plate code from Apple ] with these commands:
+
+```
+ (lldb) lookup setNavigationDe
+ ****************************************************
+ 2 hits in: WebKit
+ ****************************************************
+ -[WKWebView setNavigationDelegate:]
+
+ WebKit::NavigationState::setNavigationDelegate(id<WKNavigationDelegate>)
+ 
+ (lldb) b -[WKWebView setNavigationDelegate:]
+
+ // breakpoint fires
+
+ (lldb) po $arg1
+ <WKWebView: 0x7f8e90875400; frame = (0 0; 0 0); layer = <CALayer: 0x600000fdfb20>>
+
+ (lldb) p (char *) $arg2
+ (char *) $13 = 0x00007fff51f655b3 "setNavigationDelegate:"
+
+ (lldb) po $arg3
+ <tinyDormant.YDWKViewController: 0x7f8e8f416350>
+*/
+```
+Then I have the signature for the Swizzle and a gut fell for what is passed in each parameter:
+```
+SEL orig = @selector(setNavigationDelegate:);
+```
 ### Run (Simulator)
 Now get the framework into your app.  The project contained two `Targets`.  An iOS app and a simple framework.  The app just demonstrated what the Swizzle framework could do.  This app worked with a Simulator or real device.
 

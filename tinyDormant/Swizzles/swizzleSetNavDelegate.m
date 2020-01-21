@@ -7,23 +7,6 @@
 #define NSLog(...) {}
 #endif
 
-/* Signature
- -[WKWebView setNavigationDelegate:]
- 
- (lldb) b -[WKWebView setNavigationDelegate:]
-
- // breakpoint fires
-
- (lldb) po $arg1
- <WKWebView: 0x7f8e90875400; frame = (0 0; 0 0); layer = <CALayer: 0x600000fdfb20>>
-
- (lldb) p (char *) $arg2
- (char *) $13 = 0x00007fff51f655b3 "setNavigationDelegate:"
-
- (lldb) po $arg3
- <tinyDormant.YDWKViewController: 0x7f8e8f416350>
-*/
-
 @implementation NSObject (YDswizzleSetNavDelegate)
  
 + (void)load {
@@ -39,17 +22,15 @@
 - (void)YDsetNavigationDelegate:(id)vcWithWK {
     
     if ([self isKindOfClass:[WKWebView class]] && [vcWithWK isKindOfClass:[UIViewController class]]) {
-        NSLog(@"🍭setNavigationDelegate\tself is: %@", NSStringFromClass([WKWebView class]));
-        NSLog(@"🍭setNavigationDelegate ptr class of: %@", [vcWithWK class]);
+        NSLog(@"🍭setNavigationDelegate\n\tself is: %@\n\tptr class of: %@", NSStringFromClass([WKWebView class]), [vcWithWK class]);
     }
     else {
         NSLog(@"🍭Unexpected classes inside of setNavigationDelegate:");
         return;
     }
-    (void)[self YDsetNavigationDelegate:vcWithWK];
-
-//    (void)[self YDsetNavigationDelegate:NEWNAVDEL];
+    
+    #pragma mark - turns OFF Nav Delegate code
+    [self YDsetNavigationDelegate:NULL];
 }
-
 
 @end

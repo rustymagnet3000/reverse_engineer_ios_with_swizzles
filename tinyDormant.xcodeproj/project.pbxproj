@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0F05B1662360A77F00EBDEE2 /* swizzleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F05B1652360A77F00EBDEE2 /* swizzleHelper.m */; };
 		0F05B1682361AC6D00EBDEE2 /* swizzleHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F05B1672361AC6D00EBDEE2 /* swizzleHelper.h */; };
+		0F077D5723D6FD45003219F0 /* swizzleSetNavDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F077D5423D6F29C003219F0 /* swizzleSetNavDelegate.m */; };
 		0F0873232301C39A00FC0D6D /* PorgVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0873212301C39A00FC0D6D /* PorgVC.swift */; };
 		0F0873242301C39A00FC0D6D /* PorgViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F0873222301C39A00FC0D6D /* PorgViewController.xib */; };
 		0F0873262301C3DA00FC0D6D /* porg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0F0873252301C3DA00FC0D6D /* porg.jpg */; };
@@ -23,7 +24,6 @@
 		0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */; };
 		0F225227233243CF00C6FA0E /* YDSwizzlePlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F225226233243CF00C6FA0E /* YDSwizzlePlist.plist */; };
 		0F4F7BFC2338DB020082CAB3 /* YDDormantStoryboards.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F4F7BFB2338DB020082CAB3 /* YDDormantStoryboards.plist */; };
-		0F8C603523D0C79600798B7F /* swizzleWKNavDelegateAuthChallenge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF111A023D0A210005F9539 /* swizzleWKNavDelegateAuthChallenge.m */; };
 		0F9E6FBA233A1ACE0025ABA0 /* YDplistReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9E6FB8233A1ACE0025ABA0 /* YDplistReader.m */; };
 		0F9E6FBB233A1ACE0025ABA0 /* YDplistReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F9E6FB9233A1ACE0025ABA0 /* YDplistReader.h */; };
 		0FA394B52371DE2900116ECF /* wkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA394B42371DE2900116ECF /* wkVC.swift */; };
@@ -65,6 +65,7 @@
 		0F006B6122B751DC00E46A7C /* addFakeUIBarButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = addFakeUIBarButton.m; sourceTree = "<group>"; };
 		0F05B1652360A77F00EBDEE2 /* swizzleHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = swizzleHelper.m; sourceTree = "<group>"; };
 		0F05B1672361AC6D00EBDEE2 /* swizzleHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = swizzleHelper.h; sourceTree = "<group>"; };
+		0F077D5423D6F29C003219F0 /* swizzleSetNavDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = swizzleSetNavDelegate.m; sourceTree = "<group>"; };
 		0F0873212301C39A00FC0D6D /* PorgVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorgVC.swift; sourceTree = "<group>"; };
 		0F0873222301C39A00FC0D6D /* PorgViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PorgViewController.xib; sourceTree = "<group>"; };
 		0F0873252301C3DA00FC0D6D /* porg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = porg.jpg; sourceTree = "<group>"; };
@@ -90,7 +91,7 @@
 		0F9E6FB8233A1ACE0025ABA0 /* YDplistReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDplistReader.m; sourceTree = "<group>"; };
 		0F9E6FB9233A1ACE0025ABA0 /* YDplistReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDplistReader.h; sourceTree = "<group>"; };
 		0FA394B12371C09700116ECF /* swizzleNSHTTPCookie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = swizzleNSHTTPCookie.m; sourceTree = "<group>"; };
-		0FA394B42371DE2900116ECF /* wkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = wkVC.swift; path = tinyDormant/wkVC.swift; sourceTree = SOURCE_ROOT; };
+		0FA394B42371DE2900116ECF /* wkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = wkVC.swift; path = tinyDormant/Swift/wkVC.swift; sourceTree = SOURCE_ROOT; };
 		0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = tinySwizzle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FB2D27F22B20A0A00C44902 /* tinySwizzle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tinySwizzle.h; sourceTree = "<group>"; };
 		0FB2D28022B20A0A00C44902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -146,18 +147,10 @@
 		0F102A8722A6C9EA00529F12 /* tinyDormant */ = {
 			isa = PBXGroup;
 			children = (
+				0F8172FF23D5B54100D97D05 /* Swift */,
 				0F82A83B23585D9E00728710 /* Images */,
-				0F102A8822A6C9EA00529F12 /* AppDelegate.swift */,
-				0F102A8A22A6C9EA00529F12 /* jediVC.swift */,
-				0F102A9A22A6CA7800529F12 /* sithVC.swift */,
-				0F0873212301C39A00FC0D6D /* PorgVC.swift */,
-				0FA394B42371DE2900116ECF /* wkVC.swift */,
 				0F0873222301C39A00FC0D6D /* PorgViewController.xib */,
-				0F08732A2302D14A00FC0D6D /* PorgUIImageView.swift */,
-				0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */,
 				0F102A8C22A6C9EA00529F12 /* Main.storyboard */,
-				0FD9E26A231EB45D003ED5B6 /* ChewyViewController.swift */,
-				0FD9E26E231EC588003ED5B6 /* SoloViewController.swift */,
 				0F82A83A23585D8200728710 /* Swizzles */,
 				0F102A8F22A6C9EB00529F12 /* Assets.xcassets */,
 				0F102A9122A6C9EB00529F12 /* LaunchScreen.storyboard */,
@@ -177,6 +170,22 @@
 			path = not_on_repo;
 			sourceTree = "<group>";
 		};
+		0F8172FF23D5B54100D97D05 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				0F102A8822A6C9EA00529F12 /* AppDelegate.swift */,
+				0F102A8A22A6C9EA00529F12 /* jediVC.swift */,
+				0F102A9A22A6CA7800529F12 /* sithVC.swift */,
+				0F0873212301C39A00FC0D6D /* PorgVC.swift */,
+				0FA394B42371DE2900116ECF /* wkVC.swift */,
+				0FD9E26A231EB45D003ED5B6 /* ChewyViewController.swift */,
+				0FD9E26E231EC588003ED5B6 /* SoloViewController.swift */,
+				0F08732A2302D14A00FC0D6D /* PorgUIImageView.swift */,
+				0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
 		0F82A83A23585D8200728710 /* Swizzles */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +195,7 @@
 				0F9E6FB8233A1ACE0025ABA0 /* YDplistReader.m */,
 				0FA394B12371C09700116ECF /* swizzleNSHTTPCookie.m */,
 				0FF111A023D0A210005F9539 /* swizzleWKNavDelegateAuthChallenge.m */,
+				0F077D5423D6F29C003219F0 /* swizzleSetNavDelegate.m */,
 				0FDA5650235EBA0A00BD0077 /* swizzleNSURLSessioDidReceiveChallengen.m */,
 				0FDA5655235EC44C00BD0077 /* swizzleNSURL.m */,
 				0F42055F236AE90A00DF0F97 /* swizzleUniversalLink.m */,
@@ -380,8 +390,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F8C603523D0C79600798B7F /* swizzleWKNavDelegateAuthChallenge.m in Sources */,
 				0F9E6FBA233A1ACE0025ABA0 /* YDplistReader.m in Sources */,
+				0F077D5723D6FD45003219F0 /* swizzleSetNavDelegate.m in Sources */,
 				0FCE6330237970BE003BC68E /* swizzleHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

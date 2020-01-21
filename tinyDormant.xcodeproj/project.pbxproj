@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F05B1662360A77F00EBDEE2 /* swizzleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F05B1652360A77F00EBDEE2 /* swizzleHelper.m */; };
 		0F05B1682361AC6D00EBDEE2 /* swizzleHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F05B1672361AC6D00EBDEE2 /* swizzleHelper.h */; };
 		0F077D5723D6FD45003219F0 /* swizzleSetNavDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F077D5423D6F29C003219F0 /* swizzleSetNavDelegate.m */; };
 		0F0873232301C39A00FC0D6D /* PorgVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0873212301C39A00FC0D6D /* PorgVC.swift */; };
@@ -373,7 +372,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F05B1662360A77F00EBDEE2 /* swizzleHelper.m in Sources */,
 				0F08732B2302D14A00FC0D6D /* PorgUIImageView.swift in Sources */,
 				0FD9E26B231EB45D003ED5B6 /* ChewyViewController.swift in Sources */,
 				0F102A8B22A6C9EA00529F12 /* jediVC.swift in Sources */,

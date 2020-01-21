@@ -101,5 +101,6 @@ self.navigationController?.pushViewController(porgvc, animated: true)
 ### What next?
 This worked on Objective-C and Swift code.  
 
+- A different API for swizzling: https://blog.newrelic.com/engineering/right-way-to-swizzle/
 - I only tried with Swift code that inherits from `NSObject`.
 - Not tried this `SwiftUI`.

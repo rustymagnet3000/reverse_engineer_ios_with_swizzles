@@ -1,8 +1,9 @@
 import UIKit
 import WebKit
 
-class YDWKViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
+class YDWKViewController: UIViewController, WKUIDelegate {
 
+    let customNavDel = YDNavDel()
     var webView: WKWebView!
     
     override func loadView() {
@@ -22,7 +23,8 @@ class YDWKViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
         view = webView
         webView.uiDelegate = self
-        webView.navigationDelegate = self
+
+        webView.navigationDelegate = customNavDel
     }
 
     //MARK: WKnavigationDelegate

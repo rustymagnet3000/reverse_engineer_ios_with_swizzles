@@ -110,6 +110,12 @@ The Swizzle used the Objective-C `runtime.h` APIs from Apple.  Namely:
 
 Due to `Subclassing`, if you followed the StackOverflow recommendations [ and solely used `method_exchangeImplementations` ] you would create unexpected behaviour.  Take the `addFakeUIBarButton` example.  You could place the fake UIBarButtons with the `method_exchangeImplementations` without using `class_addMethod` and `class_replaceMethod`.  But the fake `viewDidLoad` got called on lots of other classes when you only targeted the  `UIViewController` class.
 
+You will see the Swizzle code inherited from `NSObject`.  If you didn't, you would often see:
+```
+🍭Stopped swizzle. Class: WKWebView, originalMethod:  0x10318bef0 swizzledMethod: 0x0 
+```
+This was probably a bug with how  `class_replaceMethod` was implemented.
+
 ### Results
 The `Sith` ViewController was 100% code generated. The dynamic nature of Objective-C lets you create  classes at `runtime`:
 ```

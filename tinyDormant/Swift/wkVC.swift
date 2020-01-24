@@ -3,7 +3,7 @@ import WebKit
 
 class YDWKViewController: UIViewController, WKUIDelegate {
 
-    let customNavDel = YDNavDel()
+    let boringhNavDel = WKBoringNavDel()
     var webView: WKWebView!
     
     override func loadView() {
@@ -18,69 +18,12 @@ class YDWKViewController: UIViewController, WKUIDelegate {
         }
             
         webView = WKWebView(frame: .zero, configuration: configuration)
-        webView.customUserAgent = "YDWKDemoUserAgent"
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
         view = webView
         webView.uiDelegate = self
-
-        webView.navigationDelegate = customNavDel
+        webView.navigationDelegate = boringhNavDel
     }
-
-    //MARK: WKnavigationDelegate
-    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        
-        NSLog("🕵🏼‍♂️ challanged by: \(challenge.protectionSpace.host)")
-
-        guard let trust: SecTrust = challenge.protectionSpace.serverTrust else {
-            return
-        }
-        
-        var secResult = SecTrustResultType.deny
-        let _ = SecTrustEvaluate(trust, &secResult)
-        
-        switch secResult {
-            case .proceed:
-                NSLog("🕵🏼‍♂️ SecTrustEvaluate ✅")
-                completionHandler(.performDefaultHandling, nil)
-            
-            // .unspecified Apple recommend “Use System Policy”
-//            case .unspecified:
-//                NSLog("🕵🏼‍♂️ Apple recommend “Use System Policy” and pass this code ✅")
-//                completionHandler(.performDefaultHandling, nil)
-            default:
-                NSLog("🕵🏼‍♂️ SecTrustEvaluate ❌ default error \(secResult.rawValue)")
-                completionHandler(.cancelAuthenticationChallenge, nil)
-        }
-    }
-    
-    
-    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        ydHandleError(error: error)
-
-    }
-
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        ydHandleError(error: error)
-    }
-    
-    func ydHandleError(error: Error) {
-        print("🕵🏼‍♂️ ydHandleError: \(error.localizedDescription)")
-
-    }
-    
-    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-
-        if let response = navigationResponse.response as? HTTPURLResponse {
-            if response.statusCode == 401 {
-                // handle Unauthorized request
-            }
-        }
-
-        decisionHandler(.allow)
-        return
-    }
-
     
     //MARK: WKUIDelegate
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
@@ -107,7 +50,6 @@ class YDWKViewController: UIViewController, WKUIDelegate {
         let url = URL(string: endpoint)!
         let myRequest = URLRequest(url: url)
         self.webView.load(myRequest)
-        
     }
     
     @objc func refreshWebView(_ sender: UIRefreshControl){

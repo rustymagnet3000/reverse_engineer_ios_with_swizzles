@@ -28,7 +28,9 @@
 		0FB2D28122B20A0A00C44902 /* tinySwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FB2D27F22B20A0A00C44902 /* tinySwizzle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FB2D28422B20A0A00C44902 /* tinySwizzle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; };
 		0FB2D28522B20A0A00C44902 /* tinySwizzle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0FCC4B4023D9DC4C0002AD84 /* YDNavDel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCC4B3D23D9D8910002AD84 /* YDNavDel.m */; };
+		0FCC4B4223D9DD450002AD84 /* WKboringNavDel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCC4B4123D9DD450002AD84 /* WKboringNavDel.swift */; };
+		0FCC4B4423D9F2D50002AD84 /* YDNavDel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCC4B3D23D9D8910002AD84 /* YDNavDel.m */; };
+		0FCC4B4D23DB2CFF0002AD84 /* swizzleWKNavDelegateSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F077D5423D6F29C003219F0 /* swizzleWKNavDelegateSet.m */; };
 		0FCE6330237970BE003BC68E /* swizzleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F05B1652360A77F00EBDEE2 /* swizzleHelper.m */; };
 		0FD9E26B231EB45D003ED5B6 /* ChewyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9E26A231EB45D003ED5B6 /* ChewyViewController.swift */; };
 		0FD9E26D231EBA50003ED5B6 /* chewy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9E26C231EBA50003ED5B6 /* chewy.jpg */; };
@@ -64,7 +66,7 @@
 		0F006B6122B751DC00E46A7C /* addFakeUIBarButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = addFakeUIBarButton.m; sourceTree = "<group>"; };
 		0F05B1652360A77F00EBDEE2 /* swizzleHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = swizzleHelper.m; sourceTree = "<group>"; };
 		0F05B1672361AC6D00EBDEE2 /* swizzleHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = swizzleHelper.h; sourceTree = "<group>"; };
-		0F077D5423D6F29C003219F0 /* swizzleWKNavDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = swizzleWKNavDelegate.m; sourceTree = "<group>"; };
+		0F077D5423D6F29C003219F0 /* swizzleWKNavDelegateSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = swizzleWKNavDelegateSet.m; sourceTree = "<group>"; };
 		0F0873212301C39A00FC0D6D /* PorgVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorgVC.swift; sourceTree = "<group>"; };
 		0F0873222301C39A00FC0D6D /* PorgViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PorgViewController.xib; sourceTree = "<group>"; };
 		0F0873252301C3DA00FC0D6D /* porg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = porg.jpg; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		0FB2D28022B20A0A00C44902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FCC4B3C23D9D8910002AD84 /* YDNavDel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDNavDel.h; sourceTree = "<group>"; };
 		0FCC4B3D23D9D8910002AD84 /* YDNavDel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDNavDel.m; sourceTree = "<group>"; };
+		0FCC4B4123D9DD450002AD84 /* WKboringNavDel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKboringNavDel.swift; sourceTree = "<group>"; };
 		0FD488FD22AABAF800D194BF /* swizzleTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = swizzleTabBar.m; sourceTree = "<group>"; };
 		0FD9E26A231EB45D003ED5B6 /* ChewyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChewyViewController.swift; sourceTree = "<group>"; };
 		0FD9E26C231EBA50003ED5B6 /* chewy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chewy.jpg; sourceTree = "<group>"; };
@@ -179,6 +182,7 @@
 				0F102A9A22A6CA7800529F12 /* sithVC.swift */,
 				0F0873212301C39A00FC0D6D /* PorgVC.swift */,
 				0FA394B42371DE2900116ECF /* wkVC.swift */,
+				0FCC4B4123D9DD450002AD84 /* WKboringNavDel.swift */,
 				0FD9E26A231EB45D003ED5B6 /* ChewyViewController.swift */,
 				0FD9E26E231EC588003ED5B6 /* SoloViewController.swift */,
 				0F08732A2302D14A00FC0D6D /* PorgUIImageView.swift */,
@@ -196,7 +200,7 @@
 				0F9E6FB8233A1ACE0025ABA0 /* YDplistReader.m */,
 				0FA394B12371C09700116ECF /* swizzleNSHTTPCookie.m */,
 				0FF111A023D0A210005F9539 /* swizzleWKNavDelegateAuthChallenge.m */,
-				0F077D5423D6F29C003219F0 /* swizzleWKNavDelegate.m */,
+				0F077D5423D6F29C003219F0 /* swizzleWKNavDelegateSet.m */,
 				0FCC4B3C23D9D8910002AD84 /* YDNavDel.h */,
 				0FCC4B3D23D9D8910002AD84 /* YDNavDel.m */,
 				0FDA5650235EBA0A00BD0077 /* swizzleNSURLSessioDidReceiveChallengen.m */,
@@ -376,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FCC4B4223D9DD450002AD84 /* WKboringNavDel.swift in Sources */,
 				0F08732B2302D14A00FC0D6D /* PorgUIImageView.swift in Sources */,
 				0FD9E26B231EB45D003ED5B6 /* ChewyViewController.swift in Sources */,
 				0F102A8B22A6C9EA00529F12 /* jediVC.swift in Sources */,
@@ -384,7 +389,6 @@
 				0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */,
 				0FD9E26F231EC588003ED5B6 /* SoloViewController.swift in Sources */,
 				0F102A9B22A6CA7800529F12 /* sithVC.swift in Sources */,
-				0FCC4B4023D9DC4C0002AD84 /* YDNavDel.m in Sources */,
 				0FA394B52371DE2900116ECF /* wkVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,7 +397,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FCC4B4423D9F2D50002AD84 /* YDNavDel.m in Sources */,
 				0F9E6FBA233A1ACE0025ABA0 /* YDplistReader.m in Sources */,
+				0FCC4B4D23DB2CFF0002AD84 /* swizzleWKNavDelegateSet.m in Sources */,
 				0FCE6330237970BE003BC68E /* swizzleHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

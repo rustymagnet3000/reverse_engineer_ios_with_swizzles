@@ -31,7 +31,10 @@ static YDNavDel *_hotDel;
 }
 
 - (void)YDsetNavigationDelegate:(id)originalDelegate {
-    [self YDsetNavigationDelegate:NULL];
+    NSLog(@"🍭setNavigationDelegate called from:%@", self);
+    NSLog(@"🍭Swapping out:\n\t\tOLD:%@\n\t\tNEW:%@", [originalDelegate self], [Foobar hotDel]);
+    [self YDsetNavigationDelegate:[Foobar hotDel]];
+    #pragma mark NULL also works: [self YDsetNavigationDelegate:NULL];
 }
 
 @end

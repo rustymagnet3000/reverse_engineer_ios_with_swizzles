@@ -1,7 +1,46 @@
 # Tiny Swizzle
+### Swizzling
+Apple designed Objective-C to:
+> “defers as many decisions as it can from compile time and link time to runtime. Whenever possible, it does things dynamically.“
+
+Read the full Apple document [here][47c92abd]. This repo was written using `runtime` Apple APIs to swap in custom code into a normal, jailed iOS app.  The code used a technique called `Method Swizzling`.  Read  https://nshipster.com/method-swizzling/ for an excellent article on this topic.
+
 ### Background
-The `TinySwizzle.framework` finds _Dormant_ `Swift` or `ObjC` iOS code.
-### Setup
+Originally this repo generated a `TinySwizzle.framework` to find _Dormant_ `Swift` or `ObjC` iOS code.  But I ended up reusing the repo to make customized Swizzles for the following Classes:
+
+Class|Method|Reason  
+--|---|--
+NSHTTPCookie|initWithProperties:|Easy way to read all properties set on a cookie.
+NSURL| initWithString:|Simple to observe all URLs being invoked, early in the start of a journey.
+UITabBarController|viewWillAppear:|Created a Tar Bar button that invoked a Dormant ViewController.
+N/A|objc_copyClassList|Class dump required to find name of classes to Swizzle.
+UIViewController|viewDidAppear:|Loaded _dormant_ Storyboard, XIB file or 100% coded ViewControllers. Added a UIBarButton to navigationController to access the ViewController.
+UIApplication|application:continueUserActivity:restorationHandler:|Written to troubleshoot whether to to load third party code inside / outside the app.
+URLSession|URLSession:didReceiveChallenge:completionHandler:|Bypass Cert Pinning code when loaded with URLSession.  
+WKWebView|webView:didReceiveAuthenticationChallenge:completionHandler:|Bypass Cert Pinning code when loading a Web Journey.
+WKNavigationDelegate|setNavigationDelegate:|Attach a custom Delegate to a Web Journey. Ignores the original WKNavigationDelegate.
+
+
+### Find your Class
+If you wanted to target a piece of `dormant` code, you first needed to know the `Class` name.  Tick the `Target Membership` box to include the  `dumpClasses.m` file inside of the iOS app's `Target`.  Then it will run the app and print the found classes.
+```
+[*] 🌠 Started Class introspection...
+    [*]tinyDormant.AppDelegate
+    [*]tinyDormant.PorgViewController
+    [*]tinyDormant.YDJediVC
+    [*]tinyDormant.YDSithVC
+    [*]tinyDormant.YDMandalorianVC
+    [*]tinyDormant.YDPorgImageView
+```
+The above log was from a Swift app. Notice the `Module name`. This was an important but subtle difference between a Swift class and an Objective-C class.
+
+If you wanted to invoke `dormant ViewControllers`, you needed to had to find how the View Controller was written:
+
+1. Storyboard files (or a single Main.storyboard)
+2. A `XIB` file
+3. A 100% code-only ViewController
+
+### Write Class Name to PList
 Clone the repo.  Create a `YDSwizzlePlist.plist` file.  Check the `Target Membership` tickbox.  This must be ticked so the plist file ships inside the framework. An example plist:
 ```
 <plist version="1.0">
@@ -18,29 +57,13 @@ Clone the repo.  Create a `YDSwizzlePlist.plist` file.  Check the `Target Member
 </plist>
 ```
 
-###  Swizzling
-The swizzle could invoke `dormant ViewControllers` from three places:
-1. Storyboard files (or a single Main.storyboard)
-2. A `XIB` file
-3. A 100% code-only ViewController
+  [47c92abd]: https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008048-CH1-SW1 "Apple"
 
-### Find your Class
-If you want to target a specific piece of `dormant` code you first perform a `Class Dump`.   Just tick the `Target Membership` box to include the  `dumpClasses.m` file inside of the iOS app's `Target`.  Then it will run the app and print the found classes.
-```
-[*] 🌠 Started Class introspection...
-    [*]tinyDormant.AppDelegate
-    [*]tinyDormant.PorgViewController
-    [*]tinyDormant.YDJediVC
-    [*]tinyDormant.YDSithVC
-    [*]tinyDormant.YDMandalorianVC
-    [*]tinyDormant.YDPorgImageView
-```
-The above print was for a Swift app. Notice you need the Module name, when writing a Swift class, unlike Objective-C.
 
-Credit to: https://nshipster.com/method-swizzling/ for an excellent article.
+
 
 ### Find Method
-To swizzle successfully, you need the correct `Selector` name.  Remember the colons are important, with `ObjC` and these may or may not include mention of the associated class.  Get these Method signatures from `Xcode Developer Documentation`.
+To swizzle successfully, you need the correct `Selector` name.  The colons are important with `ObjC`.  Get these Method signatures from `Xcode Developer Documentation`.
 
 ```
 @selector(webView:didReceiveAuthenticationChallenge:completionHandler:);        // WKWebView Auth Challenge
@@ -49,20 +72,19 @@ To swizzle successfully, you need the correct `Selector` name.  Remember the col
 ```
 
 ### Find Property
-You can  `Method Swizzle` on  `Objective-C Properties`.  
+You could `Method Swizzle` on  `Objective-C Properties`.  Properties had a `getter` and `setter`.  Internal calls and properties are not shared in `Developer Documents` but you can `trace` or use a `debugger` to find the method names.
 
-Internal calls and properties are not shared in `Developer Documents` but you can `trace` or use a `debugger` to find the `getter` and `setter`.  For example, I found the `WKWebView Class` had a `set Navigation Delegate` method.  Why is this interesting?  Developers use `Delegates` to customise commonly used code.  For example the delegates makes the Developers life easier by offerings lots of pre-canned methods.  Think about`startLoad`, `finishLoad`, `didFinishWithError`, etc with `WKWebView`.
+For example, I found the `WKWebView Class` had a `set Navigation Delegate` method.  Each WebView had a `Property` getter called `WKWebView.setNavigationDelegate`.  Using `Delegates` was a common iOS programming pattern.  The delegates made life easier by offerings lots of pre-canned methods.  
 
-We can swizzle `@selector(setNavigationDelegate:)` and point it to our own delegate?  Or maybe just detach the `Delegate` code?
+Find the `property` took analysis. Here is an example with a debugger:
 ```
  (lldb) lookup setNavigationDe
  ****************************************************
  2 hits in: WebKit
  ****************************************************
  -[WKWebView setNavigationDelegate:]
-
  WebKit::NavigationState::setNavigationDelegate(id<WKNavigationDelegate>)
- 
+
  (lldb) b -[WKWebView setNavigationDelegate:]
 
  // breakpoint fires
@@ -77,15 +99,18 @@ We can swizzle `@selector(setNavigationDelegate:)` and point it to our own deleg
  <tinyDormant.YDWKViewController: 0x7f8e8f416350>
 */
 ```
-Then I have the signature for the Swizzle and a gut fell for what is passed in each parameter:
+know - without consulting documentation - I have the signature for the property's set method and I know what is passed into the method.
 ```
-SEL orig = @selector(setNavigationDelegate:);
+@selector(setNavigationDelegate:);
 ```
 ### Run (Simulator)
  The project contained two `Targets`.  An iOS app and a simple framework.  The app just demonstrated what the Swizzle framework could do.  This app worked with a Simulator or real device.
 
 ### Run (device with real app)
-The framework could be repackaged inside of a real iOS app.  ** PLEASE USE IT FOR GOOD **.  The process was summarised as :
+The framework could be repackaged inside a real iOS app.
+>  **PLEASE USE IT FOR GOOD**.  
+
+The process was summarised as :
 ```
 - Unzipping the IPA
 - Adding the Swizzle framework
@@ -112,10 +137,9 @@ Due to `Subclassing`, if you followed the StackOverflow recommendations [ and so
 
 You will see the Swizzle code inherited from `NSObject`.  If you didn't, you would often see:
 ```
-🍭Stopped swizzle. Class: WKWebView, originalMethod:  0x10318bef0 swizzledMethod: 0x0 
+🍭Stopped swizzle. Class: WKWebView, originalMethod:  0x10318bef0 swizzledMethod: 0x0
 ```
-This was probably a bug with how  `class_replaceMethod` was implemented.
-
+I could fix this, in some future commit.
 ### Results
 The `Sith` ViewController was 100% code generated. The dynamic nature of Objective-C lets you create  classes at `runtime`:
 ```

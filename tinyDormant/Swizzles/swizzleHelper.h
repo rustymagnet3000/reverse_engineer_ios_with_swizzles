@@ -9,16 +9,15 @@
 
 @protocol SwizzleRules <NSObject>
 @required
+- (BOOL) checkClassExists;
 - (BOOL) preSwap;
 - (BOOL) swapMethods;
 - (BOOL) verifyMethodSwizzle;
-- (id) initWithTargets: (const char *)target
-              Original:(SEL)orig
-               Swizzle:(SEL)swiz;
 @end
 
 
 @interface SwizzleHelper: NSObject <SwizzleRules> {
+    const char *rawTargetClass;
     SEL originalSelector, replacementSelector;
     Class targetClass, targetSuperClass;
     Method originalMethod, swizzledMethod;

@@ -10,7 +10,7 @@ Originally this repo generated a `TinySwizzle.framework` to find _Dormant_ `Swif
 
 Class|Method|Reason  
 --|--|---
-NSHTTPCookie|initWithProperties:|Easy way to read all properties set on a cookie.
+NSHTTPCookie|initWithProperties:|Easy way to read all properties set on a cookie (no WKWebView yet).
 NSURL| initWithString:|Simple to observe all URLs being invoked, early in the start of a journey.
 UITabBarController|viewWillAppear:|Created a Tar Bar button that invoked a Dormant ViewController.
 N/A|objc_copyClassList|Class dump required to find name of classes to Swizzle.

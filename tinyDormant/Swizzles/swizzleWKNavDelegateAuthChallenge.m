@@ -8,7 +8,7 @@
     dispatch_once(&onceToken, ^{
         SEL orig = @selector(webView:didReceiveAuthenticationChallenge:completionHandler:);
         SEL swiz= @selector(YDHappywebView:didReceiveAuthenticationChallenge:completionHandler:);
-        __unused SwizzleHelper *swizzle = [[SwizzleHelper alloc] initWithTargets:targetWKNavDelSwizzle Original:orig Swizzle:swiz];
+        __unused SwizzleHelper *swizzle = [[SwizzleHelper alloc] initWithTargets:"WKWebView" Original:orig Swizzle:swiz];
     });
 }
 

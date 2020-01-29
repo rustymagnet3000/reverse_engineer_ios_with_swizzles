@@ -21,7 +21,7 @@
 		0F102A9B22A6CA7800529F12 /* sithVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9A22A6CA7800529F12 /* sithVC.swift */; };
 		0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */; };
 		0F225227233243CF00C6FA0E /* YDSwizzlePlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F225226233243CF00C6FA0E /* YDSwizzlePlist.plist */; };
-		0F38871423E1717B0057E5C4 /* swizzleNSHTTPCookie.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA394B12371C09700116ECF /* swizzleNSHTTPCookie.m */; };
+		0F38871B23E1D9140057E5C4 /* swizzleNSHTTPCookie.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA394B12371C09700116ECF /* swizzleNSHTTPCookie.m */; };
 		0F4F7BFC2338DB020082CAB3 /* YDDormantStoryboards.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F4F7BFB2338DB020082CAB3 /* YDDormantStoryboards.plist */; };
 		0F9E6FBA233A1ACE0025ABA0 /* YDplistReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9E6FB8233A1ACE0025ABA0 /* YDplistReader.m */; };
 		0F9E6FBB233A1ACE0025ABA0 /* YDplistReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F9E6FB9233A1ACE0025ABA0 /* YDplistReader.h */; };
@@ -396,8 +396,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F38871B23E1D9140057E5C4 /* swizzleNSHTTPCookie.m in Sources */,
 				0F9E6FBA233A1ACE0025ABA0 /* YDplistReader.m in Sources */,
-				0F38871423E1717B0057E5C4 /* swizzleNSHTTPCookie.m in Sources */,
 				0FCE6330237970BE003BC68E /* swizzleHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

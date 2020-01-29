@@ -7,16 +7,25 @@
     return verbose;
 }
 
+- (BOOL) checkClassExists {
+    targetClass = objc_getClass(rawTargetClass);
+    if (targetClass == NULL) {
+        NSLog(@"\t🍭Stopped swizzle. Could not find %s class", rawTargetClass);
+        return FALSE;
+    }
+    NSLog(@"🍭Swizzle started for: %@", NSStringFromClass(targetClass));
+    return TRUE;
+}
+
 - (BOOL) preSwap {
     if (originalMethod != NULL && swizzledMethod != NULL)
         return TRUE;
     
-    NSLog(@"🍭preSwap check failed. Class: %@, originalMethod:  %p swizzledMethod: %p \n", NSStringFromClass(targetClass), originalMethod, swizzledMethod);
+    NSLog(@"🍭Swizzle failed: %@, originalMethod:  %p swizzledMethod: %p \n", NSStringFromClass(targetClass), originalMethod, swizzledMethod);
     return FALSE;
 }
 
 - (BOOL) swapMethods {
-    
     BOOL didAddMethod = class_addMethod(targetClass,
                                         originalSelector,
                                         method_getImplementation(swizzledMethod),
@@ -30,23 +39,19 @@
                             method_getTypeEncoding(originalMethod));
         return TRUE;
         
-    } else if (originalMethod != NULL && swizzledMethod  != NULL) {
+    } else {
         method_exchangeImplementations(originalMethod, swizzledMethod);
         NSLog(@"🍭method_exchange called:[%@ %@]", NSStringFromClass(targetClass), NSStringFromSelector(originalSelector));
         return TRUE;
-    
-    }else {
-        NSLog(@"🍭Swizzle FAILED");
-        return FALSE;
     }
 }
 
 - (BOOL) verifyMethodSwizzle {
     if ([targetClass respondsToSelector:replacementSelector] == TRUE){
-        NSLog(@"🍭Swizzle placed.\n\t%@\t🏁selector responded", NSStringFromSelector(replacementSelector));
+        NSLog(@"🍭Swizzle placed.\t🏁selector responded[%@ %@]", NSStringFromClass(targetClass),NSStringFromSelector(replacementSelector));
         return TRUE;
     }
-    NSLog(@"🍭Swizzle FAILED. 🏁selector did not respond");
+    NSLog(@"🍭Swizzle failed. 🏁Selector did not respond: %d", [targetClass respondsToSelector:replacementSelector]);
     return FALSE;
 }
 
@@ -57,13 +62,12 @@
     
     self = [super init];
     if (self) {
-        targetClass = objc_getClass(target);
-        NSLog(@"🍭Swizzle started for: %@", NSStringFromClass(targetClass));
         
-        if (targetClass == NULL) {
-            NSLog(@"\t🍭Stopped swizzle. Could not find %s class", target);
+        rawTargetClass = target;
+        
+        if ([self checkClassExists] == FALSE)
             return NULL;
-        }
+        
         [self getDescription];
         targetSuperClass = class_getSuperclass(targetClass);
         

@@ -7,7 +7,18 @@
 #endif
 #include "staticStrings.h"
 
-@interface SwizzleHelper: NSObject {
+@protocol SwizzleRules <NSObject>
+@required
+- (BOOL) preSwap;
+- (BOOL) swapMethods;
+- (BOOL) verifyMethodSwizzle;
+- (id) initWithTargets: (const char *)target
+              Original:(SEL)orig
+               Swizzle:(SEL)swiz;
+@end
+
+
+@interface SwizzleHelper: NSObject <SwizzleRules> {
     SEL originalSelector, replacementSelector;
     Class targetClass, targetSuperClass;
     Method originalMethod, swizzledMethod;

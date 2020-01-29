@@ -21,6 +21,7 @@
 		0F102A9B22A6CA7800529F12 /* sithVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9A22A6CA7800529F12 /* sithVC.swift */; };
 		0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */; };
 		0F225227233243CF00C6FA0E /* YDSwizzlePlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F225226233243CF00C6FA0E /* YDSwizzlePlist.plist */; };
+		0F38871423E1717B0057E5C4 /* swizzleNSHTTPCookie.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA394B12371C09700116ECF /* swizzleNSHTTPCookie.m */; };
 		0F4F7BFC2338DB020082CAB3 /* YDDormantStoryboards.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F4F7BFB2338DB020082CAB3 /* YDDormantStoryboards.plist */; };
 		0F9E6FBA233A1ACE0025ABA0 /* YDplistReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9E6FB8233A1ACE0025ABA0 /* YDplistReader.m */; };
 		0F9E6FBB233A1ACE0025ABA0 /* YDplistReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F9E6FB9233A1ACE0025ABA0 /* YDplistReader.h */; };
@@ -29,8 +30,6 @@
 		0FB2D28422B20A0A00C44902 /* tinySwizzle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; };
 		0FB2D28522B20A0A00C44902 /* tinySwizzle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0FCC4B4223D9DD450002AD84 /* WKboringNavDel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCC4B4123D9DD450002AD84 /* WKboringNavDel.swift */; };
-		0FCC4B4423D9F2D50002AD84 /* YDNavDel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCC4B3D23D9D8910002AD84 /* YDNavDel.m */; };
-		0FCC4B4D23DB2CFF0002AD84 /* swizzleWKNavDelegateSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F077D5423D6F29C003219F0 /* swizzleWKNavDelegateSet.m */; };
 		0FCE6330237970BE003BC68E /* swizzleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F05B1652360A77F00EBDEE2 /* swizzleHelper.m */; };
 		0FD9E26B231EB45D003ED5B6 /* ChewyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9E26A231EB45D003ED5B6 /* ChewyViewController.swift */; };
 		0FD9E26D231EBA50003ED5B6 /* chewy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9E26C231EBA50003ED5B6 /* chewy.jpg */; };
@@ -397,9 +396,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FCC4B4423D9F2D50002AD84 /* YDNavDel.m in Sources */,
 				0F9E6FBA233A1ACE0025ABA0 /* YDplistReader.m in Sources */,
-				0FCC4B4D23DB2CFF0002AD84 /* swizzleWKNavDelegateSet.m in Sources */,
+				0F38871423E1717B0057E5C4 /* swizzleNSHTTPCookie.m in Sources */,
 				0FCE6330237970BE003BC68E /* swizzleHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

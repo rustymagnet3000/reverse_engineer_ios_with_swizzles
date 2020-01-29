@@ -1,8 +1,18 @@
 import Foundation
 import WebKit
 
-class WKBoringNavDel: NSObject, WKNavigationDelegate {
+class WKBoringNavDel: NSObject, WKNavigationDelegate, WKHTTPCookieStoreObserver {
 
+    @available(iOS 11.0, *)
+    func cookiesDidChange(in cookieStore: WKHTTPCookieStore) {
+        print("🕵🏼‍♂️ A Cookie changed!")
+        cookieStore.getAllCookies{ cookies in
+            for cookie in cookies {
+                print("\(cookie.name) is set to \(cookie.value)")
+            }
+        }
+    }
+    
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         NSLog("🕵🏼‍♂️ Boring decidePolicyFor: \(String(describing: webView.url))")
         decisionHandler(.allow)
@@ -10,7 +20,7 @@ class WKBoringNavDel: NSObject, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         
-        NSLog("🕵🏼‍♂️ Boring challanged by: \(challenge.protectionSpace.host)")
+        //  NSLog("🕵🏼‍♂️ Boring challanged by: \(challenge.protectionSpace.host)")
 
         guard let trust: SecTrust = challenge.protectionSpace.serverTrust else {
             return
@@ -25,8 +35,8 @@ class WKBoringNavDel: NSObject, WKNavigationDelegate {
                 completionHandler(.performDefaultHandling, nil)
             
             case .unspecified:
-                NSLog("🕵🏼‍♂️❌ Apple recommend “Use System Policy” is a pass.  We fail it, on purpose")
-                completionHandler(.cancelAuthenticationChallenge, nil)
+               // NSLog("🕵🏼‍♂️  ✅ Apple recommend “Use System Policy” is a pass")
+                completionHandler(.performDefaultHandling, nil)
             
             default:
                 NSLog("🕵🏼‍♂️❌ SecTrustEvaluate default error \(secResult.rawValue)")

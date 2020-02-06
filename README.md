@@ -3,7 +3,7 @@
 Apple designed Objective-C to:
 > “defers as many decisions as it can from compile time and link time to runtime. Whenever possible, it does things dynamically.“
 
-Read the full Apple document [here][47c92abd]. This repo was written using `runtime` Apple APIs to swap in custom code into a normal, jailed iOS device.  The code used a technique called `Method Swizzling`.  https://nshipster.com/method-swizzling/ is an excellent article on this topic.
+Read the full Apple [article](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008048-CH1-SW1). This repo was written using `runtime` Apple APIs to swap in custom code into a normal, jailed iOS device.  The code used a technique called `Method Swizzling`.  https://nshipster.com/method-swizzling/ is an excellent article on this topic.
 
 ### Background
 Originally this repo generated a `TinySwizzle.framework` to find _Dormant_ `Swift` or `ObjC` iOS code.  But I ended up reusing the repo to make customized Swizzles for the following Classes:
@@ -115,7 +115,6 @@ Clone the repo.  Create a `YDSwizzlePlist.plist` file.  Check the `Target Member
 ```
 
 Then, select the "Target Membership" the Swizzle you want. I normally used the `UIViewController` when it was embedded inside a `navigationController`.  This would add a button that would invoke the dormant code.
-  [47c92abd]: https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008048-CH1-SW1 "Apple"
 
 #### Run (Simulator)
  The project contained two `Targets`.  An iOS app and a simple framework.  The app just demonstrated what the Swizzle framework could do.  This app worked with a Simulator or real device.

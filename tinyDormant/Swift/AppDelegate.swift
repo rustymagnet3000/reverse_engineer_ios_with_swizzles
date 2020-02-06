@@ -10,6 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // MARK: health-check for NSURL swizzle
         let _ = NSURL(string: "www.foo.com")
         let _ = NSURL(string: "www.bar.com")
+
         return true
     }
 

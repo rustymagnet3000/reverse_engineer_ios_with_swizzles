@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,11 +22,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="po2-xo-TsB">
+                                <rect key="frame" x="187" y="387" width="40" height="30"/>
+                                <state key="normal" title="Weird"/>
+                                <connections>
+                                    <action selector="weird_Btn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HfU-aI-FAe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="WqN-5Y-BGd" firstAttribute="top" secondItem="po2-xo-TsB" secondAttribute="bottom" constant="23" id="FBR-hr-7wU"/>
                             <constraint firstItem="WqN-5Y-BGd" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="FaN-qY-8xr"/>
                             <constraint firstItem="WqN-5Y-BGd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Wiw-IO-OH8"/>
+                            <constraint firstItem="po2-xo-TsB" firstAttribute="centerX" secondItem="WqN-5Y-BGd" secondAttribute="centerX" id="qal-Pn-wP4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

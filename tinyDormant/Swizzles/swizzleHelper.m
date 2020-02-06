@@ -13,7 +13,7 @@
         NSLog(@"\t🍭Stopped swizzle. Could not find %s class", rawTargetClass);
         return FALSE;
     }
-    NSLog(@"🍭Swizzle started for: %@", NSStringFromClass(targetClass));
+    NSLog(@"🍭Swizzle started for class: %@", NSStringFromClass(targetClass));
     return TRUE;
 }
 

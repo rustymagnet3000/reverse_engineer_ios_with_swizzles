@@ -1,8 +1,12 @@
 #include "swizzleHelper.h"
 #import <WebKit/WebKit.h>
 
-/* This works for UIWebView or NSURLSession.  This does not work for WKWebView
- Refer to https://github.com/rustymagnet3000/debugger_playground/tree/master/4b_NSHTTPCookie_thief for why
+/*  This works for UIWebView or NSURLSession only.
+    This does not work for WKWebView
+ Refer to here for how to get Cookies from WKWebView: https://github.com/rustymagnet3000/debugger_playground/tree/master/4b_NSHTTPCookie_thief
+ 
+The below trace will yield nothing with WKWebView.
+ frida-trace -m "*[NSHTTPCookie *]" -p $myapp
  */
 
 @implementation NSObject (YDSwizzleNSHTTPCookie)

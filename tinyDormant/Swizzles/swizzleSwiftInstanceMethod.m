@@ -2,7 +2,7 @@
 #import <Foundation/Foundation.h>
 
 
-@implementation NSObject (YDCustomSwizzle)
+@implementation NSObject (YDSwizzleSwiftInstMethod)
 
 + (void)load {
     static dispatch_once_t onceToken;
@@ -16,9 +16,9 @@
     });
 }
 
-- (void)YDwonderfullyWeirdWithLaugh:(id)num cry:(id)str{
-
-    NSLog(@"🍭YDwonderfullyWeird");
-
+- (void)YDwonderfullyWeirdWithLaugh:(int)num cry:(id)str{
+    
+    NSLog(@"🍭YDwonderfullyWeird %@", str);
 }
+
 @end

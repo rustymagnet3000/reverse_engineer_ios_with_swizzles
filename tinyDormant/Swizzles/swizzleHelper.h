@@ -1,9 +1,10 @@
 #ifndef swizzleHelper_h
 #define swizzleHelper_h
 #ifdef __OBJC__
-    #import <Foundation/Foundation.h>
-    #import <UIKit/UIKit.h>
+    #include <Foundation/Foundation.h>
+    #include <UIKit/UIKit.h>
     #include <objc/runtime.h>
+    #include <WebKit/WebKit.h>
 #endif
 #include "staticStrings.h"
 

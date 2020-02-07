@@ -1,6 +1,5 @@
 #include "swizzleHelper.h"
 #include "YDNavDel.h"
-#import <WebKit/WebKit.h>
 
 /*  @selector(navigationDelegate) is not called
 SEL swiz= @selector(YDnavigationDelegate);         */

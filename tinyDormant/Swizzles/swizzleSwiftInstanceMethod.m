@@ -1,5 +1,4 @@
 #include "swizzleHelper.h"
-#import <Foundation/Foundation.h>
 
 
 @implementation NSObject (YDSwizzleSwiftInstMethod)

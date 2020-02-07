@@ -10,11 +10,10 @@ class YDJediVC: UIViewController {
         wonderfullyWeird(laugh: secret_number, cry: secret_string)
     }
     
-    @objc func wonderfullyWeird(laugh: Int, cry: String){
+    @objc dynamic func wonderfullyWeird(laugh: Int, cry: String){
         print("[*]🎣 a wonderfullyWeird Jedi function")
     }
 
-  
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Jedi"

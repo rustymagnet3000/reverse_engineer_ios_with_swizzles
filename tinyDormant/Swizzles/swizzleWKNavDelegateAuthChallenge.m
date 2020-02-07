@@ -1,5 +1,4 @@
 #include "swizzleHelper.h"
-#import <WebKit/WebKit.h>
 
 @implementation NSObject (YDSwizzleWKNavDelAuthChallenge)
  

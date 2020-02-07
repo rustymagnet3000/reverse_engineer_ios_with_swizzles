@@ -1,6 +1,4 @@
-#import <Foundation/Foundation.h>
-#import <objc/runtime.h>
-#include "staticStrings.h"
+#include "swizzleHelper.h"
 
 @implementation NSObject (YDClassDumper)
 

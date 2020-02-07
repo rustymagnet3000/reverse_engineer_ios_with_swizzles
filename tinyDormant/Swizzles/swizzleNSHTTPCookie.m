@@ -1,5 +1,4 @@
 #include "swizzleHelper.h"
-#import <WebKit/WebKit.h>
 
 /*  This works for UIWebView or NSURLSession only.
     This does not work for WKWebView

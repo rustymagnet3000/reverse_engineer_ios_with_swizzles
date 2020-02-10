@@ -52,19 +52,7 @@
                     <view key="view" contentMode="scaleToFill" id="Xbb-qI-0EL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mandalorian VC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v17-kq-BS6">
-                                <rect key="frame" x="146.5" y="440" width="121" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="v17-kq-BS6" firstAttribute="centerX" secondItem="8Zc-a8-Bfi" secondAttribute="centerX" id="0tB-eh-v0J"/>
-                            <constraint firstItem="v17-kq-BS6" firstAttribute="centerY" secondItem="8Zc-a8-Bfi" secondAttribute="centerY" id="XHN-h9-53W"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8Zc-a8-Bfi"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Mandalorian" image="approval" selectedImage="approval" id="EIi-Qf-UiB"/>

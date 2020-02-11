@@ -1,4 +1,4 @@
-# Tiny Swizzle
+# Tiny Swizzles
 ### Swizzling
 Apple designed Objective-C to:
 > “defers as many decisions as it can from compile time and link time to runtime. Whenever possible, it does things dynamically.“
@@ -6,16 +6,17 @@ Apple designed Objective-C to:
 Read the full Apple [article](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008048-CH1-SW1). This repo was written using `runtime` Apple APIs to swap in custom code into a normal, jailed iOS device.  The code used a technique called `Method Swizzling`.  https://nshipster.com/method-swizzling/ is an excellent article on this topic.
 
 ### Background
-Originally this repo generated a `TinySwizzle.framework` to find _Dormant_ `Swift` or `ObjC` iOS code.  But I ended up reusing the repo to make customized Swizzles for the following Classes:
+Originally this repo generated a `TinySwizzle.framework` to find _Dormant_ `Swift` or `ObjC` iOS code.  I ended up using the repo to make tiny Swizzles for the following Classes:
 
 Class|Method|Reason  
 --|--|---
-NSURL| initWithString:|Simple to observe all URLs being invoked, early in the start of a journey.
+NSURL| initWithString:|Observed all URLs being invoked.
+UILabel| setText:|Observed all strings set on a UILabel. Only set a custom string on a UILabel that was added onto a UIView.
 NSHTTPCookie|initWithProperties:|Easy way to read all properties set on a cookie (no WKWebView yet).
 UITabBarController|viewWillAppear:|Created a Tar Bar button that invoked a Dormant ViewController.
-N/A|objc_copyClassList|Class dump required to find name of classes to Swizzle.
-UIViewController|viewDidAppear:|Loaded _dormant_ Storyboard, XIB file or 100% coded ViewControllers. Added a UIBarButton to navigationController to access the ViewController.
-UIApplication|application:continueUserActivity:restorationHandler:|Written to troubleshoot whether to to load third party code inside / outside the app.
+N/A|objc_copyClassList|Find name of classes to Swizzle.
+UIViewController|viewDidAppear:|Loaded _dormant_ Storyboard, XIB file or 100% coded ViewControllers. Added a UIBarButton to a navigationController to access the ViewController.
+UIApplication|application:continueUserActivity:restorationHandler:|Written to troubleshoot whether to load third party code inside / outside the app.
 URLSession|URLSession:didReceiveChallenge:completionHandler:|Bypass Cert Pinning code when loaded with URLSession.  
 WKWebView|webView:didReceiveAuthenticationChallenge:completionHandler:|Bypass Cert Pinning code when loading a Web Journey.
 WKNavigationDelegate|setNavigationDelegate:|Attach a custom Delegate to a Web Journey. Ignores the original WKNavigationDelegate.

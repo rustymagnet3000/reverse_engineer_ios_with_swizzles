@@ -1,6 +1,6 @@
 #include "swizzleHelper.h"
 
-/*      Frequent output in a big app        */
+/*      Frequent hits inside in a big app        */
 
 @implementation NSObject (YDSwizzleUILabel)
 
@@ -16,17 +16,16 @@
 - (void)YDsetText:(id)arg1{
     #pragma mark: arg1 is an NSString
     NSString *customStr = @"0000";
-    id view = [self superclass];
-    NSLog(@"🍭view class: %@", [view class]);
-    if([view isMemberOfClass:[UIView class]]) {
-        NSLog(@"🍭isMemberOfClass: %@", [view class]);
-        NSLog(@"🍭%@", arg1);
+    
+    #pragma mark: isEqualToString used as isKindOfClass not working as expected
+    if ([NSStringFromClass([self superclass]) isEqualToString:NSStringFromClass([UIView class])]) {
+        NSLog(@"\t🍭Swapped: %@\t For: %@", arg1, customStr);
         [self YDsetText:customStr];
+        return;
     }
-    else {
-        NSLog(@"\t🍭%@", arg1);
-        [self YDsetText:arg1];
-    }
+    
+    NSLog(@"🍭%@\n\tsuper class:%@\n\tsuper super:%@", arg1, [self superclass],[[self superclass] superclass]);
+    [self YDsetText:arg1];
 }
 
 @end

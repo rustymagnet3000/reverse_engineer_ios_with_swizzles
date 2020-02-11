@@ -20,6 +20,7 @@
 		0F102A9322A6C9EB00529F12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F102A9122A6C9EB00529F12 /* LaunchScreen.storyboard */; };
 		0F102A9B22A6CA7800529F12 /* sithVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9A22A6CA7800529F12 /* sithVC.swift */; };
 		0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */; };
+		0F1DBA3D23F180DE001D70CB /* swizzleUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1DBA3C23F180DE001D70CB /* swizzleUILabel.m */; };
 		0F225227233243CF00C6FA0E /* YDSwizzlePlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F225226233243CF00C6FA0E /* YDSwizzlePlist.plist */; };
 		0F4F7BFC2338DB020082CAB3 /* YDDormantStoryboards.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F4F7BFB2338DB020082CAB3 /* YDDormantStoryboards.plist */; };
 		0F9E6FBA233A1ACE0025ABA0 /* YDplistReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9E6FB8233A1ACE0025ABA0 /* YDplistReader.m */; };
@@ -29,7 +30,6 @@
 		0FB2D28422B20A0A00C44902 /* tinySwizzle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; };
 		0FB2D28522B20A0A00C44902 /* tinySwizzle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0FCC4B4223D9DD450002AD84 /* WKboringNavDel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCC4B4123D9DD450002AD84 /* WKboringNavDel.swift */; };
-		0FCCE93E23EC76BE00B48A98 /* swizzleSwiftInstanceMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCCE93D23EC76BE00B48A98 /* swizzleSwiftInstanceMethod.m */; };
 		0FCE6330237970BE003BC68E /* swizzleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F05B1652360A77F00EBDEE2 /* swizzleHelper.m */; };
 		0FD9E26B231EB45D003ED5B6 /* ChewyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9E26A231EB45D003ED5B6 /* ChewyViewController.swift */; };
 		0FD9E26D231EBA50003ED5B6 /* chewy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9E26C231EBA50003ED5B6 /* chewy.jpg */; };
@@ -86,6 +86,7 @@
 		0F102AA322A7F07600529F12 /* swizzleIvars.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = swizzleIvars.m; sourceTree = "<group>"; };
 		0F149CF32315006300F70225 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0F149CFC2315036600F70225 /* staticStrings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = staticStrings.h; sourceTree = "<group>"; };
+		0F1DBA3C23F180DE001D70CB /* swizzleUILabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = swizzleUILabel.m; sourceTree = "<group>"; };
 		0F225226233243CF00C6FA0E /* YDSwizzlePlist.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = YDSwizzlePlist.plist; sourceTree = "<group>"; };
 		0F42055F236AE90A00DF0F97 /* swizzleUniversalLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = swizzleUniversalLink.m; sourceTree = "<group>"; };
 		0F4F7BFB2338DB020082CAB3 /* YDDormantStoryboards.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = YDDormantStoryboards.plist; sourceTree = "<group>"; };
@@ -101,6 +102,7 @@
 		0FCC4B4123D9DD450002AD84 /* WKboringNavDel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKboringNavDel.swift; sourceTree = "<group>"; };
 		0FCCE93323EC46D900B48A98 /* huntSelectors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = huntSelectors.m; sourceTree = "<group>"; };
 		0FCCE93D23EC76BE00B48A98 /* swizzleSwiftInstanceMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = swizzleSwiftInstanceMethod.m; sourceTree = "<group>"; };
+		0FD2DD3D23EDCDC100F6DD3D /* customHunter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = customHunter.m; sourceTree = "<group>"; };
 		0FD488FD22AABAF800D194BF /* swizzleTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = swizzleTabBar.m; sourceTree = "<group>"; };
 		0FD9E26A231EB45D003ED5B6 /* ChewyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChewyViewController.swift; sourceTree = "<group>"; };
 		0FD9E26C231EBA50003ED5B6 /* chewy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chewy.jpg; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				0F225226233243CF00C6FA0E /* YDSwizzlePlist.plist */,
 				0F4F7BFB2338DB020082CAB3 /* YDDormantStoryboards.plist */,
 				0F0F3D7E23EB2E3C0043E0BB /* customSwizzle.m */,
+				0FD2DD3D23EDCDC100F6DD3D /* customHunter.m */,
 				0F149CFC2315036600F70225 /* staticStrings.h */,
 			);
 			path = not_on_repo;
@@ -201,6 +204,7 @@
 				0F05B1672361AC6D00EBDEE2 /* swizzleHelper.h */,
 				0F9E6FB9233A1ACE0025ABA0 /* YDplistReader.h */,
 				0F9E6FB8233A1ACE0025ABA0 /* YDplistReader.m */,
+				0F1DBA3C23F180DE001D70CB /* swizzleUILabel.m */,
 				0FA394B12371C09700116ECF /* swizzleNSHTTPCookie.m */,
 				0FCCE93D23EC76BE00B48A98 /* swizzleSwiftInstanceMethod.m */,
 				0FF111A023D0A210005F9539 /* swizzleWKNavDelegateAuthChallenge.m */,
@@ -402,9 +406,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F1DBA3D23F180DE001D70CB /* swizzleUILabel.m in Sources */,
 				0F9E6FBA233A1ACE0025ABA0 /* YDplistReader.m in Sources */,
 				0FCE6330237970BE003BC68E /* swizzleHelper.m in Sources */,
-				0FCCE93E23EC76BE00B48A98 /* swizzleSwiftInstanceMethod.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,6 +617,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = tinySwizzle/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -645,6 +650,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = tinySwizzle/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

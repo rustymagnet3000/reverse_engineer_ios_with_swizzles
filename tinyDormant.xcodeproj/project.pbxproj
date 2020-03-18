@@ -20,7 +20,6 @@
 		0F102A9322A6C9EB00529F12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F102A9122A6C9EB00529F12 /* LaunchScreen.storyboard */; };
 		0F102A9B22A6CA7800529F12 /* sithVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9A22A6CA7800529F12 /* sithVC.swift */; };
 		0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */; };
-		0F1DBA3D23F180DE001D70CB /* swizzleUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1DBA3C23F180DE001D70CB /* swizzleUILabel.m */; };
 		0F225227233243CF00C6FA0E /* YDSwizzlePlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F225226233243CF00C6FA0E /* YDSwizzlePlist.plist */; };
 		0F4F7BFC2338DB020082CAB3 /* YDDormantStoryboards.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F4F7BFB2338DB020082CAB3 /* YDDormantStoryboards.plist */; };
 		0F9E6FBA233A1ACE0025ABA0 /* YDplistReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9E6FB8233A1ACE0025ABA0 /* YDplistReader.m */; };
@@ -35,6 +34,8 @@
 		0FD9E26D231EBA50003ED5B6 /* chewy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9E26C231EBA50003ED5B6 /* chewy.jpg */; };
 		0FD9E26F231EC588003ED5B6 /* SoloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9E26E231EC588003ED5B6 /* SoloViewController.swift */; };
 		0FD9E271231EC684003ED5B6 /* han.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9E270231EC684003ED5B6 /* han.jpg */; };
+		0FF54E1E2418040B00934E55 /* swizzleNSURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA5655235EC44C00BD0077 /* swizzleNSURL.m */; };
+		0FF54E1F2418044D00934E55 /* swizzleNSHTTPCookie.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA394B12371C09700116ECF /* swizzleNSHTTPCookie.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -406,8 +407,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F1DBA3D23F180DE001D70CB /* swizzleUILabel.m in Sources */,
 				0F9E6FBA233A1ACE0025ABA0 /* YDplistReader.m in Sources */,
+				0FF54E1E2418040B00934E55 /* swizzleNSURL.m in Sources */,
+				0FF54E1F2418044D00934E55 /* swizzleNSHTTPCookie.m in Sources */,
 				0FCE6330237970BE003BC68E /* swizzleHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,8 +565,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = U8MSEX235L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = tinyDormant/Info.plist;
@@ -573,9 +575,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = youdog.com.rusty.tinyDormant;
+				PRODUCT_BUNDLE_IDENTIFIER = com.youdog.rusty.tinyDormant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = mar_2020_devices;
+				SKIP_INSTALL = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "tinyDormant/tinyDormant-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -588,8 +591,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = U8MSEX235L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = tinyDormant/Info.plist;
@@ -598,9 +601,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = youdog.com.rusty.tinyDormant;
+				PRODUCT_BUNDLE_IDENTIFIER = com.youdog.rusty.tinyDormant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = mar_2020_devices;
+				SKIP_INSTALL = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "tinyDormant/tinyDormant-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -628,10 +632,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_CFLAGS = "-fembed-bitcode";
 				PRODUCT_BUNDLE_IDENTIFIER = youdog.com.rusty.tinySwizzle;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -661,10 +666,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_CFLAGS = "-fembed-bitcode";
 				PRODUCT_BUNDLE_IDENTIFIER = youdog.com.rusty.tinySwizzle;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";

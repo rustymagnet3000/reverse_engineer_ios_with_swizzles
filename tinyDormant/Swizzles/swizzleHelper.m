@@ -21,7 +21,8 @@
     if (originalMethod != NULL && swizzledMethod != NULL)
         return TRUE;
     
-    NSLog(@"🍭Swizzle failed: %@, originalMethod:  %p swizzledMethod: %p \n", NSStringFromClass(targetClass), originalMethod, swizzledMethod);
+    NSLog(@"🍭Swizzle failed:\n\t%@,\n\toriginalMethod:  %p\n\tswizzledMethod: %p\n\tSwizzle failed on selector: %@", NSStringFromClass(targetClass), originalMethod, swizzledMethod, NSStringFromSelector(originalSelector));
+    
     return FALSE;
 }
 

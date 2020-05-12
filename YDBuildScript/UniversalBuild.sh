@@ -1,7 +1,7 @@
 #!/bin/bash
 printf "%0.s-" {1..120}
 printf "%0.s-" {1..120}
-echo -e "[+] *** To work with Swift code, uncomment Step 3 ***"
+echo -e "[!] *** To work with Swift code, uncomment Step 3 ***"
 echo -e "[+] Converting ${TARGET_NAME} into Fat Framework"
 echo -e "[+] Derived data location: ${BUILD_DIR}"
 echo -e "[+] Configuration: ${CONFIGURATION}"   # Debug / Release
@@ -22,7 +22,7 @@ xcodebuild -target "${TARGET_NAME}" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGU
 cp -R "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${TARGET_NAME}.framework" "${UNIVERSAL_OUTPUTFOLDER}/"
 
 # Step 3. Copy Swift modules (from iphonesimulator build) to the copied framework directory
-# cp -R "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${TARGET_NAME}.framework/Modules/${TARGET_NAME}.swiftmodule/." "${UNIVERSAL_OUTPUTFOLDER}/${TARGET_NAME}.framework/Modules/${TARGET_NAME}.swiftmodule"
+cp -R "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${TARGET_NAME}.framework/Modules/${TARGET_NAME}.swiftmodule/." "${UNIVERSAL_OUTPUTFOLDER}/${TARGET_NAME}.framework/Modules/${TARGET_NAME}.swiftmodule"
 
 # Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory
 lipo -create -output "${UNIVERSAL_OUTPUTFOLDER}/${TARGET_NAME}.framework/${TARGET_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${TARGET_NAME}.framework/${TARGET_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${TARGET_NAME}.framework/${TARGET_NAME}"

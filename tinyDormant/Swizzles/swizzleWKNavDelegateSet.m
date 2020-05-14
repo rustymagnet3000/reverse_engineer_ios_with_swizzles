@@ -24,7 +24,7 @@ static YDNavDel *_hotDel;
         
         YDNavDel *customDel = [[YDNavDel alloc] init];
         [Foobar setHotDel:customDel];
-        NSLog(@"🍭Created Custom Delegate that inherits from WKNavigationDelegate: %@", [Foobar hotDel]);
+        NSLog(@"🍭Created custom WKNavigationDelegate: %@", [Foobar hotDel]);
         __unused SwizzleHelper *swizzle = [[SwizzleHelper alloc] initWithTargets:WKWebViewClassStr Original:orig Swizzle:swiz];
     });
 }

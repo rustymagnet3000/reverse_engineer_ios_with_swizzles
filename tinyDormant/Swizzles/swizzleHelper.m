@@ -56,6 +56,17 @@
     return FALSE;
 }
 
+-(void) getMethodPointers{
+    if ([targetClass respondsToSelector:originalSelector]){
+        NSLog(@"🍭Selector responded as a Class Method");
+        originalMethod = class_getClassMethod(targetClass, originalSelector);
+        swizzledMethod = class_getClassMethod(targetClass, replacementSelector);
+    } else if ([targetClass instancesRespondToSelector:originalSelector]){
+        NSLog(@"🍭Selector responded as a Instance Method");
+        originalMethod = class_getInstanceMethod(targetClass, originalSelector);
+        swizzledMethod = class_getInstanceMethod(targetClass, replacementSelector);
+    }
+}
 
 - (id) initWithTargets: (const char *)target
               Original:(SEL)orig
@@ -75,9 +86,8 @@
         originalSelector = orig;
         replacementSelector = swiz;
         
-        originalMethod = class_getInstanceMethod(targetClass, originalSelector);
-        swizzledMethod = class_getInstanceMethod(targetClass, replacementSelector);
-        
+        [self getMethodPointers];
+
         if ([self preSwap] == FALSE)
             return NULL;
         
@@ -90,3 +100,4 @@
     return self;
 }
 @end
+

@@ -34,9 +34,7 @@
 		0FD9E26D231EBA50003ED5B6 /* chewy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9E26C231EBA50003ED5B6 /* chewy.jpg */; };
 		0FD9E26F231EC588003ED5B6 /* SoloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9E26E231EC588003ED5B6 /* SoloViewController.swift */; };
 		0FD9E271231EC684003ED5B6 /* han.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9E270231EC684003ED5B6 /* han.jpg */; };
-		0FE33E9D246ACCF200EADA71 /* swizzleNSURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA5655235EC44C00BD0077 /* swizzleNSURL.m */; };
-		0FE33EC8246ADB2C00EADA71 /* YDNavDel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCC4B3D23D9D8910002AD84 /* YDNavDel.m */; };
-		0FE33EC9246ADB5C00EADA71 /* swizzleWKNavDelegateSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F077D5423D6F29C003219F0 /* swizzleWKNavDelegateSet.m */; };
+		0FE33EF2246D4AD900EADA71 /* removeNSURLSessionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE33EF1246D4AD900EADA71 /* removeNSURLSessionDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +110,7 @@
 		0FD9E270231EC684003ED5B6 /* han.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = han.jpg; sourceTree = "<group>"; };
 		0FDA5650235EBA0A00BD0077 /* swizzleNSURLSessioDidReceiveChallengen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = swizzleNSURLSessioDidReceiveChallengen.m; sourceTree = "<group>"; };
 		0FDA5655235EC44C00BD0077 /* swizzleNSURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = swizzleNSURL.m; sourceTree = "<group>"; };
+		0FE33EF1246D4AD900EADA71 /* removeNSURLSessionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = removeNSURLSessionDelegate.m; sourceTree = "<group>"; };
 		0FF111A023D0A210005F9539 /* swizzleWKNavDelegateAuthChallenge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = swizzleWKNavDelegateAuthChallenge.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,6 +213,7 @@
 				0FCC4B3C23D9D8910002AD84 /* YDNavDel.h */,
 				0FCC4B3D23D9D8910002AD84 /* YDNavDel.m */,
 				0FDA5650235EBA0A00BD0077 /* swizzleNSURLSessioDidReceiveChallengen.m */,
+				0FE33EF1246D4AD900EADA71 /* removeNSURLSessionDelegate.m */,
 				0FDA5655235EC44C00BD0077 /* swizzleNSURL.m */,
 				0F42055F236AE90A00DF0F97 /* swizzleUniversalLink.m */,
 				0F006B6122B751DC00E46A7C /* addFakeUIBarButton.m */,
@@ -409,9 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F9E6FBA233A1ACE0025ABA0 /* YDplistReader.m in Sources */,
-				0FE33E9D246ACCF200EADA71 /* swizzleNSURL.m in Sources */,
-				0FE33EC8246ADB2C00EADA71 /* YDNavDel.m in Sources */,
-				0FE33EC9246ADB5C00EADA71 /* swizzleWKNavDelegateSet.m in Sources */,
+				0FE33EF2246D4AD900EADA71 /* removeNSURLSessionDelegate.m in Sources */,
 				0FCE6330237970BE003BC68E /* swizzleHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,7 +567,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2N3CU4HVH8;
+				DEVELOPMENT_TEAM = U8MSEX235L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = tinyDormant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -617,7 +615,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -639,6 +638,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = youdog.com.rusty.tinySwizzle;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SKIP_INSTALL = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -653,7 +653,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -674,6 +675,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = youdog.com.rusty.tinySwizzle;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SKIP_INSTALL = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

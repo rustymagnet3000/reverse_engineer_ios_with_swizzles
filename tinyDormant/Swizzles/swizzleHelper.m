@@ -59,6 +59,7 @@
 -(void) getMethodPointers{
     if ([targetClass respondsToSelector:originalSelector]){
         NSLog(@"🍭Selector responded as a Class Method");
+        targetClass = object_getClass((id)targetClass);
         originalMethod = class_getClassMethod(targetClass, originalSelector);
         swizzledMethod = class_getClassMethod(targetClass, replacementSelector);
     } else if ([targetClass instancesRespondToSelector:originalSelector]){

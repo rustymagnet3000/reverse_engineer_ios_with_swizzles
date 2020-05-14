@@ -1,7 +1,5 @@
 #include "swizzleHelper.h"
 
-// pragma mark: A Class Method. This required an update to the Swizzle Helper
-
 @implementation NSObject (YDRemoveNSURLSession)
  
 + (void)load
@@ -17,8 +15,8 @@
 
 + (NSURLSession *)YDsessionWithConfiguration:(NSURLSessionConfiguration *)configuration delegate:(id<NSURLSessionDelegate>)delegate delegateQueue:(NSOperationQueue *)queue{
 
-    NSLog(@"🍭Inside NSURLSession session setup.Dropping delegate %@", delegate);
-    NSURLSession *sessionWithNoDelegate = [NSURLSession sessionWithConfiguration:configuration];
+    NSLog(@"🍭Inside NSURLSession setup.Dropping delegate %@", delegate);
+    NSURLSession *sessionWithNoDelegate = [NSURLSession YDsessionWithConfiguration:configuration delegate:nil delegateQueue:nil];
     NSLog(@"🍭Returned NSURLSession  %@", sessionWithNoDelegate);
     return sessionWithNoDelegate;
 }

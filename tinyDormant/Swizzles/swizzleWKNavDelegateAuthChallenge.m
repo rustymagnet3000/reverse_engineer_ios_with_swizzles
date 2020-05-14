@@ -13,7 +13,7 @@
 
 - (void)YDHappywebView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler{
     
-    NSLog(@"🍭challenge from host: %@", [[challenge protectionSpace] host]);
+    NSLog(@"🍭Proceed given to challenge from host: %@", [[challenge protectionSpace] host]);
     completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, NULL);
 }
 

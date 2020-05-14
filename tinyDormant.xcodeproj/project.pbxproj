@@ -37,6 +37,7 @@
 		0FE33EF6246D6E1100EADA71 /* YDurlsessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE33EF5246D6E1100EADA71 /* YDurlsessionVC.swift */; };
 		0FE33EF8246D700300EADA71 /* YDTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE33EF7246D700300EADA71 /* YDTimeHelper.swift */; };
 		0FE33EFA246D717200EADA71 /* YDResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE33EF9246D717200EADA71 /* YDResultModel.swift */; };
+		0FE33EFD246D8C9700EADA71 /* removeNSURLSessionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE33EF1246D4AD900EADA71 /* removeNSURLSessionDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -419,6 +420,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FE33EFD246D8C9700EADA71 /* removeNSURLSessionDelegate.m in Sources */,
 				0F9E6FBA233A1ACE0025ABA0 /* YDplistReader.m in Sources */,
 				0FCE6330237970BE003BC68E /* swizzleHelper.m in Sources */,
 			);

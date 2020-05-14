@@ -6,7 +6,7 @@ Apple designed Objective-C to:
 Read the full Apple [article](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008048-CH1-SW1). This repo was written using `runtime` Apple APIs to swap in custom code into a normal, jailed iOS device.  The code used a technique called `Method Swizzling`.  https://nshipster.com/method-swizzling/ is an excellent article on this topic.
 
 ### Background
-Originally this repo generated a `TinySwizzle.framework` to find _Dormant_ `Swift` or `ObjC` iOS code.  I ended up using the repo to make tiny Swizzles for the following Classes:
+Originally this repo generated a `TinySwizzle.framework` to find _Dormant_ `Swift` or `ObjC` iOS code.  But now you can pick and choose what Swizzles you want.   It works for any of the below methods.  It is simple to add other `Instance` or `Class` methods.
 
 Class|Method|Reason  
 --|--|---
@@ -18,6 +18,7 @@ N/A|objc_copyClassList|Find name of classes to Swizzle.
 UIViewController|viewDidAppear:|Loaded _dormant_ Storyboard, XIB file or 100% coded ViewControllers. Added a UIBarButton to a navigationController to access the ViewController.
 UIApplication|application:continueUserActivity:restorationHandler:|Written to troubleshoot whether to load third party code inside / outside the app.
 URLSession|URLSession:didReceiveChallenge:completionHandler:|Bypass Cert Pinning code when loaded with URLSession.  
+URLSession  | sessionWithConfiguration:delegate:delegateQueue:|Bypass Cert Pinning code when somebody has used NSURLSession with a delegate to perform Security Checks. This effectively "defaults" the traffic.
 WKWebView|webView:didReceiveAuthenticationChallenge:completionHandler:|Bypass Cert Pinning code when loading a Web Journey.
 WKNavigationDelegate|setNavigationDelegate:|Attach a custom Delegate to a Web Journey. Ignores the original WKNavigationDelegate.
 
@@ -164,7 +165,6 @@ self.navigationController?.pushViewController(porgvc, animated: true)
 ### What next?
 This worked on Objective-C and Swift code.  
 
-- A Swizzle helper for Class Methods. At the moment it just swizzles Instance Methods.
 - A different API for swizzling: https://blog.newrelic.com/engineering/right-way-to-swizzle/
 - I only tried with Swift code that inherits from `NSObject`.
 - Try the technique on `SwiftUI`.

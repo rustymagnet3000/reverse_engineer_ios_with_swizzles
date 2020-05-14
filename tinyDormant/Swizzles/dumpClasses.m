@@ -14,10 +14,10 @@
         {
             NSString *foundClass = [[NSString alloc] initWithCString:(class_getName(*cursor)) encoding:NSUTF8StringEncoding];
 
-
-            if([foundClass containsString:@dumpClassSearchStr]){
-                NSLog(@"\t🍭[*]%@", foundClass);
-            }
+            NSLog(@"\t🍭[*]%@", foundClass);
+//            if([foundClass containsString:@dumpClassSearchStr]){
+//                NSLog(@"\t🍭[*]%@", foundClass);
+//            }
         }
     });
 }

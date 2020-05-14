@@ -20,7 +20,7 @@ class WKBoringNavDel: NSObject, WKNavigationDelegate, WKHTTPCookieStoreObserver 
     
     func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         
-        //  NSLog("🕵🏼‍♂️ Boring challanged by: \(challenge.protectionSpace.host)")
+        NSLog("🕵🏼‍♂️ Boring challanged by: \(challenge.protectionSpace.host)")
 
         guard let trust: SecTrust = challenge.protectionSpace.serverTrust else {
             return

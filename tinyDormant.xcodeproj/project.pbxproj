@@ -34,7 +34,9 @@
 		0FD9E26D231EBA50003ED5B6 /* chewy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9E26C231EBA50003ED5B6 /* chewy.jpg */; };
 		0FD9E26F231EC588003ED5B6 /* SoloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9E26E231EC588003ED5B6 /* SoloViewController.swift */; };
 		0FD9E271231EC684003ED5B6 /* han.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9E270231EC684003ED5B6 /* han.jpg */; };
-		0FE33EF2246D4AD900EADA71 /* removeNSURLSessionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE33EF1246D4AD900EADA71 /* removeNSURLSessionDelegate.m */; };
+		0FE33EF6246D6E1100EADA71 /* YDurlsessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE33EF5246D6E1100EADA71 /* YDurlsessionVC.swift */; };
+		0FE33EF8246D700300EADA71 /* YDTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE33EF7246D700300EADA71 /* YDTimeHelper.swift */; };
+		0FE33EFA246D717200EADA71 /* YDResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE33EF9246D717200EADA71 /* YDResultModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,9 @@
 		0FDA5650235EBA0A00BD0077 /* swizzleNSURLSessioDidReceiveChallengen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = swizzleNSURLSessioDidReceiveChallengen.m; sourceTree = "<group>"; };
 		0FDA5655235EC44C00BD0077 /* swizzleNSURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = swizzleNSURL.m; sourceTree = "<group>"; };
 		0FE33EF1246D4AD900EADA71 /* removeNSURLSessionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = removeNSURLSessionDelegate.m; sourceTree = "<group>"; };
+		0FE33EF5246D6E1100EADA71 /* YDurlsessionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDurlsessionVC.swift; sourceTree = "<group>"; };
+		0FE33EF7246D700300EADA71 /* YDTimeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDTimeHelper.swift; sourceTree = "<group>"; };
+		0FE33EF9246D717200EADA71 /* YDResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDResultModel.swift; sourceTree = "<group>"; };
 		0FF111A023D0A210005F9539 /* swizzleWKNavDelegateAuthChallenge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = swizzleWKNavDelegateAuthChallenge.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +194,9 @@
 				0F102A9A22A6CA7800529F12 /* sithVC.swift */,
 				0F0873212301C39A00FC0D6D /* PorgVC.swift */,
 				0FA394B42371DE2900116ECF /* wkVC.swift */,
+				0FE33EF5246D6E1100EADA71 /* YDurlsessionVC.swift */,
+				0FE33EF7246D700300EADA71 /* YDTimeHelper.swift */,
+				0FE33EF9246D717200EADA71 /* YDResultModel.swift */,
 				0FCC4B4123D9DD450002AD84 /* WKboringNavDel.swift */,
 				0FD9E26A231EB45D003ED5B6 /* ChewyViewController.swift */,
 				0FD9E26E231EC588003ED5B6 /* SoloViewController.swift */,
@@ -394,7 +402,10 @@
 				0FCC4B4223D9DD450002AD84 /* WKboringNavDel.swift in Sources */,
 				0F08732B2302D14A00FC0D6D /* PorgUIImageView.swift in Sources */,
 				0FD9E26B231EB45D003ED5B6 /* ChewyViewController.swift in Sources */,
+				0FE33EF6246D6E1100EADA71 /* YDurlsessionVC.swift in Sources */,
 				0F102A8B22A6C9EA00529F12 /* jediVC.swift in Sources */,
+				0FE33EF8246D700300EADA71 /* YDTimeHelper.swift in Sources */,
+				0FE33EFA246D717200EADA71 /* YDResultModel.swift in Sources */,
 				0F102A8922A6C9EA00529F12 /* AppDelegate.swift in Sources */,
 				0F0873232301C39A00FC0D6D /* PorgVC.swift in Sources */,
 				0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */,
@@ -409,7 +420,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F9E6FBA233A1ACE0025ABA0 /* YDplistReader.m in Sources */,
-				0FE33EF2246D4AD900EADA71 /* removeNSURLSessionDelegate.m in Sources */,
 				0FCE6330237970BE003BC68E /* swizzleHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

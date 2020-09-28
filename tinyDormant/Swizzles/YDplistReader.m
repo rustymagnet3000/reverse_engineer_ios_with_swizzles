@@ -9,7 +9,7 @@
 
 - (instancetype)initWithPlistName:(NSString *)name {
     self = [super init];
-    NSLog(@"🍭 Attempted read of plist");
+    NSLog(@"🍭Looking for Property List file: %@", name);
     if (self) {
         _name = name;
         
@@ -18,14 +18,14 @@
         NSString *file = [bundle pathForResource:name ofType:@"plist"];
         
         if (bundle == NULL || file == NULL) {
-            NSLog(@"🍭 Can't find framework or swizzle plist file. Not hijacking Storyboards");
+            NSLog(@"🍭Can't find framework or swizzle plist file");
             return NULL;
         }
 
         NSArray *foundItems = [NSArray arrayWithContentsOfFile:file];
 
         if (foundItems == NULL){
-            NSLog(@"Could not read file:");
+            NSLog(@"Could not read file");
             return NULL;
         }
         _arrayOfDictsFromPlist = foundItems;

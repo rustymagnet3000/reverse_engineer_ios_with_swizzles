@@ -11,9 +11,9 @@
 @protocol SwizzleRules <NSObject>
 @required
 - (BOOL) checkClassExists;
-- (BOOL) preSwap;
+- (BOOL) getMethodPointers;
 - (BOOL) swapMethods;
-- (BOOL) verifyMethodSwizzle;
+- (BOOL) verifySwap;
 @end
 
 

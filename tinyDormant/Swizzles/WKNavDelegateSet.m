@@ -1,8 +1,8 @@
 #include "swizzleHelper.h"
 #include "YDNavDel.h"
+#import "YDplistReader.h"
 
-/*  @selector(navigationDelegate) is not called
-SEL swiz= @selector(YDnavigationDelegate);         */
+/*  The Target for class this swizzle is WKWebView.  It is not myapp.MyWKViewController. */
 
 @interface Foobar : NSObject
 @property (class) YDNavDel *hotDel;
@@ -22,10 +22,23 @@ static YDNavDel *_hotDel;
         SEL orig = @selector(setNavigationDelegate:);
         SEL swiz= @selector(YDsetNavigationDelegate:);
         
+        NSString *plistName = @"YDTargetClasses";
         YDNavDel *customDel = [[YDNavDel alloc] init];
         [Foobar setHotDel:customDel];
-        NSLog(@"🍭Created custom WKNavigationDelegate: %@", [Foobar hotDel]);
-        __unused SwizzleHelper *swizzle = [[SwizzleHelper alloc] initWithTargets:WKWebViewClassStr Original:orig Swizzle:swiz];
+
+        YDplistReader *myplist = [[YDplistReader alloc] initWithPlistName:plistName];
+        NSArray *targets = [myplist arrayOfDictsFromPlist];
+        
+        [targets enumerateObjectsUsingBlock:^(id  _Nonnull targetName, NSUInteger idx, BOOL * _Nonnull stop) {
+
+            NSString *target = [targetName description];
+            
+            if ([target isKindOfClass:[NSString class]])
+            {
+                NSLog(@"🍭Target class: %s", [target UTF8String]);
+                __unused SwizzleHelper *swizzle = [[SwizzleHelper alloc] initWithTargets:[target UTF8String] Original:orig Swizzle:swiz];
+            }
+        }];
     });
 }
 

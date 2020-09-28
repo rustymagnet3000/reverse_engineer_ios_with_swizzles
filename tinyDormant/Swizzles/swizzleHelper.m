@@ -10,20 +10,20 @@
 - (BOOL) checkClassExists {
     targetClass = objc_getClass(rawTargetClass);
     if (targetClass == NULL) {
-        NSLog(@"\t🍭Stopped swizzle. Could not find %s class", rawTargetClass);
-        return FALSE;
+        NSLog(@"\t🍭❌Stopped swizzle. Could not find %s class", rawTargetClass);
+        return NO;
     }
     NSLog(@"🍭Swizzle started for class: %@", NSStringFromClass(targetClass));
-    return TRUE;
+    return YES;
 }
 
 - (BOOL) preSwap {
     if (originalMethod != NULL && swizzledMethod != NULL)
-        return TRUE;
+        return YES;
     
-    NSLog(@"🍭Swizzle failed:\n\t%@,\n\toriginalMethod:  %p\n\tswizzledMethod: %p\n\tSwizzle failed on selector: %@", NSStringFromClass(targetClass), originalMethod, swizzledMethod, NSStringFromSelector(originalSelector));
+    NSLog(@"🍭❌Swizzle failed:\n\t%@,\n\toriginalMethod:  %p\n\tswizzledMethod: %p\n\tSwizzle failed on selector: %@", NSStringFromClass(targetClass), originalMethod, swizzledMethod, NSStringFromSelector(originalSelector));
     
-    return FALSE;
+    return NO;
 }
 
 - (BOOL) swapMethods {
@@ -38,35 +38,40 @@
                             replacementSelector,
                             method_getImplementation(originalMethod),
                             method_getTypeEncoding(originalMethod));
-        return TRUE;
+        return YES;
         
     } else {
         method_exchangeImplementations(originalMethod, swizzledMethod);
         NSLog(@"🍭method_exchange called:[%@ %@]", NSStringFromClass(targetClass), NSStringFromSelector(originalSelector));
-        return TRUE;
+        return YES;
     }
 }
 
 - (BOOL) verifyMethodSwizzle {
     if ([targetClass respondsToSelector:replacementSelector] == TRUE){
         NSLog(@"🍭Swizzle placed.\t🏁selector responded[%@ %@]", NSStringFromClass(targetClass),NSStringFromSelector(replacementSelector));
-        return TRUE;
+        return YES;
     }
-    NSLog(@"🍭Swizzle failed. 🏁Selector did not respond: %d", [targetClass respondsToSelector:replacementSelector]);
-    return FALSE;
+    NSLog(@"🍭❌Swizzle failed. 🏁Selector did not respond: %d", [targetClass respondsToSelector:replacementSelector]);
+    return NO;
 }
 
--(void) getMethodPointers{
+-(BOOL) getMethodPointers{
     if ([targetClass respondsToSelector:originalSelector]){
         NSLog(@"🍭Selector responded as a Class Method");
         targetClass = object_getClass((id)targetClass);
         originalMethod = class_getClassMethod(targetClass, originalSelector);
         swizzledMethod = class_getClassMethod(targetClass, replacementSelector);
-    } else if ([targetClass instancesRespondToSelector:originalSelector]){
+        return YES;
+    }
+    if ([targetClass instancesRespondToSelector:originalSelector]){
         NSLog(@"🍭Selector responded as a Instance Method");
         originalMethod = class_getInstanceMethod(targetClass, originalSelector);
         swizzledMethod = class_getInstanceMethod(targetClass, replacementSelector);
+        return YES;
     }
+    NSLog(@"🍭❌%@:%@  did not respond", NSStringFromClass(targetClass), NSStringFromSelector(originalSelector));
+    return NO;
 }
 
 - (id) initWithTargets: (const char *)target
@@ -87,8 +92,9 @@
         originalSelector = orig;
         replacementSelector = swiz;
         
-        [self getMethodPointers];
-
+        if ([self getMethodPointers] == FALSE)
+            return NULL;
+        
         if ([self preSwap] == FALSE)
             return NULL;
         

@@ -1,10 +1,10 @@
 #include "swizzleHelper.h"
 
-/*  This works for UIWebView or NSURLSession only.
-    This does not work for WKWebView
+/*  This works for UIWebView or NSURLSessioy.
+    The below trace works on physical iOS devices but NOT iOS Simulators with WKWebView.
+ 
  Refer to here for how to get Cookies from WKWebView: https://github.com/rustymagnet3000/debugger_playground/tree/master/4b_NSHTTPCookie_thief
  
-The below trace will yield nothing with WKWebView.
  frida-trace -m "*[NSHTTPCookie *]" -p $myapp
  */
 
@@ -21,7 +21,7 @@ The below trace will yield nothing with WKWebView.
 
 - (instancetype)YDinitWithProperties:(NSDictionary<NSHTTPCookiePropertyKey, id> *)properties;{
 
-    NSLog(@"🍭All Cookie properties: %@", properties);
+    NSLog(@"🍭Cookie properties: %@", properties);
     return [self YDinitWithProperties:(NSDictionary<NSHTTPCookiePropertyKey, id> *)properties];
 }
 

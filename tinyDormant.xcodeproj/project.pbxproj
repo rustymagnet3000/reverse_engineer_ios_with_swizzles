@@ -21,17 +21,16 @@
 		0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */; };
 		0F225227233243CF00C6FA0E /* YDSwizzlePlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F225226233243CF00C6FA0E /* YDSwizzlePlist.plist */; };
 		0F4F7BFC2338DB020082CAB3 /* YDDormantStoryboards.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F4F7BFB2338DB020082CAB3 /* YDDormantStoryboards.plist */; };
-		0FA394B52371DE2900116ECF /* wkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA394B42371DE2900116ECF /* wkVC.swift */; };
+		0F689EF124E14FBD00C8A067 /* WKNavDelegateAuthChallenge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD3BFCB247567C80093D422 /* WKNavDelegateAuthChallenge.m */; };
+		0FA394B52371DE2900116ECF /* YDWKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA394B42371DE2900116ECF /* YDWKViewController.swift */; };
 		0FB2D28122B20A0A00C44902 /* tinySwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FB2D27F22B20A0A00C44902 /* tinySwizzle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FB2D28422B20A0A00C44902 /* tinySwizzle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; };
 		0FB2D28522B20A0A00C44902 /* tinySwizzle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0FC2FCEF24768615002263D8 /* NSURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD3BFC0247567C80093D422 /* NSURL.m */; };
 		0FCC4B4223D9DD450002AD84 /* WKboringNavDel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCC4B4123D9DD450002AD84 /* WKboringNavDel.swift */; };
 		0FD3BFD3247567C90093D422 /* YDplistReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD3BFBF247567C80093D422 /* YDplistReader.m */; };
 		0FD3BFD6247567C90093D422 /* swizzleHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD3BFC2247567C80093D422 /* swizzleHelper.h */; };
 		0FD3BFD9247567C90093D422 /* swizzleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD3BFC5247567C80093D422 /* swizzleHelper.m */; };
 		0FD3BFE0247567C90093D422 /* YDplistReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FD3BFCC247567C80093D422 /* YDplistReader.h */; };
-		0FD3BFE6247568350093D422 /* NSHTTPCookie.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD3BFC3247567C80093D422 /* NSHTTPCookie.m */; };
 		0FD9E26B231EB45D003ED5B6 /* ChewyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9E26A231EB45D003ED5B6 /* ChewyViewController.swift */; };
 		0FD9E26D231EBA50003ED5B6 /* chewy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9E26C231EBA50003ED5B6 /* chewy.jpg */; };
 		0FD9E26F231EC588003ED5B6 /* SoloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9E26E231EC588003ED5B6 /* SoloViewController.swift */; };
@@ -39,6 +38,9 @@
 		0FE33EF6246D6E1100EADA71 /* YDurlsessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE33EF5246D6E1100EADA71 /* YDurlsessionVC.swift */; };
 		0FE33EF8246D700300EADA71 /* YDTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE33EF7246D700300EADA71 /* YDTimeHelper.swift */; };
 		0FE33EFA246D717200EADA71 /* YDResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE33EF9246D717200EADA71 /* YDResultModel.swift */; };
+		0FEBD6E22521ED3E00AD2174 /* YDTargetClasses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FEBD6E12521ED3E00AD2174 /* YDTargetClasses.plist */; };
+		0FEBD6E32521F51700AD2174 /* NSHTTPCookie.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD3BFC3247567C80093D422 /* NSHTTPCookie.m */; };
+		0FEBD6E42521F51C00AD2174 /* NSURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD3BFC0247567C80093D422 /* NSURL.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,7 +88,7 @@
 		0F149CFC2315036600F70225 /* staticStrings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = staticStrings.h; sourceTree = "<group>"; };
 		0F225226233243CF00C6FA0E /* YDSwizzlePlist.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = YDSwizzlePlist.plist; sourceTree = "<group>"; };
 		0F4F7BFB2338DB020082CAB3 /* YDDormantStoryboards.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = YDDormantStoryboards.plist; sourceTree = "<group>"; };
-		0FA394B42371DE2900116ECF /* wkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = wkVC.swift; path = tinyDormant/Swift/wkVC.swift; sourceTree = SOURCE_ROOT; };
+		0FA394B42371DE2900116ECF /* YDWKViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = YDWKViewController.swift; path = tinyDormant/Swift/YDWKViewController.swift; sourceTree = SOURCE_ROOT; };
 		0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = tinySwizzle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FB2D27F22B20A0A00C44902 /* tinySwizzle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tinySwizzle.h; sourceTree = "<group>"; };
 		0FB2D28022B20A0A00C44902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 		0FE33EF5246D6E1100EADA71 /* YDurlsessionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDurlsessionVC.swift; sourceTree = "<group>"; };
 		0FE33EF7246D700300EADA71 /* YDTimeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDTimeHelper.swift; sourceTree = "<group>"; };
 		0FE33EF9246D717200EADA71 /* YDResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDResultModel.swift; sourceTree = "<group>"; };
+		0FEBD6E12521ED3E00AD2174 /* YDTargetClasses.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = YDTargetClasses.plist; path = tinySwizzle.framework/YDTargetClasses.plist; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +186,7 @@
 				0F4F7BFB2338DB020082CAB3 /* YDDormantStoryboards.plist */,
 				0F0F3D7E23EB2E3C0043E0BB /* customSwizzle.m */,
 				0FD2DD3D23EDCDC100F6DD3D /* customHunter.m */,
+				0FEBD6E12521ED3E00AD2174 /* YDTargetClasses.plist */,
 				0F149CFC2315036600F70225 /* staticStrings.h */,
 			);
 			path = not_on_repo;
@@ -195,7 +199,7 @@
 				0F102A8A22A6C9EA00529F12 /* jediVC.swift */,
 				0F102A9A22A6CA7800529F12 /* sithVC.swift */,
 				0F0873212301C39A00FC0D6D /* PorgVC.swift */,
-				0FA394B42371DE2900116ECF /* wkVC.swift */,
+				0FA394B42371DE2900116ECF /* YDWKViewController.swift */,
 				0FE33EF5246D6E1100EADA71 /* YDurlsessionVC.swift */,
 				0FE33EF7246D700300EADA71 /* YDTimeHelper.swift */,
 				0FE33EF9246D717200EADA71 /* YDResultModel.swift */,
@@ -368,6 +372,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FEBD6E22521ED3E00AD2174 /* YDTargetClasses.plist in Resources */,
 				0F4F7BFC2338DB020082CAB3 /* YDDormantStoryboards.plist in Resources */,
 				0F225227233243CF00C6FA0E /* YDSwizzlePlist.plist in Resources */,
 			);
@@ -413,7 +418,7 @@
 				0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */,
 				0FD9E26F231EC588003ED5B6 /* SoloViewController.swift in Sources */,
 				0F102A9B22A6CA7800529F12 /* sithVC.swift in Sources */,
-				0FA394B52371DE2900116ECF /* wkVC.swift in Sources */,
+				0FA394B52371DE2900116ECF /* YDWKViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,10 +426,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FEBD6E32521F51700AD2174 /* NSHTTPCookie.m in Sources */,
+				0FEBD6E42521F51C00AD2174 /* NSURL.m in Sources */,
 				0FD3BFD9247567C90093D422 /* swizzleHelper.m in Sources */,
-				0FD3BFE6247568350093D422 /* NSHTTPCookie.m in Sources */,
-				0FC2FCEF24768615002263D8 /* NSURL.m in Sources */,
 				0FD3BFD3247567C90093D422 /* YDplistReader.m in Sources */,
+				0F689EF124E14FBD00C8A067 /* WKNavDelegateAuthChallenge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

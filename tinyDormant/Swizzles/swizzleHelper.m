@@ -13,17 +13,8 @@
         NSLog(@"\t🍭❌Stopped swizzle. Could not find %s class", rawTargetClass);
         return NO;
     }
-    NSLog(@"🍭Swizzle started for class: %@", NSStringFromClass(targetClass));
+    NSLog(@"🍭Found class: %@", NSStringFromClass(targetClass));
     return YES;
-}
-
-- (BOOL) preSwap {
-    if (originalMethod != NULL && swizzledMethod != NULL)
-        return YES;
-    
-    NSLog(@"🍭❌Swizzle failed:\n\t%@,\n\toriginalMethod:  %p\n\tswizzledMethod: %p\n\tSwizzle failed on selector: %@", NSStringFromClass(targetClass), originalMethod, swizzledMethod, NSStringFromSelector(originalSelector));
-    
-    return NO;
 }
 
 - (BOOL) swapMethods {
@@ -47,7 +38,7 @@
     }
 }
 
-- (BOOL) verifyMethodSwizzle {
+- (BOOL) verifySwap {
     if ([targetClass respondsToSelector:replacementSelector] == TRUE){
         NSLog(@"🍭Swizzle placed.\t🏁selector responded[%@ %@]", NSStringFromClass(targetClass),NSStringFromSelector(replacementSelector));
         return YES;
@@ -56,21 +47,25 @@
     return NO;
 }
 
+
 -(BOOL) getMethodPointers{
     if ([targetClass respondsToSelector:originalSelector]){
         NSLog(@"🍭Selector responded as a Class Method");
         targetClass = object_getClass((id)targetClass);
         originalMethod = class_getClassMethod(targetClass, originalSelector);
         swizzledMethod = class_getClassMethod(targetClass, replacementSelector);
-        return YES;
     }
     if ([targetClass instancesRespondToSelector:originalSelector]){
         NSLog(@"🍭Selector responded as a Instance Method");
         originalMethod = class_getInstanceMethod(targetClass, originalSelector);
         swizzledMethod = class_getInstanceMethod(targetClass, replacementSelector);
-        return YES;
     }
+    
+    if (originalMethod != NULL && swizzledMethod != NULL)
+        return YES;
+    
     NSLog(@"🍭❌%@:%@  did not respond", NSStringFromClass(targetClass), NSStringFromSelector(originalSelector));
+    NSLog(@"\t\t🍭❌Swizzle failed:\n\t%@,\n\toriginalMethod:  %p\n\tswizzledMethod: %p\n\tSwizzle failed on selector: %@", NSStringFromClass(targetClass), originalMethod, swizzledMethod, NSStringFromSelector(originalSelector));
     return NO;
 }
 
@@ -95,13 +90,10 @@
         if ([self getMethodPointers] == FALSE)
             return NULL;
         
-        if ([self preSwap] == FALSE)
-            return NULL;
-        
         if ([self swapMethods] == FALSE)
             return NULL;
 
-        if ([self verifyMethodSwizzle] == FALSE)
+        if ([self verifySwap] == FALSE)
             return NULL;
     }
     return self;

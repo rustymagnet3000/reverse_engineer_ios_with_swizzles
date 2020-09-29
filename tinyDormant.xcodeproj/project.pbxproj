@@ -38,7 +38,6 @@
 		0FE33EF8246D700300EADA71 /* YDTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE33EF7246D700300EADA71 /* YDTimeHelper.swift */; };
 		0FE33EFA246D717200EADA71 /* YDResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE33EF9246D717200EADA71 /* YDResultModel.swift */; };
 		0FEBD6E22521ED3E00AD2174 /* YDTargetClasses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FEBD6E12521ED3E00AD2174 /* YDTargetClasses.plist */; };
-		0FEBD6E5252235B000AD2174 /* WKNavDelegateSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD3BFD1247567C90093D422 /* WKNavDelegateSet.m */; };
 		0FEBD6E6252235B500AD2174 /* YDNavDel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD3BFC9247567C80093D422 /* YDNavDel.m */; };
 		0FEBD6E82522400D00AD2174 /* SwizzleCoreWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEBD6E72522400D00AD2174 /* SwizzleCoreWrapper.m */; };
 /* End PBXBuildFile section */
@@ -427,7 +426,6 @@
 				0FEBD6E82522400D00AD2174 /* SwizzleCoreWrapper.m in Sources */,
 				0FEBD6E6252235B500AD2174 /* YDNavDel.m in Sources */,
 				0FD3BFD9247567C90093D422 /* swizzleHelper.m in Sources */,
-				0FEBD6E5252235B000AD2174 /* WKNavDelegateSet.m in Sources */,
 				0FD3BFD3247567C90093D422 /* YDplistReader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

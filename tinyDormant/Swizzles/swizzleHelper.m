@@ -39,11 +39,12 @@
 }
 
 - (BOOL) verifySwap {
-    if ([targetClass respondsToSelector:replacementSelector] == TRUE){
-        NSLog(@"🍭Swizzle placed.\t🏁selector responded[%@ %@]", NSStringFromClass(targetClass),NSStringFromSelector(replacementSelector));
+    if ([targetClass respondsToSelector:replacementSelector] == YES){
+        NSLog(@"🍭Swizzle placed.\t🏁selector responded [%@ %@]", NSStringFromClass(targetClass),NSStringFromSelector(replacementSelector));
         return YES;
     }
-    NSLog(@"🍭❌Swizzle failed. 🏁Selector did not respond: %d", [targetClass respondsToSelector:replacementSelector]);
+    NSLog(@"🍭❌🏁Selector did NOT respond [%@ %@]", NSStringFromClass(targetClass),NSStringFromSelector(replacementSelector));
+        NSLog(@"\t\t🍭❌Failed:\n\t%@,\n\t🍭originalMethod:  %p\n\t🍭swizzledMethod: %p\n\t🍭Swizzle failed on selector: %@", NSStringFromClass(targetClass), originalMethod, swizzledMethod, NSStringFromSelector(originalSelector));
     return NO;
 }
 
@@ -60,13 +61,18 @@
         originalMethod = class_getInstanceMethod(targetClass, originalSelector);
         swizzledMethod = class_getInstanceMethod(targetClass, replacementSelector);
     }
+
+    if(originalMethod == NULL){
+        NSLog(@"🍭❌Can't find target method: [%@ %@]", NSStringFromClass(targetClass), NSStringFromSelector(originalSelector));
+        return NO;
+    }
     
-    if (originalMethod != NULL && swizzledMethod != NULL)
-        return YES;
+    if(swizzledMethod == NULL){
+        NSLog(@"🍭❌Can't find the replacement code: %@",  NSStringFromSelector(replacementSelector));
+        return NO;
+    }
     
-    NSLog(@"🍭❌%@:%@  did not respond", NSStringFromClass(targetClass), NSStringFromSelector(originalSelector));
-    NSLog(@"\t\t🍭❌Swizzle failed:\n\t%@,\n\toriginalMethod:  %p\n\tswizzledMethod: %p\n\tSwizzle failed on selector: %@", NSStringFromClass(targetClass), originalMethod, swizzledMethod, NSStringFromSelector(originalSelector));
-    return NO;
+    return YES;
 }
 
 - (id) initWithTargets: (const char *)target
@@ -87,16 +93,17 @@
         originalSelector = orig;
         replacementSelector = swiz;
         
-        if ([self getMethodPointers] == FALSE)
+        if ([self getMethodPointers] == NO)
             return NULL;
         
-        if ([self swapMethods] == FALSE)
+        if ([self swapMethods] == NO)
             return NULL;
 
-        if ([self verifySwap] == FALSE)
+        if ([self verifySwap] == NO)
             return NULL;
     }
     return self;
 }
 @end
+
 

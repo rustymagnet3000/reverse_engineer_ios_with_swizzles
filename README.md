@@ -1,4 +1,7 @@
 # Tiny Swizzles
+
+![Build Tiny_Swizzles](https://github.com/rustymagnet3000/reverse_engineer_ios_with_swizzles/workflows/Build%20Tiny_Swizzles/badge.svg)
+
 ### Swizzling
 Apple designed Objective-C to:
 > “defers as many decisions as it can from compile time and link time to runtime. Whenever possible, it does things dynamically.“

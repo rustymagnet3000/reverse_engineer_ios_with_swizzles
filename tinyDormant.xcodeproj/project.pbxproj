@@ -19,8 +19,6 @@
 		0F102A9322A6C9EB00529F12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F102A9122A6C9EB00529F12 /* LaunchScreen.storyboard */; };
 		0F102A9B22A6CA7800529F12 /* sithVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9A22A6CA7800529F12 /* sithVC.swift */; };
 		0F102AA022A7CE5700529F12 /* mandalorianVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */; };
-		0F225227233243CF00C6FA0E /* YDSwizzlePlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F225226233243CF00C6FA0E /* YDSwizzlePlist.plist */; };
-		0F4F7BFC2338DB020082CAB3 /* YDDormantStoryboards.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F4F7BFB2338DB020082CAB3 /* YDDormantStoryboards.plist */; };
 		0FA394B52371DE2900116ECF /* YDWKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA394B42371DE2900116ECF /* YDWKViewController.swift */; };
 		0FB2D28122B20A0A00C44902 /* tinySwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FB2D27F22B20A0A00C44902 /* tinySwizzle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FB2D28422B20A0A00C44902 /* tinySwizzle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */; };
@@ -37,9 +35,8 @@
 		0FE33EF6246D6E1100EADA71 /* YDurlsessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE33EF5246D6E1100EADA71 /* YDurlsessionVC.swift */; };
 		0FE33EF8246D700300EADA71 /* YDTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE33EF7246D700300EADA71 /* YDTimeHelper.swift */; };
 		0FE33EFA246D717200EADA71 /* YDResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE33EF9246D717200EADA71 /* YDResultModel.swift */; };
-		0FEBD6E22521ED3E00AD2174 /* YDTargetClasses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FEBD6E12521ED3E00AD2174 /* YDTargetClasses.plist */; };
 		0FEBD6E6252235B500AD2174 /* YDNavDel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD3BFC9247567C80093D422 /* YDNavDel.m */; };
-		0FEBD6E82522400D00AD2174 /* SwizzleCoreWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEBD6E72522400D00AD2174 /* SwizzleCoreWrapper.m */; };
+		F5B950BC25D1616200F93CBA /* YDSwizzlePlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5B950BB25D1616200F93CBA /* YDSwizzlePlist.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,9 +80,6 @@
 		0F102A9C22A6CC2A00529F12 /* tinyDormant-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tinyDormant-Bridging-Header.h"; sourceTree = "<group>"; };
 		0F102A9F22A7CE5700529F12 /* mandalorianVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mandalorianVC.swift; sourceTree = "<group>"; };
 		0F149CF32315006300F70225 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		0F149CFC2315036600F70225 /* staticStrings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = staticStrings.h; sourceTree = "<group>"; };
-		0F225226233243CF00C6FA0E /* YDSwizzlePlist.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = YDSwizzlePlist.plist; sourceTree = "<group>"; };
-		0F4F7BFB2338DB020082CAB3 /* YDDormantStoryboards.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = YDDormantStoryboards.plist; sourceTree = "<group>"; };
 		0FA394B42371DE2900116ECF /* YDWKViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = YDWKViewController.swift; path = tinyDormant/Swift/YDWKViewController.swift; sourceTree = SOURCE_ROOT; };
 		0FB2D27D22B20A0A00C44902 /* tinySwizzle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = tinySwizzle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FB2D27F22B20A0A00C44902 /* tinySwizzle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tinySwizzle.h; sourceTree = "<group>"; };
@@ -118,8 +112,7 @@
 		0FE33EF5246D6E1100EADA71 /* YDurlsessionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDurlsessionVC.swift; sourceTree = "<group>"; };
 		0FE33EF7246D700300EADA71 /* YDTimeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDTimeHelper.swift; sourceTree = "<group>"; };
 		0FE33EF9246D717200EADA71 /* YDResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDResultModel.swift; sourceTree = "<group>"; };
-		0FEBD6E12521ED3E00AD2174 /* YDTargetClasses.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = YDTargetClasses.plist; path = tinySwizzle.framework/YDTargetClasses.plist; sourceTree = SOURCE_ROOT; };
-		0FEBD6E72522400D00AD2174 /* SwizzleCoreWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwizzleCoreWrapper.m; sourceTree = "<group>"; };
+		F5B950BB25D1616200F93CBA /* YDSwizzlePlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YDSwizzlePlist.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				0F149CF32315006300F70225 /* README.md */,
-				0F149CF7231500E700F70225 /* not_on_repo */,
+				F5B950BB25D1616200F93CBA /* YDSwizzlePlist.plist */,
 				0F102A8722A6C9EA00529F12 /* tinyDormant */,
 				0FB2D27E22B20A0A00C44902 /* tinySwizzle */,
 				0F102A8622A6C9EA00529F12 /* Products */,
@@ -175,18 +168,6 @@
 				0F102A9C22A6CC2A00529F12 /* tinyDormant-Bridging-Header.h */,
 			);
 			path = tinyDormant;
-			sourceTree = "<group>";
-		};
-		0F149CF7231500E700F70225 /* not_on_repo */ = {
-			isa = PBXGroup;
-			children = (
-				0F225226233243CF00C6FA0E /* YDSwizzlePlist.plist */,
-				0F4F7BFB2338DB020082CAB3 /* YDDormantStoryboards.plist */,
-				0FEBD6E72522400D00AD2174 /* SwizzleCoreWrapper.m */,
-				0FEBD6E12521ED3E00AD2174 /* YDTargetClasses.plist */,
-				0F149CFC2315036600F70225 /* staticStrings.h */,
-			);
-			path = not_on_repo;
 			sourceTree = "<group>";
 		};
 		0F8172FF23D5B54100D97D05 /* Swift */ = {
@@ -369,9 +350,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FEBD6E22521ED3E00AD2174 /* YDTargetClasses.plist in Resources */,
-				0F4F7BFC2338DB020082CAB3 /* YDDormantStoryboards.plist in Resources */,
-				0F225227233243CF00C6FA0E /* YDSwizzlePlist.plist in Resources */,
+				F5B950BC25D1616200F93CBA /* YDSwizzlePlist.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +402,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FEBD6E82522400D00AD2174 /* SwizzleCoreWrapper.m in Sources */,
 				0FEBD6E6252235B500AD2174 /* YDNavDel.m in Sources */,
 				0FD3BFD9247567C90093D422 /* swizzleHelper.m in Sources */,
 				0FD3BFD3247567C90093D422 /* YDplistReader.m in Sources */,
@@ -583,7 +561,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U8MSEX235L;
+				DEVELOPMENT_TEAM = 2N3CU4HVH8;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = tinyDormant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;

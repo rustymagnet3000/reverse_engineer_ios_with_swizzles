@@ -6,7 +6,6 @@
     #include <objc/runtime.h>
     #include <WebKit/WebKit.h>
 #endif
-#include "staticStrings.h"
 
 @protocol SwizzleRules <NSObject>
 @required

@@ -8,20 +8,21 @@ Read the full Apple [article](https://developer.apple.com/library/archive/docume
 ### Background
 Originally this repo generated a `TinySwizzle.framework` to find _Dormant_ `Swift` or `ObjC` iOS code.  But now you can pick and choose what Swizzles you want.   It works for any of the below methods.  It is simple to add other `Instance` or `Class` methods.
 
-Class|Method|Reason  
+Class|Description|Method  
 --|--|---
-NSURL| initWithString:|Observed all URLs being invoked.
-UILabel| setText:|Observed all strings set on a UILabel. Only set a custom string on a UILabel that was added onto a UIView.
-NSHTTPCookie|initWithProperties:|Easy way to read all properties set on a cookie (no WKWebView yet).
-UITabBarController|viewWillAppear:|Created a Tar Bar button that invoked a Dormant ViewController.
-N/A|objc_copyClassList|Find name of classes to Swizzle.
-UIViewController|viewDidAppear:|Loaded _dormant_ Storyboard, XIB file or 100% coded ViewControllers. Added a UIBarButton to a navigationController to access the ViewController.
-UIApplication|application:continueUserActivity:restorationHandler:|Written to troubleshoot whether to load third party code inside / outside the app.
-URLSession|URLSession:didReceiveChallenge:completionHandler:|Bypass Cert Pinning code when loaded with URLSession.  
-URLSession  | sessionWithConfiguration:delegate:delegateQueue:|Bypass Cert Pinning code when somebody has used NSURLSession with a delegate to perform Security Checks. This effectively "defaults" the traffic.
-WKWebView|webView:didReceiveAuthenticationChallenge:completionHandler:|Bypass Cert Pinning code when loading a Web Journey.
-WKNavigationDelegate|setNavigationDelegate:|Attach a custom Delegate to a Web Journey. Ignores the original WKNavigationDelegate.
+NSURL|Observed all URLs being invoked|initWithString:
+UILabel|Observed all strings set on a UILabel. Only set a custom string on a UILabel that was added onto a UIView|setText:
+NSHTTPCookie|Easy way to read all properties set on a cookie (no WKWebView yet)|initWithProperties:
+UITabBarController|Created a Tar Bar button that invoked a Dormant ViewController|viewWillAppear:
+N/A|Find name of classes to Swizzle|objc_copyClassList
+UIViewController|Loaded _dormant_ Storyboard, XIB file or 100% coded ViewControllers. Added a UIBarButton to a navigationController to access the ViewController|viewDidAppear:
+UIApplication|Written to troubleshoot whether to load third party code inside / outside the app|application:continueUserActivity:restorationHandler:
+URLSession|Bypass Cert Pinning code when loaded with URLSession|URLSession:didReceiveChallenge:completionHandler:
+URLSession|Bypass Cert Pinning code when somebody has used NSURLSession with a delegate to perform Security Checks. This effectively "defaults" the traffic|sessionWithConfiguration:delegate:delegateQueue:
+WKWebView|Bypass Cert Pinning code when loading a Web Journey|webView:didReceiveAuthenticationChallenge:completionHandler:
+WKNavigationDelegate|Attach a custom Delegate to a Web Journey. Ignores the original WKNavigationDelegate|setNavigationDelegate:
 
+---
 ### Understand Swizzling
 #### Find Method
 To swizzle successfully, you need the correct `Selector` name.  The colons are important with `ObjC`.  Get these Method signatures from `Xcode Developer Documentation`.

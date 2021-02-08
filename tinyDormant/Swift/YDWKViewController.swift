@@ -47,7 +47,7 @@ class YDWKViewController: UIViewController, WKUIDelegate {
         webView.scrollView.addSubview(refreshControl)
         webView.scrollView.bounces = true
         
-        let url = URL(string: endpoint)!
+        let url = URL(string: "www.yahoo.co.uk")!
         let myRequest = URLRequest(url: url)
         self.webView.load(myRequest)
     }

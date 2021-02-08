@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <array>
+        <dict>
+            <key>storyboardClassName</key>
+            <string>tinyDormant.YDChewyVC</string>
+            <key>storyboardID</key>
+            <string>chewyStoryboardID</string>
+            <key>storyboardFile</key>
+            <string>Main</string>
+        </dict>
+        <dict>
+            <key>storyboardClassName</key>
+            <string>tinyDormant.YDSoloVC</string>
+            <key>storyboardID</key>
+            <string>soloStoryboardID</string>
+            <key>storyboardFile</key>
+            <string>Main</string>
+        </dict>
+    </array>
+</plist>
